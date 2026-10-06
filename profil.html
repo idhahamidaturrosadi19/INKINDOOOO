@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Profil Organisasi | INKINDO D.I. Yogyakarta</title>
+  <meta name="description" content="Profil Lengkap Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta - Sejarah, Visi, Misi, Dewan Pengurus, Persebaran Anggota, dan Kualifikasi Badan Usaha.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION BAR
+       ========================================================================== -->
+  <header class="main-header" id="mainHeader">
+    <div class="container header-container">
+      <!-- Brand Logo with Official INKINDO DIY Logo -->
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo_inkindo_diy.png" alt="INKINDO YOGYAKARTA Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Right Navigation Links & Login Action -->
+      <div class="header-nav-group">
+        <nav class="nav-wrapper">
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Beranda</a></li>
+            
+            <!-- DROPDOWN PROFIL -->
+            <li class="nav-item dropdown">
+              <a href="profil.html" class="nav-link dropdown-toggle active">
+                <span>Profil</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="prakata.html">Prakata</a></li>
+                <li><a href="kode-etik.html">Kode Etik</a></li>
+                <li><a href="struktur-organisasi.html">Struktur Organisasi</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN LAYANAN -->
+            <li class="nav-item dropdown">
+              <a href="index.html#layanan" class="nav-link dropdown-toggle">
+                <span>Layanan</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="layanan-konstruksi.html">Konstruksi</a></li>
+                <li><a href="layanan-non-konstruksi.html">Non Konstruksi</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN KEANGGOTAAN -->
+            <li class="nav-item dropdown">
+              <a href="index.html#keanggotaan" class="nav-link dropdown-toggle">
+                <span>Keanggotaan</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="direktori-anggota.html">Direktori Anggota</a></li>
+                <li><a href="pendaftaran-anggota.html">Pendaftaran Anggota</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN PUBLIK -->
+            <li class="nav-item dropdown">
+              <a href="index.html#publik" class="nav-link dropdown-toggle">
+                <span>Publik</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="berita.html">Berita</a></li>
+                <li><a href="program-kerja.html">Program Kerja</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="regulasi.html">Regulasi</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn btn-login-cta desktop-login-btn" onclick="openLoginModal(event)">
+            <i data-lucide="lock" size="15"></i>
+            <span>Login</span>
+          </button>
+          <button class="mobile-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu">
+            <i data-lucide="menu" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-nav-dropdown" id="mobileNavDropdown">
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" onclick="closeMobileMenu()"><i data-lucide="home" size="16"></i> Beranda</a></li>
+        <li><a href="profil.html" onclick="closeMobileMenu()"><i data-lucide="building-2" size="16"></i> Profil Organisasi</a></li>
+        <li><a href="index.html#layanan" onclick="closeMobileMenu()"><i data-lucide="layers" size="16"></i> Layanan Asosiasi</a></li>
+        <li><a href="index.html#keanggotaan" onclick="closeMobileMenu()"><i data-lucide="users" size="16"></i> Keanggotaan & Direktori</a></li>
+        <li><a href="index.html#publik" onclick="closeMobileMenu()"><i data-lucide="file-text" size="16"></i> Publik & Regulasi</a></li>
+        <li class="mobile-login-item">
+          <button class="btn btn-login-cta mobile-login-btn" onclick="openLoginModal(event); closeMobileMenu();">
+            <i data-lucide="lock" size="16"></i> Login KTA Anggota
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ==========================================================================
+       HERO BANNER PROFIL (SIMPEL & ELEGAN)
+       ========================================================================== -->
+  <section class="subpage-hero-section text-white pt-12 pb-14 md:pt-14 md:pb-16 px-6 relative">
+    <div class="max-w-6xl mx-auto flex flex-col items-center text-center">
+      
+      <!-- Breadcrumb Pill Capsule -->
+      <nav class="subpage-hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">
+          <i data-lucide="home"></i>
+          <span>Beranda</span>
+        </a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-active">Profil Organisasi</span>
+      </nav>
+
+      <!-- Main Title: Poppins Bold 40px-48px Centered -->
+      <h1 class="subpage-hero-title">
+        Profil INKINDO D.I. Yogyakarta
+      </h1>
+
+      <!-- Deskripsi Pengantar Bersih -->
+      <p class="subpage-hero-desc">
+        Mengenal lebih dekat Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta sebagai asosiasi badan usaha jasa konsultansi independen terkemuka dan berintegritas.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       SEKSI TENTANG INKINDO (LEGA & PROPORSIONAL)
+       ========================================================================== -->
+  <section class="py-10 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Sisi Kiri (7 Kolom Teks Deskripsi) -->
+        <div class="lg:col-span-7 flex flex-col justify-start">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 bg-blue-50 text-[#0056B8] border border-blue-200/70 rounded-full px-3.5 py-1 text-xs font-semibold mb-3.5 w-fit">
+            <i data-lucide="calendar" size="13"></i>
+            <span>Berdiri Sejak 20 Juni 1979</span>
+          </div>
+
+          <!-- Judul Proporsional -->
+          <h2 class="text-2xl lg:text-[1.75rem] font-bold text-[#003B73] leading-snug mb-4">
+            Wadah Penguatan Daya Saing & Profesionalisme Perusahaan Konsultan di DIY
+          </h2>
+
+          <!-- Paragraf dengan Spasi & Leading Lega -->
+          <p class="text-sm text-slate-600 leading-relaxed mb-4 text-justify">
+            <strong class="text-slate-800 font-bold">Ikatan Nasional Konsultan Indonesia (INKINDO)</strong> merupakan asosiasi perusahaan jasa konsultansi independen terbesar di Indonesia. Didirikan secara resmi pada tanggal <strong class="text-slate-800 font-bold">20 Juni 1979</strong> di Jakarta, INKINDO mengayomi lebih dari <strong class="text-slate-800 font-bold">6.252 perusahaan anggota nasional</strong> yang tersebar di 34 Provinsi.
+          </p>
+
+          <p class="text-sm text-slate-600 leading-relaxed mb-6 text-justify">
+            Di Provinsi Daerah Istimewa Yogyakarta, <strong class="text-slate-800 font-bold">DPP INKINDO DIY</strong> memayungi <strong class="text-slate-800 font-bold">214 perusahaan konsultan anggota resmi</strong> yang bergerak di bidang konstruksi maupun non-konstruksi. Kami berkomitmen mewujudkan iklim usaha jasa konsultansi yang sehat, transparan, dan berintegritas tinggi.
+          </p>
+
+          <!-- Roles Checklist dengan Garis Hijau di Sisi Kiri & space-y-3 yang Pas -->
+          <div class="border-l-4 border-emerald-500 pl-4 py-1 space-y-3">
+            <div class="flex items-center gap-3">
+              <i data-lucide="check-circle" size="18" class="text-emerald-500 flex-shrink-0"></i>
+              <span class="text-xs md:text-sm font-semibold text-slate-800">Fasilitasi Sertifikasi Badan Usaha (SBU) & KTA Digital Berstandar LPJK</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i data-lucide="check-circle" size="18" class="text-emerald-500 flex-shrink-0"></i>
+              <span class="text-xs md:text-sm font-semibold text-slate-800">Advokasi Hukum & Pelindungan Etika Usaha Badan Konsultan Lokal</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i data-lucide="check-circle" size="18" class="text-emerald-500 flex-shrink-0"></i>
+              <span class="text-xs md:text-sm font-semibold text-slate-800">Pengembangan Kapasitas Tenaga Ahli & Sosialisasi Billing Rate PUPR</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sisi Kanan (5 Kolom: Foto Pengurus & Fitur) -->
+        <div class="lg:col-span-5 space-y-4">
+          <!-- Kartu Foto Pengurus Resmi -->
+          <div class="bg-white rounded-2xl border border-[#DCE7F2] shadow-[0_4px_16px_rgba(0,0,0,0.08)] overflow-hidden">
+            <img src="assets/img/pengurus/dpp-inkindo-diy-2022-2026.jpg" alt="Dewan Pengurus Provinsi Ikatan Nasional Konsultan Indonesia (DPP INKINDO) D.I. Yogyakarta - Masa Bakti 2022–2026" class="w-full h-auto object-contain block bg-black">
+            <div class="p-3.5 bg-white text-center">
+              <p class="font-['Poppins'] font-semibold text-[14px] text-[#003D8F] leading-snug">
+                Dewan Pengurus Provinsi Ikatan Nasional Konsultan Indonesia (DPP INKINDO) D.I. Yogyakarta - Masa Bakti 2022–2026
+              </p>
+            </div>
+          </div>
+
+          <!-- 2 Mini Cards Sejajar Horizontal Presisi (grid-cols-2) -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 flex items-start gap-2.5">
+              <i data-lucide="shield-check" size="20" class="text-[#0056B8] flex-shrink-0 mt-0.5"></i>
+              <div>
+                <h4 class="font-bold text-xs text-slate-800 mb-0.5">Independen & Akuntabel</h4>
+                <p class="text-[11px] text-slate-500 leading-tight">Menjamin etika profesi konsultan independen tanpa benturan kepentingan.</p>
+              </div>
+            </div>
+            <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 flex items-start gap-2.5">
+              <i data-lucide="globe" size="20" class="text-[#0056B8] flex-shrink-0 mt-0.5"></i>
+              <div>
+                <h4 class="font-bold text-xs text-slate-800 mb-0.5">Jaringan Nasional</h4>
+                <p class="text-[11px] text-slate-500 leading-tight">Terintegrasi dengan 34 DPP INKINDO Provinsi di seluruh Indonesia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       SEKSI VISI & MISI (PERSIS GAMBAR 3)
+       ========================================================================== -->
+  <section class="py-14 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Header Tengah -->
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold tracking-wider text-emerald-600 uppercase block mb-1">LANDASAN ORGANISASI</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#003B73]">Visi & Misi INKINDO D.I. Yogyakarta</h2>
+        <div class="w-12 h-1 bg-gradient-to-r from-[#0056B8] to-emerald-500 mx-auto mt-2 rounded-full"></div>
+      </div>
+
+      <!-- 2 Kartu Besar -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        
+        <!-- Kartu Visi -->
+        <div class="bg-white border border-slate-200 border-t-4 border-t-[#0056B8] rounded-2xl p-7 shadow-sm flex flex-col">
+          <div class="flex items-center justify-between mb-5">
+            <div class="w-10 h-10 rounded-full bg-blue-50 text-[#0056B8] flex items-center justify-center">
+              <i data-lucide="compass" size="22"></i>
+            </div>
+            <span class="text-[11px] font-bold text-[#0056B8] bg-blue-50 px-3 py-1 rounded-full tracking-wide uppercase">VISI UTAMA</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 mb-4">Visi Organisasi</h3>
+          <p class="text-sm text-slate-600 leading-relaxed flex-grow">
+            Terwujudnya perusahaan jasa konsultansi yang <strong class="text-slate-800 font-bold">profesional, kompetitif, dan bermartabat</strong> dengan menerapkan prinsip <em class="italic">Good Corporate Governance (GCG)</em> serta mewujudkan iklim persaingan usaha yang sehat dan bebas dari praktek KKN.
+          </p>
+        </div>
+
+        <!-- Kartu Misi -->
+        <div class="bg-white border border-slate-200 border-t-4 border-t-emerald-500 rounded-2xl p-7 shadow-sm">
+          <div class="flex items-center justify-between mb-5">
+            <div class="w-10 h-10 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <i data-lucide="target" size="22"></i>
+            </div>
+            <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full tracking-wide uppercase">4 PILAR MISI</span>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 mb-4">Misi 4 Pilar Organisasi</h3>
+
+          <div class="space-y-3">
+            <!-- Item 1 -->
+            <div class="bg-slate-50 border border-slate-100 rounded-xl p-3.5 flex items-start gap-3.5">
+              <span class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</span>
+              <div>
+                <h4 class="font-bold text-sm text-slate-800 mb-0.5">Harmonisasi</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">Meningkatkan hubungan kerja harmonis dan kemitraan strategis antara pengurus, anggota, serta pemerintah daerah.</p>
+              </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="bg-slate-50 border border-slate-100 rounded-xl p-3.5 flex items-start gap-3.5">
+              <span class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</span>
+              <div>
+                <h4 class="font-bold text-sm text-slate-800 mb-0.5">Berangga / Berwibawa</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">Mempertahankan martabat, kehormatan, dan profesionalisme profesi konsultan nasional berdaya saing global.</p>
+              </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="bg-slate-50 border border-slate-100 rounded-xl p-3.5 flex items-start gap-3.5">
+              <span class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</span>
+              <div>
+                <h4 class="font-bold text-sm text-slate-800 mb-0.5">Amanah</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">Menjalankan fungsi keahlian dengan penuh kejujuran, transparan, dan dapat dipertanggungjawabkan publik.</p>
+              </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="bg-slate-50 border border-slate-100 rounded-xl p-3.5 flex items-start gap-3.5">
+              <span class="w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">4</span>
+              <div>
+                <h4 class="font-bold text-sm text-slate-800 mb-0.5">Tawakal</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">Menyerahkan segala ikhtiar dan pengabdian anggota kepada Tuhan Yang Maha Esa dalam membangun bangsa.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       SEKSI PERSEBARAN ANGGOTA (PERSIS GAMBAR 4)
+       ========================================================================== -->
+  <section class="py-14 bg-white border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Header Tengah -->
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold tracking-wider text-emerald-600 uppercase block mb-1">SEBARAN REGIONAL</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#003B73]">Persebaran Anggota di D.I. Yogyakarta</h2>
+        <p class="text-sm text-slate-500 max-w-xl mx-auto mt-1">Distribusi 214 perusahaan konsultan anggota INKINDO yang tersebar di 5 Kabupaten/Kota Daerah Istimewa Yogyakarta.</p>
+        <div class="w-12 h-1 bg-gradient-to-r from-[#0056B8] to-emerald-500 mx-auto mt-2 rounded-full"></div>
+      </div>
+
+      <!-- 5 Kartu Sejajar -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+        <!-- Sleman -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-200 flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-blue-50 text-[#0056B8] flex items-center justify-center mb-3">
+            <i data-lucide="map-pin" size="20"></i>
+          </div>
+          <h3 class="font-bold text-sm text-slate-800 mb-2">Kab. Sleman</h3>
+          <div class="text-3xl font-extrabold text-emerald-600 mb-1">78</div>
+          <span class="text-xs text-slate-500 font-medium">Perusahaan Anggota</span>
+        </div>
+
+        <!-- Yogyakarta -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-200 flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-blue-50 text-[#0056B8] flex items-center justify-center mb-3">
+            <i data-lucide="map-pin" size="20"></i>
+          </div>
+          <h3 class="font-bold text-sm text-slate-800 mb-2">Kota Yogyakarta</h3>
+          <div class="text-3xl font-extrabold text-emerald-600 mb-1">48</div>
+          <span class="text-xs text-slate-500 font-medium">Perusahaan Anggota</span>
+        </div>
+
+        <!-- Bantul -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-200 flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-blue-50 text-[#0056B8] flex items-center justify-center mb-3">
+            <i data-lucide="map-pin" size="20"></i>
+          </div>
+          <h3 class="font-bold text-sm text-slate-800 mb-2">Kab. Bantul</h3>
+          <div class="text-3xl font-extrabold text-emerald-600 mb-1">38</div>
+          <span class="text-xs text-slate-500 font-medium">Perusahaan Anggota</span>
+        </div>
+
+        <!-- Kulon Progo -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-200 flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-blue-50 text-[#0056B8] flex items-center justify-center mb-3">
+            <i data-lucide="map-pin" size="20"></i>
+          </div>
+          <h3 class="font-bold text-sm text-slate-800 mb-2">Kab. Kulon Progo</h3>
+          <div class="text-3xl font-extrabold text-emerald-600 mb-1">15</div>
+          <span class="text-xs text-slate-500 font-medium">Perusahaan Anggota</span>
+        </div>
+
+        <!-- Gunungkidul -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-200 flex flex-col items-center">
+          <div class="w-10 h-10 rounded-full bg-blue-50 text-[#0056B8] flex items-center justify-center mb-3">
+            <i data-lucide="map-pin" size="20"></i>
+          </div>
+          <h3 class="font-bold text-sm text-slate-800 mb-2">Kab. Gunungkidul</h3>
+          <div class="text-3xl font-extrabold text-emerald-600 mb-1">6</div>
+          <span class="text-xs text-slate-500 font-medium">Perusahaan Anggota</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       SEKSI KUALIFIKASI BADAN USAHA ANGGOTA (PERSIS GAMBAR 5)
+       ========================================================================== -->
+  <section class="py-14 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Header Tengah -->
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold tracking-wider text-emerald-600 uppercase block mb-1">SKALA KAPABILITAS</span>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-[#003B73]">Kualifikasi Badan Usaha Anggota</h2>
+        <p class="text-sm text-slate-500 max-w-xl mx-auto mt-1">Klasifikasi kemampuan usaha perusahaan konsultan berdasarkan Standar LPJK & PerMen PUPR.</p>
+        <div class="w-12 h-1 bg-gradient-to-r from-[#0056B8] to-emerald-500 mx-auto mt-2 rounded-full"></div>
+      </div>
+
+      <!-- 3 Kartu Kualifikasi Berdampingan -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Besar -->
+        <div class="bg-white border border-slate-200 border-t-4 border-t-blue-600 rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <span class="inline-block text-[11px] font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-wide mb-2">KUALIFIKASI BESAR</span>
+            <div class="text-5xl font-extrabold text-[#003B73] my-3">3</div>
+            <h3 class="font-bold text-lg text-slate-800 mb-2">Perusahaan Besar</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-6">Badan usaha konsultan kualifikasi besar penopang megaproyek infrastruktur nasional & internasional.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-slate-500">
+            <i data-lucide="bar-chart-2" size="16" class="text-blue-600"></i>
+            <span>Skala Nasional & Multinasional</span>
+          </div>
+        </div>
+
+        <!-- Menengah -->
+        <div class="bg-white border border-slate-200 border-t-4 border-t-sky-500 rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <span class="inline-block text-[11px] font-bold text-sky-700 bg-sky-50 px-3 py-1 rounded-full uppercase tracking-wide mb-2">KUALIFIKASI MENENGAH</span>
+            <div class="text-5xl font-extrabold text-[#003B73] my-3">17</div>
+            <h3 class="font-bold text-lg text-slate-800 mb-2">Perusahaan Menengah</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-6">Perusahaan konsultan skala menengah penanggung jawab pekerjaan perencanaan & pengawasan regional.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-slate-500">
+            <i data-lucide="bar-chart-2" size="16" class="text-sky-500"></i>
+            <span>Skala Regional D.I. Yogyakarta</span>
+          </div>
+        </div>
+
+        <!-- Kecil -->
+        <div class="bg-white border border-slate-200 border-t-4 border-t-emerald-500 rounded-2xl p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <span class="inline-block text-[11px] font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full uppercase tracking-wide mb-2">KUALIFIKASI KECIL</span>
+            <div class="text-5xl font-extrabold text-[#003B73] my-3">170</div>
+            <h3 class="font-bold text-lg text-slate-800 mb-2">Perusahaan Kecil</h3>
+            <p class="text-xs text-slate-600 leading-relaxed mb-6">Usaha konsultan kualifikasi kecil sebagai penggerak utama pertumbuhan ekonomi & karya arsitektur lokal.</p>
+          </div>
+          <div class="pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-slate-500">
+            <i data-lucide="bar-chart-2" size="16" class="text-emerald-500"></i>
+            <span>Penggerak Konsultan Lokal</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Hubungi Kami Button Hijau (Persis Contoh Screenshot) -->
+  <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 bg-[#00a86b] hover:bg-[#008f5a] text-white flex items-center gap-2 py-2.5 px-5 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 text-sm font-semibold no-underline">
+    <i data-lucide="phone" size="17"></i>
+    <span>Hubungi Kami</span>
+  </a>
+
+
+  <!-- ==========================================================================
+       FOOTER & COPYRIGHT BAR (DARK NAVY THEME - GLOBAL SHARED COMPONENT)
+       ========================================================================== -->
+  <footer class="deep-blue-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Kolom 1 (Kiri): Logo INKINDO Yogyakarta & Deskripsi Singkat Organisasi -->
+        <div class="footer-col-left">
+          <div class="footer-brand">
+            <div class="footer-logo-emblem">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <span class="footer-brand-title">INKINDO YOGYAKARTA</span>
+              <span class="footer-brand-sub">IKATAN NASIONAL KONSULTAN INDONESIA</span>
+            </div>
+          </div>
+
+          <p class="footer-desc">
+            Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta adalah asosiasi perusahaan jasa konsultansi independen yang berdiri sejak 20 Juni 1979. Wadah perjuangan dan pemberdayaan 214 perusahaan konsultan anggota di Daerah Istimewa Yogyakarta.
+          </p>
+        </div>
+
+        <!-- Kolom 2 (Tengah): KONTAK -->
+        <div class="footer-col-center">
+          <h4 class="footer-heading">KONTAK</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <i data-lucide="mail" class="contact-ic"></i>
+              <div>
+                <strong>Email:</strong>
+                <p>inkindo@inkindo.org</p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="phone" class="contact-ic"></i>
+              <div>
+                <strong>Telepon:</strong>
+                <p>081315289207</p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="map-pin" class="contact-ic"></i>
+              <div>
+                <strong>Alamat:</strong>
+                <p>Jl. Godean KM. 5 Nogosaren Baru No. 32, Banyuraden, Gamping, Sleman, Yogyakarta 55293</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3 (Kanan): SOSIAL MEDIA (COMPACT STYLING) -->
+        <div class="footer-col-right">
+          <h4 class="footer-heading">SOSIAL MEDIA</h4>
+          <p class="footer-social-intro">Ikuti dan terhubung dengan Sekretariat INKINDO D.I. Yogyakarta di saluran resmi media sosial:</p>
+          <div class="footer-social-buttons">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge fb-social" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f social-brand-icon"></i>
+              <span>Facebook</span>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge ig-social" aria-label="Instagram">
+              <i class="fa-brands fa-instagram social-brand-icon"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge tw-social" aria-label="Twitter">
+              <span class="social-brand-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+              <span>Twitter</span>
+            </a>
+            <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" class="social-icon-badge wa-social" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp social-brand-icon"></i>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar: Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 INKINDO YOGYAKARTA – All Right Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==========================================================================
+       GLOBAL MODAL DIALOGS
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeGlobalModal(event)">
+    <div class="modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeGlobalModal()">&times;</button>
+      <div class="modal-content-body" id="modalContentBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>

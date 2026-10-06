@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Syarat Keanggotaan | INKINDO D.I. Yogyakarta</title>
+  <meta name="description" content="Panduan resmi persyaratan permohonan Kartu Tanda Anggota (KTA) dan rekomendasi Sertifikat Badan Usaha (SBU) Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta.">
+
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="styles.css?v=1.5">
+
+  <style>
+    /* Header Styling */
+    .main-header {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+    }
+
+    .nav-link.active {
+      color: #0056B8 !important;
+      font-weight: 600 !important;
+      position: relative;
+    }
+
+    .nav-link.active::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 3px !important;
+      background: linear-gradient(90deg, #0056B8, #00d2d3) !important;
+      border-radius: 9999px !important;
+      box-shadow: 0 0 10px rgba(0, 210, 211, 0.7) !important;
+    }
+
+    .btn-login-cta.desktop-login-btn {
+      border-radius: 9999px !important;
+      background: linear-gradient(135deg, #0056B8 0%, #0284c7 100%) !important;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28) !important;
+      padding: 8px 22px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      font-weight: 600 !important;
+      transition: all 0.25s ease !important;
+    }
+
+    .btn-login-cta.desktop-login-btn:hover {
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    /* Requirement Category Switcher Tabs */
+    .req-main-tab {
+      flex: 1;
+      padding: 15px 28px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 15px;
+      white-space: nowrap;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 2px solid #e2e8f0;
+      background: #ffffff;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      user-select: none;
+    }
+
+    .req-main-tab:hover {
+      border-color: #0056B8;
+      color: #0056B8;
+      background: #f8fafc;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 86, 184, 0.1);
+    }
+
+    .req-main-tab.active {
+      background: linear-gradient(135deg, #0056B8 0%, #0284c7 100%) !important;
+      color: #ffffff !important;
+      border-color: #0056B8 !important;
+      box-shadow: 0 8px 24px rgba(0, 86, 184, 0.25) !important;
+    }
+
+    .req-main-tab.active svg,
+    .req-main-tab.active i {
+      color: #ffffff !important;
+      stroke: #ffffff !important;
+    }
+
+    /* Modern Accordion Items */
+    .accordion-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    }
+
+    .accordion-card:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.09);
+    }
+
+    .accordion-card.open {
+      border-color: #0056B8;
+      box-shadow: 0 8px 26px rgba(0, 86, 184, 0.12);
+    }
+
+    .accordion-btn {
+      width: 100%;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .accordion-btn .num-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: #eff6ff;
+      color: #0056B8;
+      font-weight: 800;
+      font-size: 13.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid #bfdbfe;
+      transition: all 0.25s ease;
+    }
+
+    .accordion-card.open .accordion-btn .num-badge {
+      background: #0056B8;
+      color: #ffffff;
+      border-color: #0056B8;
+    }
+
+    .accordion-btn .chevron-icon {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      color: #64748b;
+    }
+
+    .accordion-card.open .accordion-btn .chevron-icon {
+      transform: rotate(180deg);
+      color: #0056B8;
+    }
+
+    .accordion-body-panel {
+      display: none;
+      padding: 0 24px 22px 76px;
+      border-top: 1px dashed #f1f5f9;
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    @media (max-width: 640px) {
+      .accordion-btn {
+        padding: 16px 18px;
+        gap: 12px;
+      }
+      .accordion-body-panel {
+        padding: 0 18px 18px 18px;
+      }
+    }
+
+    .accordion-card.open .accordion-body-panel {
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="bg-[#f8fafc] text-slate-800 font-['Inter',sans-serif] selection:bg-teal-500 selection:text-white">
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION BAR
+       ========================================================================== -->
+  <header class="main-header sticky top-0 z-50 transition-all duration-300" id="mainHeader">
+    <div class="container header-container">
+      <!-- Brand Logo with Official INKINDO DIY Logo -->
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo_inkindo_diy.png" alt="INKINDO YOGYAKARTA Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Right Navigation Links & Login Action -->
+      <div class="header-nav-group">
+        <nav class="nav-wrapper">
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Beranda</a></li>
+            
+            <!-- DROPDOWN PROFIL -->
+            <li class="nav-item dropdown">
+              <a href="profil.html" class="nav-link dropdown-toggle">
+                <span>Profil</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="prakata.html">Prakata</a></li>
+                <li><a href="kode-etik.html">Kode Etik</a></li>
+                <li><a href="struktur-organisasi.html">Struktur Organisasi</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN LAYANAN -->
+            <li class="nav-item dropdown">
+              <a href="layanan-konstruksi.html" class="nav-link dropdown-toggle">
+                <span>Layanan</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="layanan-konstruksi.html">Konstruksi</a></li>
+                <li><a href="layanan-non-konstruksi.html">Non Konstruksi</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN KEANGGOTAAN (ACTIVE WITH GLOWING INDICATOR) -->
+            <li class="nav-item dropdown">
+              <a href="syarat-anggota.html" class="nav-link dropdown-toggle active">
+                <span>Keanggotaan</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="direktori-anggota.html">Direktori Anggota</a></li>
+                <li><a href="pendaftaran-anggota.html" class="font-bold text-[#0056B8]">Pendaftaran Anggota</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN PUBLIK -->
+            <li class="nav-item dropdown">
+              <a href="index.html#publik" class="nav-link dropdown-toggle">
+                <span>Publik</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="berita.html">Berita</a></li>
+                <li><a href="program-kerja.html">Program Kerja</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="regulasi.html">Regulasi</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn btn-login-cta desktop-login-btn" onclick="openLoginModal(event)">
+            <i data-lucide="lock" size="15"></i>
+            <span>Login</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ==========================================================================
+       PAGE HERO BANNER: HARMONIZED DARK NAVY THEME (#08162e)
+       ========================================================================== -->
+  <section class="subpage-hero-section relative text-white pt-12 pb-14 md:pt-14 md:pb-16 px-6 overflow-hidden">
+    <div class="container relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
+      
+      <!-- Breadcrumb Pill Capsule -->
+      <nav class="subpage-hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">
+          <i data-lucide="home"></i>
+          <span>Beranda</span>
+        </a>
+        <span class="breadcrumb-separator">›</span>
+        <a href="index.html#keanggotaan">Keanggotaan</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-active">Syarat Anggota</span>
+      </nav>
+
+      <!-- Main Title: Poppins Bold 40px-48px Centered -->
+      <h1 class="subpage-hero-title">
+        Persyaratan Keanggotaan
+      </h1>
+
+      
+
+      <!-- Subtitle -->
+      <p class="subpage-hero-desc mb-6">
+        Panduan resmi persyaratan permohonan Kartu Tanda Anggota (KTA) dan rekomendasi Sertifikat Badan Usaha (SBU) DPP INKINDO D.I. Yogyakarta.
+      </p>
+
+      <!-- Feature Pill Badges -->
+      <div class="flex items-center justify-center gap-2.5 flex-wrap">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-slate-200 text-xs font-medium border border-white/15">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-teal-400"></i>
+          <span>KTA Resmi Terakreditasi</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-slate-200 text-xs font-medium border border-white/15">
+          <i data-lucide="award" class="w-3.5 h-3.5 text-teal-400"></i>
+          <span>Rekomendasi SBU LPJK</span>
+        </div>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-slate-200 text-xs font-medium border border-white/15">
+          <i data-lucide="headphones" class="w-3.5 h-3.5 text-teal-400"></i>
+          <span>Pendampingan Berkas</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       MAIN CONTENT: REGISTRATION WORKFLOW & REQUIREMENT TABS
+       ========================================================================== -->
+  <main class="py-12 md:py-16 bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-[#f8fafc]">
+    <div class="container max-w-5xl mx-auto px-4 sm:px-6">
+
+      <!-- Main Switcher Tabs (KTA vs SBU) -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-8 max-w-2xl mx-auto">
+        <button type="button" class="req-main-tab active" id="tabBtnKta" onclick="switchRequirementTab('kta')">
+          <i data-lucide="id-card" class="w-5 h-5 flex-shrink-0"></i>
+          <span>Syarat Permohonan KTA</span>
+        </button>
+
+        <button type="button" class="req-main-tab" id="tabBtnSbu" onclick="switchRequirementTab('sbu')">
+          <i data-lucide="file-badge" class="w-5 h-5 flex-shrink-0"></i>
+          <span>Syarat Pengajuan SBU</span>
+        </button>
+      </div>
+
+
+      <!-- ======================================================================
+           TAB CONTENT 1: SYARAT PERMOHONAN KTA
+           ====================================================================== -->
+      <div id="contentKta" class="space-y-3.5 transition-all duration-300">
+
+        <!-- KTA Accordion 1 -->
+        <div class="accordion-card open">
+          <button type="button" class="accordion-btn" onclick="toggleRequirementAccordion(this)">
+            <div class="flex items-center gap-3.5">
+              <span class="num-badge">01</span>
+              <span class="font-bold text-sm sm:text-base text-slate-800 leading-snug">
+                Mengajukan Permohonan Tertulis Menjadi Anggota INKINDO (Formulir Resmi)
+              </span>
+            </div>
+            <i data-lucide="chevron-down" class="chevron-icon w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="accordion-body-panel">
+            <p class="mb-3 text-slate-600">
+              Pemohon wajib mengisi dan melengkapi formulir pendaftaran resmi yang disediakan oleh Sekretariat DPP INKINDO D.I. Yogyakarta, ditandatangani oleh Direktur Utama / Penanggung Jawab Perusahaan di atas meterai Rp10.000,-.
+            </p>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2 text-xs text-slate-700">
+              <div class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Mengisi formulir data profil badan usaha dan spesialisasi jasa konsultansi.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Formulir dapat diambil langsung di sekretariat atau diminta melalui kontak resmi WhatsApp asosiasi.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KTA Accordion 2 -->
+        <div class="accordion-card">
+          <button type="button" class="accordion-btn" onclick="toggleRequirementAccordion(this)">
+            <div class="flex items-center gap-3.5">
+              <span class="num-badge">02</span>
+              <span class="font-bold text-sm sm:text-base text-slate-800 leading-snug">
+                Memiliki Data Aspek Legalitas Badan Usaha Jasa Konsultansi
+              </span>
+            </div>
+            <i data-lucide="chevron-down" class="chevron-icon w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="accordion-body-panel">
+            <p class="mb-3 text-slate-600">
+              Menyerahkan salinan dokumen perizinan dan legalitas badan usaha yang sah, aktif, dan terdaftar secara hukum di Republik Indonesia:
+            </p>
+            <ul class="space-y-2 text-xs text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span><strong>Akta Pendirian Perusahaan</strong> beserta Akta Perubahan Terakhir (jika ada).</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span><strong>Surat Keputusan (SK) Pengesahan Kemenkumham RI</strong> untuk PT / bukti pencatatan resmi untuk CV.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span><strong>Nomor Induk Berusaha (NIB)</strong> berbasis risiko dari sistem OSS RBA dengan KBLI jasa konsultansi.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span><strong>Nomor Pokok Wajib Pajak (NPWP) Badan Usaha</strong> dan Surat Keterangan Fiskal (SKF).</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Surat Keterangan Domisili Kantor Operasional di wilayah Daerah Istimewa Yogyakarta.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- KTA Accordion 3 -->
+        <div class="accordion-card">
+          <button type="button" class="accordion-btn" onclick="toggleRequirementAccordion(this)">
+            <div class="flex items-center gap-3.5">
+              <span class="num-badge">03</span>
+              <span class="font-bold text-sm sm:text-base text-slate-800 leading-snug">
+                Pimpinan Badan Usaha Memiliki Ijazah Minimal Sarjana (S1)
+              </span>
+            </div>
+            <i data-lucide="chevron-down" class="chevron-icon w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="accordion-body-panel">
+            <p class="mb-3 text-slate-600">
+              Sesuai Anggaran Dasar dan Anggaran Rumah Tangga (AD/ART) INKINDO, Direktur Utama atau Penanggung Jawab Badan Usaha wajib memiliki latar belakang pendidikan formal minimal Strata 1 (S1) semua jurusan yang terakreditasi BAN-PT.
+            </p>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2 text-xs text-slate-700">
+              <div class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Melampirkan salinan ijazah S1 pimpinan yang telah dilegalisir atau menunjukkan dokumen aslinya.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Melampirkan salinan Kartu Tanda Penduduk (KTP) pimpinan dan pas foto formal berwarna terbaru ukuran 3x4 (2 lembar).</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KTA Accordion 4 -->
+        <div class="accordion-card">
+          <button type="button" class="accordion-btn" onclick="toggleRequirementAccordion(this)">
+            <div class="flex items-center gap-3.5">
+              <span class="num-badge">04</span>
+              <span class="font-bold text-sm sm:text-base text-slate-800 leading-snug">
+                Memiliki Personalia Perusahaan yang Terstruktur
+              </span>
+            </div>
+            <i data-lucide="chevron-down" class="chevron-icon w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="accordion-body-panel">
+            <p class="mb-3 text-slate-600">
+              Badan usaha konsultan harus memiliki susunan personalia yang jelas dan terdokumentasi untuk mendukung kelayakan operasional perusahaan:
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700 mb-3">
+              <div class="p-3 bg-slate-50 rounded-lg border border-slate-200/80">
+                <strong class="text-[#0056B8] block mb-1">Unsur Manajemen:</strong>
+                <span>Direksi, komisaris, dan pejabat pengelola keuangan/administrasi.</span>
+              </div>
+              <div class="p-3 bg-slate-50 rounded-lg border border-slate-200/80">
+                <strong class="text-[#0056B8] block mb-1">Tenaga Ahli & Teknis:</strong>
+                <span>Tenaga ahli tetap/tidak tetap sesuai spesifikasi bidang jasa konsultansi.</span>
+              </div>
+            </div>
+            <p class="text-xs text-slate-500 italic">
+              * Dilengkapi bagan struktur organisasi internal perusahaan.
+            </p>
+          </div>
+        </div>
+
+        <!-- KTA Accordion 5 -->
+        <div class="accordion-card">
+          <button type="button" class="accordion-btn" onclick="toggleRequirementAccordion(this)">
+            <div class="flex items-center gap-3.5">
+              <span class="num-badge">05</span>
+              <span class="font-bold text-sm sm:text-base text-slate-800 leading-snug">
+                Melampirkan Salinan Ijazah, KTP, dan Curriculum Vitae (CV) Personil
+              </span>
+            </div>
+            <i data-lucide="chevron-down" class="chevron-icon w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="accordion-body-panel">
+            <p class="mb-3 text-slate-600">
+              Seluruh personil inti yang dicantumkan dalam susunan organisasi perusahaan wajib menyertakan bukti identitas dan rekam jejak kompetensi profesional:
+            </p>
+            <ul class="space-y-2 text-xs text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Salinan ijazah pendidikan terakhir masing-masing personil.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Salinan KTP yang masih berlaku.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Daftar Riwayat Hidup (Curriculum Vitae / CV) ditandatangani oleh personil bersangkutan.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Surat pernyataan kesediaan mematuhi Kode Etik INKINDO (Dasadharma & Selokasila).</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+
+      <!-- ======================================================================
+           TAB CONTENT 2: SYARAT REKOMENDASI SBU
+           ====================================================================== -->
+      <div id="contentSbu" class="space-y-3.5 transition-all duration-300 hidden">
+
+        <!-- SBU Accordion 1 -->
+        <div class="accordion-card open">
+          <button type="button" class="accordion-btn" onclick="toggleRequirementAccordion(this)">
+            <div class="flex items-center gap-3.5">
+              <span class="num-badge">01</span>
+              <span class="font-bold text-sm sm:text-base text-slate-800 leading-snug">
+                Status Keanggotaan KTA INKINDO Aktif & Terverifikasi
+              </span>
+            </div>
+            <i data-lucide="chevron-down" class="chevron-icon w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="accordion-body-panel">
+            <p class="mb-3 text-slate-600">
+              Untuk memperoleh surat rekomendasi penerbitan Sertifikat Badan Usaha (SBU) Jasa Konstruksi atau Sertifikasi Non-Konstruksi, badan usaha harus telah berstatus sebagai <strong>Anggota Aktif DPP INKINDO D.I. Yogyakarta</strong> dengan nomor KTA yang masih berlaku.
+            </p>
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200/80 space-y-2 text-xs text-slate-700">
+              <div class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Melampirkan salinan Kartu Tanda Anggota (KTA) INKINDO tahun berjalan.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Telah melunasi iuran wajib keanggotaan asosiasi tanpa tunggakan.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SBU Accordion 2 -->
+        <div class="accordion-card">
+          <button type="button" class="accordion-btn" onclick="toggleRequirementAccordion(this)">
+            <div class="flex items-center gap-3.5">
+              <span class="num-badge">02</span>
+              <span class="font-bold text-sm sm:text-base text-slate-800 leading-snug">
+                Dokumen Legalitas Badan Usaha yang Sah & Masih Berlaku
+              </span>
+            </div>
+            <i data-lucide="chevron-down" class="chevron-icon w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="accordion-body-panel">
+            <p class="mb-3 text-slate-600">
+              Kelengkapan berkas legalitas yuridis perusahaan yang disesuaikan dengan regulasi Lembaga Pengembangan Jasa Konstruksi (LPJK) Kementerian PUPR:
+            </p>
+            <ul class="space-y-2 text-xs text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Akta Pendirian & Akta Perubahan Terakhir beserta SK Kemenkumham RI.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>NIB OSS RBA dengan KBLI Jasa Konsultansi Konstruksi yang sesuai subklasifikasi diajukan.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>NPWP Badan Usaha, Surat Keterangan Terdaftar Pajak (SKT), dan bukti lapor SPT tahun terakhir.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SBU Accordion 3 -->
+        <div class="accordion-card">
+          <button type="button" class="accordion-btn" onclick="toggleRequirementAccordion(this)">
+            <div class="flex items-center gap-3.5">
+              <span class="num-badge">03</span>
+              <span class="font-bold text-sm sm:text-base text-slate-800 leading-snug">
+                Memiliki Tenaga Ahli Bersertifikat Kompetensi Kerja (SKK / SKA) Aktif
+              </span>
+            </div>
+            <i data-lucide="chevron-down" class="chevron-icon w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="accordion-body-panel">
+            <p class="mb-3 text-slate-600">
+              Badan usaha wajib menunjuk tenaga ahli tetap yang memiliki Sertifikat Kompetensi Kerja (SKK) Konstruksi aktif yang teregistrasi LPJK sesuai klasifikasi dan kualifikasi usaha yang dimohon:
+            </p>
+            <div class="space-y-2 text-xs text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+              <div class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span><strong>Penanggung Jawab Badan Usaha (PJBU):</strong> Direktur pimpinan perusahaan.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span><strong>Penanggung Jawab Teknis Badan Usaha (PJTBU):</strong> Tenaga ahli bersertifikat jenjang kualifikasi sesuai aturan LPJK.</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span><strong>Penanggung Jawab Subklasifikasi (PJSKBU):</strong> Tenaga ahli per subbidang jasa konsultansi.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SBU Accordion 4 -->
+        <div class="accordion-card">
+          <button type="button" class="accordion-btn" onclick="toggleRequirementAccordion(this)">
+            <div class="flex items-center gap-3.5">
+              <span class="num-badge">04</span>
+              <span class="font-bold text-sm sm:text-base text-slate-800 leading-snug">
+                Melampirkan Rekam Jejak Pengalaman Badan Usaha (10 Tahun Terakhir)
+              </span>
+            </div>
+            <i data-lucide="chevron-down" class="chevron-icon w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="accordion-body-panel">
+            <p class="mb-3 text-slate-600">
+              Daftar pengalaman pekerjaan jasa konsultansi sejenis yang telah diselesaikan dalam kurun waktu 10 (sepuluh) tahun terakhir:
+            </p>
+            <ul class="space-y-2 text-xs text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-200/80">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Salinan Kontrak Kerja / Surat Perjanjian Kerja (SPK).</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Berita Acara Serah Terima Pekerjaan (BAST) 100%.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span>Faktur Pajak Pertambahan Nilai (PPN) dan bukti setor pajak terkait.</span>
+              </li>
+            </ul>
+            <p class="text-xs text-amber-700 bg-amber-50 p-3 rounded-lg border border-amber-200 mt-3">
+              <strong>Catatan:</strong> Badan Usaha Baru yang mengajukan Kualifikasi Kecil (K) diperbolehkan belum memiliki pengalaman kerja awal.
+            </p>
+          </div>
+        </div>
+
+        <!-- SBU Accordion 5 -->
+        <div class="accordion-card">
+          <button type="button" class="accordion-btn" onclick="toggleRequirementAccordion(this)">
+            <div class="flex items-center gap-3.5">
+              <span class="num-badge">05</span>
+              <span class="font-bold text-sm sm:text-base text-slate-800 leading-snug">
+                Laporan Keuangan & Neraca Badan Usaha
+              </span>
+            </div>
+            <i data-lucide="chevron-down" class="chevron-icon w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="accordion-body-panel">
+            <p class="mb-3 text-slate-600">
+              Ketentuan kemampuan keuangan badan usaha sesuai jenjang kualifikasi:
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700">
+              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200/80">
+                <strong class="text-slate-900 block mb-1 text-xs">Kualifikasi Menengah & Besar:</strong>
+                <span>Wajib menyertakan Laporan Keuangan Neraca yang telah diaudit oleh Kantor Akuntan Publik (KAP) terdaftar.</span>
+              </div>
+              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200/80">
+                <strong class="text-slate-900 block mb-1 text-xs">Kualifikasi Kecil:</strong>
+                <span>Cukup melampirkan neraca keuangan internal badan usaha yang ditandatangani oleh Direksi di atas materai.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </main>
+
+
+  <!-- ==========================================================================
+       FOOTER & COPYRIGHT BAR (DARK NAVY THEME - GLOBAL SHARED COMPONENT)
+       ========================================================================== -->
+  <footer class="deep-blue-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Kolom 1 (Kiri): Logo INKINDO Yogyakarta & Deskripsi Singkat Organisasi -->
+        <div class="footer-col-left">
+          <div class="footer-brand">
+            <div class="footer-logo-emblem">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <span class="footer-brand-title">INKINDO YOGYAKARTA</span>
+              <span class="footer-brand-sub">IKATAN NASIONAL KONSULTAN INDONESIA</span>
+            </div>
+          </div>
+
+          <p class="footer-desc">
+            Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta adalah asosiasi perusahaan jasa konsultansi independen yang berdiri sejak 20 Juni 1979. Wadah perjuangan dan pemberdayaan 214 perusahaan konsultan anggota di Daerah Istimewa Yogyakarta.
+          </p>
+        </div>
+
+        <!-- Kolom 2 (Tengah): KONTAK -->
+        <div class="footer-col-center">
+          <h4 class="footer-heading">KONTAK</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <i data-lucide="mail" class="contact-ic"></i>
+              <div>
+                <strong>Email:</strong>
+                <p>inkindo@inkindo.org</p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="phone" class="contact-ic"></i>
+              <div>
+                <strong>Telepon:</strong>
+                <p>081315289207</p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="map-pin" class="contact-ic"></i>
+              <div>
+                <strong>Alamat:</strong>
+                <p>Jl. Godean KM. 5 Nogosaren Baru No. 32, Banyuraden, Gamping, Sleman, Yogyakarta 55293</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3 (Kanan): SOSIAL MEDIA (COMPACT STYLING) -->
+        <div class="footer-col-right">
+          <h4 class="footer-heading">SOSIAL MEDIA</h4>
+          <p class="footer-social-intro">Ikuti dan terhubung dengan Sekretariat INKINDO D.I. Yogyakarta di saluran resmi media sosial:</p>
+          <div class="footer-social-buttons">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge fb-social" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f social-brand-icon"></i>
+              <span>Facebook</span>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge ig-social" aria-label="Instagram">
+              <i class="fa-brands fa-instagram social-brand-icon"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge tw-social" aria-label="Twitter">
+              <span class="social-brand-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+              <span>Twitter</span>
+            </a>
+            <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" class="social-icon-badge wa-social" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp social-brand-icon"></i>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar: Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 INKINDO YOGYAKARTA – All Right Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==========================================================================
+       FLOATING WHATSAPP CTA BUTTON ("Hubungi Kami")
+       ========================================================================== -->
+  <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" 
+     class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#0066b2] hover:bg-[#005596] text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 text-sm font-semibold tracking-wide"
+     style="box-shadow: 0 4px 14px rgba(0, 102, 178, 0.4);">
+      <i class="fa-brands fa-whatsapp text-lg"></i>
+      <span>Hubungi Kami</span>
+  </a>
+
+
+  <!-- ==========================================================================
+       GLOBAL MODAL DIALOGS
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeGlobalModal(event)">
+    <div class="modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeGlobalModal()">&times;</button>
+      <div class="modal-content-body" id="modalContentBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function switchRequirementTab(tabKey) {
+      const btnKta = document.getElementById('tabBtnKta');
+      const btnSbu = document.getElementById('tabBtnSbu');
+      const contentKta = document.getElementById('contentKta');
+      const contentSbu = document.getElementById('contentSbu');
+
+      if (tabKey === 'kta') {
+        btnKta.classList.add('active');
+        btnSbu.classList.remove('active');
+        contentKta.classList.remove('hidden');
+        contentSbu.classList.add('hidden');
+      } else {
+        btnSbu.classList.add('active');
+        btnKta.classList.remove('active');
+        contentSbu.classList.remove('hidden');
+        contentKta.classList.add('hidden');
+      }
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
+    function toggleRequirementAccordion(button) {
+      const card = button.closest('.accordion-card');
+      if (card) {
+        card.classList.toggle('open');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>

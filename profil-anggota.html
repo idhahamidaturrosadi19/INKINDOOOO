@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title id="pageTitle">Profil Anggota | INKINDO D.I. Yogyakarta</title>
+  <meta name="description" content="Micro Company Profile Perusahaan Konsultan Anggota Resmi Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta.">
+
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=1.6">
+
+  <style>
+    /* Profile Specific Styling */
+    .company-profile-card {
+      background: #FFFFFF;
+      border: 1px solid #DCE7F2;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+      transition: all 0.25s ease;
+    }
+
+    .company-profile-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+    }
+
+    /* Blurred Locked Contact Area */
+    .contact-blurred-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #FFFFFF;
+      border: 1px solid #DCE7F2;
+    }
+
+    .contact-blurred-content {
+      filter: blur(7px);
+      -webkit-filter: blur(7px);
+      user-select: none;
+      pointer-events: none;
+      opacity: 0.6;
+      transition: filter 0.3s ease;
+    }
+
+    .contact-lock-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(248, 250, 252, 0.78);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      padding: 24px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    .toast-notification {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #08162e;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      z-index: 1000;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast-notification.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body class="bg-[#F6F9FD] text-slate-700 antialiased font-['Inter',sans-serif]">
+
+  <!-- ==========================================================================
+       GLOBAL MAIN HEADER (Navbar Konsisten Semua Halaman)
+       ========================================================================== -->
+  <header class="main-header sticky top-0 z-50 transition-all duration-300">
+    <div class="header-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="header-content flex items-center justify-between h-20">
+
+        <!-- Logo Brand Resmi INKINDO DIY -->
+        <a href="index.html" class="logo-group flex items-center gap-3.5 group text-decoration-none">
+          <div class="logo-symbol-wrapper flex-shrink-0">
+            <img src="assets/images/logo_inkindo_diy.png" alt="Logo INKINDO DIY" class="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+          </div>
+          <div class="logo-text-block flex flex-col">
+            <span class="logo-text-title font-bold text-lg sm:text-xl tracking-tight text-[#08162e] font-['Poppins',sans-serif] leading-tight">INKINDO DIY</span>
+            <span class="logo-text-subtitle text-[11px] sm:text-xs text-slate-500 font-medium">Ikatan Nasional Konsultan Indonesia</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Bar -->
+        <nav class="desktop-nav hidden lg:flex items-center gap-7">
+          <ul class="nav-list flex items-center gap-6 list-none m-0 p-0">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">Beranda</a>
+            </li>
+
+            <!-- DROPDOWN PROFIL -->
+            <li class="nav-item dropdown">
+              <a href="profil.html" class="nav-link dropdown-toggle">
+                <span>Profil</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="profil.html">Profil Organisasi</a></li>
+                <li><a href="prakata.html">Prakata Ketua</a></li>
+                <li><a href="kode-etik.html">Kode Etik</a></li>
+                <li><a href="struktur-organisasi.html">Struktur Organisasi</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN LAYANAN -->
+            <li class="nav-item dropdown">
+              <a href="layanan-konstruksi.html" class="nav-link dropdown-toggle">
+                <span>Layanan</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="layanan-konstruksi.html">Konstruksi</a></li>
+                <li><a href="layanan-non-konstruksi.html">Non Konstruksi</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN KEANGGOTAAN (ACTIVE) -->
+            <li class="nav-item dropdown">
+              <a href="direktori-anggota.html" class="nav-link dropdown-toggle active">
+                <span>Keanggotaan</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="direktori-anggota.html" class="font-bold text-[#0056B8]">Direktori Anggota</a></li>
+                <li><a href="pendaftaran-anggota.html">Pendaftaran Anggota</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN PUBLIK -->
+            <li class="nav-item dropdown">
+              <a href="berita.html" class="nav-link dropdown-toggle">
+                <span>Publik</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="berita.html">Berita</a></li>
+                <li><a href="program-kerja.html">Program Kerja</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="regulasi.html">Regulasi</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- CTA Login Button -->
+        <button type="button" class="btn btn-login-cta desktop-login-btn hidden lg:inline-flex" onclick="openLoginModal(event)">
+          <i data-lucide="lock" class="btn-login-icon"></i>
+          <span>Login</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ==========================================================================
+       HERO BANNER & BREADCRUMB
+       ========================================================================== -->
+  <section class="subpage-hero-section relative text-white pt-12 pb-14 md:pt-14 md:pb-16 px-6 overflow-hidden">
+    <div class="container relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center flex flex-col items-center">
+
+      <!-- Breadcrumb Capsule: Beranda › Keanggotaan › Direktori Anggota › [Nama Syarikat] -->
+      <nav class="subpage-hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">
+          <i data-lucide="home"></i>
+          <span>Beranda</span>
+        </a>
+        <span class="breadcrumb-separator">›</span>
+        <a href="direktori-anggota.html">Keanggotaan</a>
+        <span class="breadcrumb-separator">›</span>
+        <a href="direktori-anggota.html">Direktori Anggota</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-active" id="breadcrumbCompanyName">Profil Perusahaan</span>
+      </nav>
+
+      
+
+      <!-- Main Title -->
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white font-['Poppins',sans-serif] leading-tight" id="heroCompanyTitle">
+        Profil Perusahaan Konsultan
+      </h1>
+
+      <p class="subpage-hero-desc">
+        Informasi legalitas, kualifikasi, pengalaman proyek, dan kompetensi resmi perusahaan konsultan terdaftar di INKINDO D.I. Yogyakarta.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       MAIN CONTENT: MICRO COMPANY PROFILE SECTIONS
+       ========================================================================== -->
+  <main class="py-10 md:py-14">
+    <div class="container max-w-5xl mx-auto px-4 sm:px-6 space-y-8">
+
+      <!-- ======================================================================
+           BAHAGIAN 1: HEADER PERUSAHAAN (Identity, Badges, & Actions)
+           ====================================================================== -->
+      <section class="company-profile-card p-6 sm:p-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-slate-100">
+          
+          <div class="flex items-start sm:items-center gap-4 sm:gap-5">
+            <!-- Company Monogram / Avatar Logo -->
+            <div id="companyAvatar" class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-[#0056B8] text-white flex items-center justify-center font-bold text-2xl sm:text-3xl shadow-md flex-shrink-0 tracking-wider font-['Poppins',sans-serif]">
+              AK
+            </div>
+
+            <div>
+              <div class="flex items-center gap-2 flex-wrap mb-1">
+                <h2 id="companyName" class="text-xl sm:text-2xl font-bold text-[#08162e] font-['Poppins',sans-serif] leading-tight">
+                  PT. Architra Konsultan Yogyakarta
+                </h2>
+                <span title="Terverifikasi INKINDO DIY" class="inline-flex text-blue-600">
+                  <i data-lucide="shield-check" class="w-5 h-5 text-emerald-600"></i>
+                </span>
+              </div>
+
+              <!-- KTA & Wilayah -->
+              <div class="flex flex-wrap items-center gap-y-1 gap-x-4 text-xs sm:text-sm text-slate-500 font-medium">
+                <span class="flex items-center gap-1.5 text-slate-700 font-semibold">
+                  <i data-lucide="file-check-2" class="w-4 h-4 text-[#0056B8]"></i>
+                  <span id="companyKta">No. KTA: 12044/P/0088.DIY</span>
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <i data-lucide="map-pin" class="w-4 h-4 text-slate-400"></i>
+                  <span id="companyWilayah">Kota Yogyakarta, D.I. Yogyakarta</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex items-center gap-2.5 flex-wrap sm:flex-nowrap">
+            <a href="direktori-anggota.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-200 text-slate-700 hover:text-[#0056B8] hover:border-[#0056B8] text-xs font-semibold bg-white transition shadow-2xs">
+              <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+              <span>Kembali ke Direktori</span>
+            </a>
+            <button type="button" onclick="copyProfileLink()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-50 text-[#0056B8] hover:bg-blue-100 text-xs font-semibold transition border border-blue-200 shadow-2xs">
+              <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+              <span>Bagikan Profil</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Badges Bar -->
+        <div class="pt-5 flex flex-wrap items-center gap-2.5">
+          <!-- Status Badge -->
+          <span id="badgeStatus" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 shadow-2xs">
+            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>Status: Anggota Aktif & Terverifikasi</span>
+          </span>
+
+          <!-- Kualifikasi Badge -->
+          <span id="badgeQual" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200 shadow-2xs">
+            <i data-lucide="award" class="w-3.5 h-3.5 text-amber-600"></i>
+            <span>Kualifikasi: Besar (B)</span>
+          </span>
+
+          <!-- Bidang Badge -->
+          <span id="badgeBidang" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-[#0056B8] border border-blue-200 shadow-2xs">
+            <i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8]"></i>
+            <span>Bidang: Jasa Konstruksi</span>
+          </span>
+
+          <!-- LPJK Standard -->
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200 shadow-2xs">
+            <i data-lucide="badge-check" class="w-3.5 h-3.5 text-slate-500"></i>
+            <span>Akreditasi LPJK & BSAP DIY</span>
+          </span>
+        </div>
+      </section>
+
+
+      <!-- ======================================================================
+           BAHAGIAN 2: EXECUTIVE SUMMARY & SPESIALISASI KEAHLIAN
+           ====================================================================== -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Summary & Visi Misi (8 Kolom) -->
+        <div class="lg:col-span-8 space-y-6">
+          
+          <!-- Executive Summary Card -->
+          <div class="company-profile-card p-6 sm:p-7">
+            <div class="flex items-center gap-2.5 mb-3.5 pb-2.5 border-b border-slate-100">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#0056B8]"></span>
+              <h3 class="font-bold text-base text-[#08162e] font-['Poppins',sans-serif]">Executive Summary & Profil Perusahaan</h3>
+            </div>
+            <p id="companySummaryText" class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Perusahaan konsultan berbadan hukum terdaftar resmi di Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta dengan komitmen keunggulan profesional, integritas kode etik, dan kepatuhan standar mutu LPJK. Didukung tenaga ahli bersertifikat keahlian kerja (SKA/SKK) dan pengalaman luas menangani berbagai penugasan konsultansi strategis.
+            </p>
+          </div>
+
+          <!-- Visi & Misi Card -->
+          <div class="company-profile-card p-6 sm:p-7">
+            <div class="flex items-center gap-2.5 mb-3.5 pb-2.5 border-b border-slate-100">
+              <span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span>
+              <h3 class="font-bold text-base text-[#08162e] font-['Poppins',sans-serif]">Visi & Misi Perusahaan</h3>
+            </div>
+            
+            <div class="mb-4 bg-blue-50/70 p-3.5 rounded-xl border border-blue-100">
+              <span class="text-xs font-bold text-[#0056B8] block mb-1 uppercase tracking-wider">Visi Perusahaan:</span>
+              <p id="companyVisionText" class="text-xs sm:text-sm text-slate-700 italic font-medium">
+                "Menjadi mitra konsultansi terpercaya dan berdaya saing tinggi yang menghasilkan solusi keteknikan dan tata ruang berkualitas prima."
+              </p>
+            </div>
+
+            <div>
+              <span class="text-xs font-bold text-slate-700 block mb-2 uppercase tracking-wider">Misi Strategis:</span>
+              <ul id="companyMissionsList" class="space-y-2 text-xs sm:text-sm text-slate-600 list-none p-0 m-0">
+                <li class="flex items-start gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                  <span>Memberikan layanan konsultansi berbasis standar mutu SNI dan best practice industri.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                  <span>Mengembangkan kapabilitas tenaga ahli dan adopsi inovasi teknologi konstruksi terkini.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                  <span>Mewujudkan kepuasan klien melalui manajemen proyek yang tepat waktu dan efisien.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Legalitas & Fokus Keahlian (4 Kolom) -->
+        <div class="lg:col-span-4 space-y-6">
+          
+          <!-- Fokus Bidang Kepakaran -->
+          <div class="company-profile-card p-6">
+            <h4 class="font-bold text-sm text-[#08162e] font-['Poppins',sans-serif] mb-3 pb-2 border-b border-slate-100 flex items-center gap-2">
+              <i data-lucide="layers" class="w-4 h-4 text-[#0056B8]"></i>
+              <span>Fokus Kepakaran</span>
+            </h4>
+            <div id="companySkillsList" class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium border border-slate-200">Perancangan Arsitektur</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium border border-slate-200">Manajemen Konstruksi</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium border border-slate-200">Perencanaan Tata Ruang</span>
+              <span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium border border-slate-200">BIM Modeling 3D</span>
+            </div>
+          </div>
+
+          <!-- Legalitas & Sertifikasi Box -->
+          <div class="company-profile-card p-6 bg-gradient-to-br from-slate-50 to-blue-50/40">
+            <h4 class="font-bold text-sm text-[#08162e] font-['Poppins',sans-serif] mb-3 pb-2 border-b border-slate-200 flex items-center gap-2">
+              <i data-lucide="stamp" class="w-4 h-4 text-[#0056B8]"></i>
+              <span>Legalitas & Sertifikasi</span>
+            </h4>
+            <div class="space-y-3 text-xs">
+              <div>
+                <span class="text-slate-400 block text-[11px]">Asosiasi Profesi:</span>
+                <strong class="text-slate-800">INKINDO D.I. Yogyakarta</strong>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[11px]">Regulasi Sertifikasi:</span>
+                <strong class="text-slate-800">Badan Sertifikasi LPJK</strong>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[11px]">Masa Berlaku KTA:</span>
+                <strong class="text-emerald-700">31 Desember 2026 (Aktif)</strong>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-[11px]">Verifikasi Legalitas:</span>
+                <span class="inline-flex items-center gap-1 text-emerald-700 font-bold">
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                  KTA Terdaftar di Database Resmi
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ======================================================================
+           BAHAGIAN 3: PENGALAMAN PROJEK / PORTOFOLIO UTAMA
+           ====================================================================== -->
+      <section class="company-profile-card p-6 sm:p-8">
+        <div class="flex items-center justify-between mb-6 pb-3 border-b border-slate-100 flex-wrap gap-3">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#0056B8]"></span>
+              <span class="text-xs uppercase tracking-wider font-bold text-[#0056B8]">Rekam Jejak & Portofolio</span>
+            </div>
+            <h3 class="font-bold text-lg sm:text-xl text-[#08162e] font-['Poppins',sans-serif]">Pengalaman Proyek Unggulan</h3>
+          </div>
+          <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-50 text-[#0056B8] border border-blue-200">
+            Terverifikasi Berita Acara Serah Terima (BAST)
+          </span>
+        </div>
+
+        <!-- Project Grid -->
+        <div id="projectGridContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Rendered dynamically via JavaScript -->
+        </div>
+      </section>
+
+
+      <!-- ======================================================================
+           BAHAGIAN 4: HUBUNGI PERUSAHAAN (Kawasan Terkunci / Perlu Log Masuk)
+           ====================================================================== -->
+      <section class="contact-blurred-container">
+        
+        <!-- Blurred Background Content (Simulasi Informasi Kontak Nyata) -->
+        <div class="contact-blurred-content p-6 sm:p-8">
+          <div class="mb-4 pb-3 border-b border-slate-200">
+            <h3 class="font-bold text-lg text-slate-800 font-['Poppins',sans-serif]">Informasi Kontak Langsung & Sekretariat</h3>
+            <p class="text-xs text-slate-500">Saluran resmi komunikasi pimpinan dan korespondensi perusahaan konsultan</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-slate-700">
+            <div class="space-y-3">
+              <div>
+                <span class="text-slate-400 block text-xs">Alamat Kantor Operasional:</span>
+                <strong class="text-slate-800" id="blurredAddress">Jl. Kenari No. 44, Semaki, Umbulharjo, Kota Yogyakarta 55166</strong>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-xs">Penanggung Jawab Teknis:</span>
+                <strong class="text-slate-800" id="blurredDirector">Ir. Bambang Sudarsono, MT., IAI (Direktur Utama)</strong>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <span class="text-slate-400 block text-xs">Nomor Telepon Kantor:</span>
+                <strong class="text-slate-800" id="blurredPhone">(0274) 589412 / Ext 104</strong>
+              </div>
+              <div>
+                <span class="text-slate-400 block text-xs">Alamat Email Resmi:</span>
+                <strong class="text-slate-800" id="blurredEmail">sekretariat@architrakonsultan.co.id</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lock Alert Overlay (Gaya Frosted Glass Modern) -->
+        <div class="contact-lock-overlay">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center mb-3 shadow-lg shadow-amber-500/20">
+            <i data-lucide="lock" class="w-7 h-7"></i>
+          </div>
+
+          <h4 class="font-bold text-base sm:text-lg text-[#08162e] font-['Poppins',sans-serif] mb-1">
+            Maklumat Perhubungan Terhad untuk Ahli Berdaftar
+          </h4>
+
+          <p class="text-xs sm:text-sm text-slate-600 max-w-md mx-auto mb-4 leading-relaxed font-normal">
+            Maklumat perhubungan terhad kepada ahli berdaftar. Sila Log Masuk untuk melihat maklumat lengkap alamat, nomor telefon, dan emel rasmi syarikat konsultan ini.
+          </p>
+
+          <div class="flex items-center gap-3 flex-wrap justify-center">
+            <button type="button" onclick="openLoginModal(event)" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#0056B8] hover:bg-[#003D8F] text-white text-xs sm:text-sm font-semibold shadow-md transition-all transform hover:-translate-y-0.5">
+              <i data-lucide="log-in" class="w-4 h-4"></i>
+              <span>Log Masuk</span>
+            </button>
+            <a href="pendaftaran-anggota.html" class="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold border border-slate-300 transition shadow-2xs">
+              <i data-lucide="user-plus" class="w-4 h-4 text-[#0056B8]"></i>
+              <span>Pendaftaran Anggota</span>
+            </a>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+
+  <!-- Toast Notification Copy Link -->
+  <div id="toastNotification" class="toast-notification">
+    <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+    <span>Tautan profil perusahaan berhasil disalin ke clipboard!</span>
+  </div>
+
+
+  <!-- ==========================================================================
+       GLOBAL FOOTER (Standard INKINDO Theme)
+       ========================================================================== -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-col-left">
+          <div class="footer-brand-title">INKINDO D.I. YOGYAKARTA</div>
+          <p class="footer-brand-tagline">
+            Ikatan Nasional Konsultan Indonesia – Menegakkan integritas, profesionalisme, dan keunggulan jasa konsultansi di Daerah Istimewa Yogyakarta.
+          </p>
+          <div class="footer-office-address">
+            <i class="fa-solid fa-location-dot address-icon"></i>
+            <span>Jl. Kenari No. 44, Semaki, Umbulharjo, Kota Yogyakarta, D.I. Yogyakarta 55166</span>
+          </div>
+        </div>
+
+        <div class="footer-col-center">
+          <h4 class="footer-heading">KONTAK SEKRETARIAT</h4>
+          <ul class="footer-contact-list">
+            <li class="contact-item">
+              <i class="fa-solid fa-phone contact-icon"></i>
+              <div>
+                <span class="contact-label">Telepon Kantor</span>
+                <a href="tel:0274589412" class="contact-value">(0274) 589412</a>
+              </div>
+            </li>
+            <li class="contact-item">
+              <i class="fa-solid fa-envelope contact-icon"></i>
+              <div>
+                <span class="contact-label">Email Resmi</span>
+                <a href="mailto:dpp_diy@inkindo.org" class="contact-value">dpp_diy@inkindo.org</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-col-right">
+          <h4 class="footer-heading">SOSIAL MEDIA</h4>
+          <p class="footer-social-intro">Ikuti kanal resmi informasi kegiatan INKINDO DIY:</p>
+          <div class="footer-social-buttons">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" class="social-icon-badge" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 INKINDO YOGYAKARTA – All Right Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==========================================================================
+       GLOBAL LOGIN MODAL DIALOG
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeGlobalModal(event)">
+    <div class="modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeGlobalModal()">&times;</button>
+      <div class="modal-content-body p-6 sm:p-8" id="modalContentBody">
+        <div class="text-center mb-6">
+          <div class="w-14 h-14 rounded-2xl bg-blue-50 text-[#0056B8] flex items-center justify-center mx-auto mb-3 font-bold text-xl shadow-xs">
+            <i data-lucide="lock" class="w-6 h-6"></i>
+          </div>
+          <h3 class="font-bold text-lg text-[#08162e] font-['Poppins',sans-serif]">Login Anggota INKINDO</h3>
+          <p class="text-xs text-slate-500 mt-1">Masukkan Nomor KTA dan Kata Sandi untuk mengakses kontak lengkap perusahaan</p>
+        </div>
+
+        <form onsubmit="handleLoginSubmit(event)" class="space-y-4 text-xs sm:text-sm">
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Nomor KTA / Email Terdaftar</label>
+            <input type="text" required placeholder="Contoh: 12044/P/0088.DIY" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 outline-none focus:border-[#0056B8] focus:ring-2 focus:ring-blue-100 transition">
+          </div>
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">Kata Sandi</label>
+            <input type="password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 outline-none focus:border-[#0056B8] focus:ring-2 focus:ring-blue-100 transition">
+          </div>
+          <div class="flex items-center justify-between text-xs pt-1">
+            <label class="flex items-center gap-1.5 cursor-pointer text-slate-600">
+              <input type="checkbox" class="rounded text-[#0056B8]">
+              <span>Ingat saya</span>
+            </label>
+            <a href="https://wa.me/6281315289207?text=Halo%20Admin%20INKINDO,%20saya%20butuh%20bantuan%20reset%20kata%20sandi" target="_blank" class="text-[#0056B8] hover:underline font-semibold">Lupa sandi?</a>
+          </div>
+          <button type="submit" class="w-full py-2.5 rounded-lg bg-[#0056B8] hover:bg-[#004494] text-white font-semibold transition mt-2 shadow-xs">
+            Masuk Sekarang
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Core Script & Dynamic Member Rendering -->
+  <script src="script.js"></script>
+  <script>
+    // Database of members (Pre-rendered)
+    const membersData = [
+  {
+    "id": 1,
+    "name": "PT. Architra Konsultan Yogyakarta",
+    "initials": "AK",
+    "kta": "12044/P/0088.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Bidang Arsitektur & Tata Ruang",
+    "status": "Aktif"
+  },
+  {
+    "id": 2,
+    "name": "PT. Jogja Bina Karya Utama",
+    "initials": "JB",
+    "kta": "12055/P/0102.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Teknik Sipil & Struktur Transportasi",
+    "status": "Aktif"
+  },
+  {
+    "id": 3,
+    "name": "PT. Mataram Engineering Consult",
+    "initials": "ME",
+    "kta": "12011/P/0045.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Manajemen Konstruksi & Pengawasan",
+    "status": "Aktif"
+  },
+  {
+    "id": 4,
+    "name": "CV. Gama Tata Lingkungan",
+    "initials": "GT",
+    "kta": "12099/P/0176.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Bantul, D.I. Yogyakarta",
+    "wilayahShort": "Bantul",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "AMDAL & Rekayasa Lingkungan",
+    "status": "Aktif"
+  },
+  {
+    "id": 5,
+    "name": "PT. Gamacon Persada Consult",
+    "initials": "GP",
+    "kta": "12077/P/0134.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Tata Kelola Air & Bendungan",
+    "status": "Aktif"
+  },
+  {
+    "id": 6,
+    "name": "PT. Yogya Karya Perdana",
+    "initials": "YK",
+    "kta": "12008/P/0019.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Studi Kelayakan & Fasilitas Publik",
+    "status": "Aktif"
+  },
+  {
+    "id": 7,
+    "name": "CV. Acreon Indonesia",
+    "initials": "AI",
+    "kta": "15763/P/0213.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Jl. Kenari No.44, Kota Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Perencanaan Arsitektur & Interior",
+    "status": "Aktif"
+  },
+  {
+    "id": 8,
+    "name": "CV. Adhikari Cipta Mandiri",
+    "initials": "AC",
+    "kta": "18155/P/0306.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Tamantirto, Kasihan, Kab. Bantul",
+    "wilayahShort": "Bantul",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Perencanaan Struktur Bangunan Sipil",
+    "status": "Dalam Proses"
+  },
+  {
+    "id": 9,
+    "name": "CV. Agita Karya",
+    "initials": "AK",
+    "kta": "12625/P/149.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kedundang, Kab. Kulon Progo",
+    "wilayahShort": "Kulon Progo",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Pengawasan Lapangan & Jasa Survey",
+    "status": "Aktif"
+  },
+  {
+    "id": 10,
+    "name": "PT. Ciria Jasa Rancang Pratama",
+    "initials": "CJ",
+    "kta": "11023/P/0012.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Rekayasa Sipil Keairan & Bendungan",
+    "status": "Aktif"
+  },
+  {
+    "id": 11,
+    "name": "PT. Global Parasindo Engineering",
+    "initials": "GP",
+    "kta": "13045/P/0091.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Transportasi Jalan Raya & Jembatan",
+    "status": "Aktif"
+  },
+  {
+    "id": 12,
+    "name": "CV. Parahyangan Cipta Desain",
+    "initials": "PC",
+    "kta": "16012/P/0230.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Bantul, D.I. Yogyakarta",
+    "wilayahShort": "Bantul",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Perencanaan Arsitektur & Interior",
+    "status": "Aktif"
+  },
+  {
+    "id": 13,
+    "name": "PT. Widya Graha Asana",
+    "initials": "WG",
+    "kta": "11088/P/0034.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Manajemen Konstruksi & Supervisi",
+    "status": "Aktif"
+  },
+  {
+    "id": 14,
+    "name": "PT. Tri Patra Enjiniring",
+    "initials": "TP",
+    "kta": "14022/P/0115.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Mekanikal, Elektrikal & Plumbing",
+    "status": "Aktif"
+  },
+  {
+    "id": 15,
+    "name": "CV. Nusa Cipta Mandiri",
+    "initials": "NC",
+    "kta": "17091/P/0278.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Kulon Progo, D.I. Yogyakarta",
+    "wilayahShort": "Kulon Progo",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Survey Pemetaan Topografi & GIS",
+    "status": "Dalam Proses"
+  },
+  {
+    "id": 16,
+    "name": "PT. Prambanan Konsultan Pratama",
+    "initials": "PK",
+    "kta": "11054/P/0022.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Tata Ruang & Wilayah (RTRW/RDTR)",
+    "status": "Aktif"
+  },
+  {
+    "id": 17,
+    "name": "PT. Sindu Cipta Rekayasa",
+    "initials": "SC",
+    "kta": "14067/P/0142.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Struktur Gedung Tahan Gempa",
+    "status": "Aktif"
+  },
+  {
+    "id": 18,
+    "name": "CV. Cakra Buana Konsultan",
+    "initials": "CB",
+    "kta": "18033/P/0312.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Bantul, D.I. Yogyakarta",
+    "wilayahShort": "Bantul",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Lanskap Lingkungan & Taman Kota",
+    "status": "Aktif"
+  },
+  {
+    "id": 19,
+    "name": "PT. Duta Karya Konsultansi",
+    "initials": "DK",
+    "kta": "11076/P/0029.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Studi Kelayakan & Evaluasi Investasi",
+    "status": "Aktif"
+  },
+  {
+    "id": 20,
+    "name": "PT. Surya Graha Mandiri",
+    "initials": "SG",
+    "kta": "14089/P/0156.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kab. Gunungkidul, D.I. Yogyakarta",
+    "wilayahShort": "Gunungkidul",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Sanitasi Lingkungan & Pengolahan Air",
+    "status": "Aktif"
+  },
+  {
+    "id": 21,
+    "name": "CV. Mitra Cipta Dinamika",
+    "initials": "MD",
+    "kta": "17044/P/0255.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Kulon Progo, D.I. Yogyakarta",
+    "wilayahShort": "Kulon Progo",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Pengawasan Lapangan & QA/QC Proyek",
+    "status": "Dalam Proses"
+  },
+  {
+    "id": 22,
+    "name": "PT. Kencana Bina Konsultan",
+    "initials": "KB",
+    "kta": "11099/P/0041.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Kawasan Pariwisata & Cagar Budaya",
+    "status": "Aktif"
+  },
+  {
+    "id": 23,
+    "name": "PT. Wastu Adi Cipta",
+    "initials": "WA",
+    "kta": "14015/P/0108.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Fasilitas Medis & Rumah Sakit",
+    "status": "Aktif"
+  },
+  {
+    "id": 24,
+    "name": "CV. Samudra Cipta Rekatama",
+    "initials": "SR",
+    "kta": "18062/P/0325.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Bantul, D.I. Yogyakarta",
+    "wilayahShort": "Bantul",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Survey Batimetri & Pantai",
+    "status": "Aktif"
+  },
+  {
+    "id": 25,
+    "name": "PT. Wahana Bina Konstruksi",
+    "initials": "WB",
+    "kta": "11032/P/0017.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Infrastruktur Jalan Tol & Jembatan",
+    "status": "Aktif"
+  },
+  {
+    "id": 26,
+    "name": "PT. Cipta Laras Semesta",
+    "initials": "CL",
+    "kta": "13088/P/0099.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Pengendalian Banjir & Sungai",
+    "status": "Aktif"
+  },
+  {
+    "id": 27,
+    "name": "CV. Adhi Reksa Consult",
+    "initials": "AR",
+    "kta": "17088/P/0270.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Penyusunan AMDAL & UKL-UPL",
+    "status": "Aktif"
+  },
+  {
+    "id": 28,
+    "name": "PT. Guna Karya Mandiri",
+    "initials": "GM",
+    "kta": "11019/P/0015.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Rekayasa Industri & Manajemen EPC",
+    "status": "Aktif"
+  },
+  {
+    "id": 29,
+    "name": "PT. Graha Persada Teknik",
+    "initials": "GP",
+    "kta": "14038/P/0122.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Struktur Beton Pratekan (Prestressed)",
+    "status": "Aktif"
+  },
+  {
+    "id": 30,
+    "name": "CV. Pratama Konsulindo",
+    "initials": "PK",
+    "kta": "18012/P/0299.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Bantul, D.I. Yogyakarta",
+    "wilayahShort": "Bantul",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Pengawasan Gedung Perkantoran",
+    "status": "Dalam Proses"
+  },
+  {
+    "id": 31,
+    "name": "PT. Panca Reksa Cipta",
+    "initials": "PR",
+    "kta": "11065/P/0027.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Geoteknik, Fondasi & Mekanika Tanah",
+    "status": "Aktif"
+  },
+  {
+    "id": 32,
+    "name": "PT. Bima Sakti Engineering",
+    "initials": "BS",
+    "kta": "14055/P/0138.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Instalasi HVAC, Tata Udara & Akustik",
+    "status": "Aktif"
+  },
+  {
+    "id": 33,
+    "name": "CV. Graha Estetika Rancang",
+    "initials": "GE",
+    "kta": "17066/P/0264.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Kulon Progo, D.I. Yogyakarta",
+    "wilayahShort": "Kulon Progo",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Desain Fasad Bangunan Komersial",
+    "status": "Aktif"
+  },
+  {
+    "id": 34,
+    "name": "PT. Buana Citra Mandiri",
+    "initials": "BC",
+    "kta": "11048/P/0020.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Perencanaan Dermaga & Fasilitas Pantai",
+    "status": "Aktif"
+  },
+  {
+    "id": 35,
+    "name": "PT. Dian Graha Konsultan",
+    "initials": "DG",
+    "kta": "13072/P/0095.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kab. Gunungkidul, D.I. Yogyakarta",
+    "wilayahShort": "Gunungkidul",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Sistem Informasi Geografis Tata Kota",
+    "status": "Aktif"
+  },
+  {
+    "id": 36,
+    "name": "CV. Multi Kreasi Desain",
+    "initials": "MK",
+    "kta": "18080/P/0333.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Pemodelan 3D BIM & Render Arsitektur",
+    "status": "Dalam Proses"
+  },
+  {
+    "id": 37,
+    "name": "PT. Anugerah Cipta Pratama",
+    "initials": "AC",
+    "kta": "11091/P/0038.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Kawasan Industri & Pergudangan",
+    "status": "Aktif"
+  },
+  {
+    "id": 38,
+    "name": "PT. Eka Karsa Konsultansi",
+    "initials": "EK",
+    "kta": "14073/P/0149.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Audit Energi & Green Building",
+    "status": "Aktif"
+  },
+  {
+    "id": 39,
+    "name": "CV. Karya Mandiri Konsultan",
+    "initials": "KM",
+    "kta": "17022/P/0248.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Bantul, D.I. Yogyakarta",
+    "wilayahShort": "Bantul",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Survey Kadastral & Pengukuran Lahan",
+    "status": "Aktif"
+  },
+  {
+    "id": 40,
+    "name": "PT. Sinar Baru Rekatama",
+    "initials": "SB",
+    "kta": "11082/P/0032.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Jaringan Rel Kereta Api & Stasiun",
+    "status": "Aktif"
+  },
+  {
+    "id": 41,
+    "name": "PT. Mega Cipta Engineering",
+    "initials": "MC",
+    "kta": "14095/P/0162.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kab. Gunungkidul, D.I. Yogyakarta",
+    "wilayahShort": "Gunungkidul",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Mitigasi Bencana & Kawasan Gempa",
+    "status": "Aktif"
+  },
+  {
+    "id": 42,
+    "name": "CV. Delta Bina Sarana",
+    "initials": "DB",
+    "kta": "18045/P/0318.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Kulon Progo, D.I. Yogyakarta",
+    "wilayahShort": "Kulon Progo",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Pengawasan Jalan & Jembatan Desa",
+    "status": "Dalam Proses"
+  },
+  {
+    "id": 43,
+    "name": "PT. Cipta Graha Sejahtera",
+    "initials": "CG",
+    "kta": "11039/P/0018.DIY",
+    "qual": "Besar (B)",
+    "qualKey": "Besar",
+    "wilayah": "Kab. Sleman, D.I. Yogyakarta",
+    "wilayahShort": "Sleman",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Konsultansi Smart City & TIK",
+    "status": "Aktif"
+  },
+  {
+    "id": 44,
+    "name": "PT. Nusantara Konsul Pratama",
+    "initials": "NK",
+    "kta": "13063/P/0093.DIY",
+    "qual": "Menengah (M)",
+    "qualKey": "Menengah",
+    "wilayah": "Kota Yogyakarta, D.I. Yogyakarta",
+    "wilayahShort": "Kota Yogyakarta",
+    "bidang": "Non-Konstruksi",
+    "bidangDesc": "Konservasi Sumber Daya Air DAS",
+    "status": "Aktif"
+  },
+  {
+    "id": 45,
+    "name": "CV. Tunas Harapan Engineering",
+    "initials": "TH",
+    "kta": "17075/P/0269.DIY",
+    "qual": "Kecil (K)",
+    "qualKey": "Kecil",
+    "wilayah": "Kab. Bantul, D.I. Yogyakarta",
+    "wilayahShort": "Bantul",
+    "bidang": "Konstruksi",
+    "bidangDesc": "Perencanaan Jembatan Gantung & Pelat",
+    "status": "Aktif"
+  }
+];
+
+    // Get current ID from URL parameter (Default to id=1)
+    const urlParams = new URLSearchParams(window.location.search);
+    const memberId = parseInt(urlParams.get('id')) || 1;
+    const currentMember = membersData.find(m => m.id === memberId) || membersData[0];
+
+    // Populate Dynamic DOM Elements
+    document.addEventListener('DOMContentLoaded', function() {
+      // Titles & Breadcrumb
+      document.title = `${currentMember.name} | Profil Anggota INKINDO DIY`;
+      document.getElementById('pageTitle').textContent = `${currentMember.name} | Profil Anggota INKINDO DIY`;
+      document.getElementById('breadcrumbCompanyName').textContent = currentMember.name;
+      document.getElementById('heroCompanyTitle').textContent = currentMember.name;
+
+      // Section 1: Header
+      document.getElementById('companyName').textContent = currentMember.name;
+      document.getElementById('companyKta').textContent = `No. KTA: ${currentMember.kta}`;
+      document.getElementById('companyWilayah').textContent = currentMember.wilayah;
+      document.getElementById('companyAvatar').textContent = currentMember.initials;
+
+      // Badges
+      const statusBadge = document.getElementById('badgeStatus');
+      if (currentMember.status === 'Dalam Proses') {
+        statusBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200 shadow-2xs';
+        statusBadge.innerHTML = '<i data-lucide="clock" class="w-3.5 h-3.5 text-amber-600"></i><span>Status: SBU Dalam Proses Verifikasi</span>';
+      } else {
+        statusBadge.className = 'inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200 shadow-2xs';
+        statusBadge.innerHTML = '<i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i><span>Status: Anggota Aktif & Terverifikasi</span>';
+      }
+
+      document.getElementById('badgeQual').innerHTML = `<i data-lucide="award" class="w-3.5 h-3.5 text-amber-600"></i><span>Kualifikasi: ${currentMember.qual}</span>`;
+      document.getElementById('badgeBidang').innerHTML = `<i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8]"></i><span>Bidang: ${currentMember.bidang}</span>`;
+
+      // Section 2: Summary & Vision Mission
+      document.getElementById('companySummaryText').textContent = 
+        `${currentMember.name} adalah badan usaha jasa konsultansi ${currentMember.bidang.toLowerCase()} dengan kualifikasi ${currentMember.qual} yang berkedudukan di ${currentMember.wilayah}. Perusahaan telah terdaftar dan terakreditasi resmi di DPP INKINDO D.I. Yogyakarta, memiliki rekam jejak profesional dalam mengawal berbagai perencanaan, perancangan, maupun pengawasan proyek instansi pemerintah dan swasta secara akuntabel.`;
+
+      document.getElementById('companyVisionText').textContent = 
+        `"Menjadi perusahaan jasa konsultansi ${currentMember.bidang.toLowerCase()} unggul di Daerah Istimewa Yogyakarta yang berintegritas tinggi, menjunjung etika profesi, serta memberikan nilai tambah optimal bagi mitra kerja."`;
+
+      // Skills List
+      const skillsContainer = document.getElementById('companySkillsList');
+      const sampleSkills = [
+        currentMember.bidangDesc,
+        `Manajemen Konsultansi ${currentMember.bidang}`,
+        `Perencanaan Teknis ${currentMember.wilayahShort}`,
+        "Penyusunan DED & RAB Standar",
+        "Supervisi & Quality Assurance"
+      ];
+      skillsContainer.innerHTML = sampleSkills.map(s => `<span class="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium border border-slate-200">${s}</span>`).join('');
+
+      // Section 3: Projects Portfolio (4 realistic projects per company)
+      const projectGrid = document.getElementById('projectGridContainer');
+      const projects = [
+        {
+          title: `Pekerjaan Jasa Konsultansi Perencanaan ${currentMember.bidangDesc}`,
+          year: "2023 - 2024",
+          client: `Pemerintah Daerah ${currentMember.wilayahShort}`,
+          scope: "Perencanaan Teknis & Analisis Kelayakan",
+          status: "Selesai 100%"
+        },
+        {
+          title: `Penyusunan Dokumen Kajian Teknis & Masterplan Kawasan Terpadu`,
+          year: "2023",
+          client: "Dinas PUPR & Penataan Ruang",
+          scope: "Kajian Komprehensif & Desain Rancang Bangun",
+          status: "Selesai 100%"
+        },
+        {
+          title: `Supervisi dan Manajemen Pengawasan Pelaksanaan Pekerjaan Fisik`,
+          year: "2022",
+          client: "Badan Usaha Mitra Strategis DIY",
+          scope: "Pengawasan Lapangan, QA/QC & Verifikasi BAST",
+          status: "Selesai 100%"
+        },
+        {
+          title: `Kajian Studi Teknis dan Rekayasa Standar Kualifikasi ${currentMember.qualKey}`,
+          year: "2021 - 2022",
+          client: "Kementerian / Lembaga Terkait",
+          scope: "Laporan Akhir, Spesifikasi Teknis & Gambar Kerja",
+          status: "Selesai 100%"
+        }
+      ];
+
+      projectGrid.innerHTML = projects.map(p => `
+        <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-white hover:border-blue-200 transition shadow-2xs">
+          <div class="flex items-start justify-between gap-2 mb-2">
+            <h4 class="font-bold text-xs sm:text-sm text-slate-800 leading-snug">${p.title}</h4>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 flex-shrink-0">${p.status}</span>
+          </div>
+          <div class="space-y-1 text-xs text-slate-500">
+            <p><strong class="text-slate-700">Pemberi Kerja:</strong> ${p.client}</p>
+            <p><strong class="text-slate-700">Tahun:</strong> ${p.year}</p>
+            <p><strong class="text-slate-700">Lingkup:</strong> ${p.scope}</p>
+          </div>
+        </div>
+      `).join('');
+
+      // Section 4: Blurred Contact Values
+      document.getElementById('blurredAddress').textContent = `Kawasan Bisnis & Perkantoran, ${currentMember.wilayah}`;
+      document.getElementById('blurredDirector').textContent = `Pimpinan Cabang / Direktur (${currentMember.name})`;
+      document.getElementById('blurredPhone').textContent = `(0274) 589xxx / 0813-1528-xxxx`;
+      document.getElementById('blurredEmail').textContent = `kontak@${currentMember.name.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 15)}.co.id`;
+
+      // Re-trigger Lucide Icons
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+
+    // Copy Profile Link Toast
+    function copyProfileLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        const toast = document.getElementById('toastNotification');
+        if (toast) {
+          toast.classList.add('show');
+          setTimeout(() => {
+            toast.classList.remove('show');
+          }, 3000);
+        }
+      }).catch(() => {
+        alert('Tautan profil berhasil disalin!');
+      });
+    }
+
+    // Modal Global Functions
+    function openLoginModal(e) {
+      if (e) e.preventDefault();
+      const modal = document.getElementById('modalBackdrop');
+      if (modal) modal.classList.add('active');
+    }
+
+    function closeGlobalModal(e) {
+      if (e && e.target !== e.currentTarget) return;
+      const modal = document.getElementById('modalBackdrop');
+      if (modal) modal.classList.remove('active');
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      alert('Autentikasi akun anggota INKINDO sedang dalam pengembangan. Silakan hubungi Sekretariat untuk verifikasi akses kontak.');
+      closeGlobalModal();
+    }
+  </script>
+</body>
+
+</html>

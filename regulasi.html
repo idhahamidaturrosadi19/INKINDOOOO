@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Pusat Arsip Regulasi Jasa Konstruksi & Konsultansi | INKINDO D.I. Yogyakarta</title>
+  <meta name="description" content="Pusat arsip regulasi resmi jasa konstruksi, undang-undang, peraturan menteri PUPR, standar remunerasi billing rate minimal, dan keputusan DPN INKINDO DIY.">
+
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="styles.css?v=1.7">
+
+  <style>
+    /* Header Styling */
+    .main-header {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+    }
+
+    .nav-link.active {
+      color: #0056B8 !important;
+      font-weight: 600 !important;
+      position: relative;
+    }
+
+    .nav-link.active::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 3px !important;
+      background: linear-gradient(90deg, #0056B8, #00d2d3) !important;
+      border-radius: 9999px !important;
+      box-shadow: 0 0 10px rgba(0, 210, 211, 0.7) !important;
+    }
+
+    .btn-login-cta.desktop-login-btn {
+      border-radius: 9999px !important;
+      background: linear-gradient(135deg, #0056B8 0%, #0284c7 100%) !important;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28) !important;
+      padding: 8px 22px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      font-weight: 600 !important;
+      transition: all 0.25s ease !important;
+    }
+
+    .btn-login-cta.desktop-login-btn:hover {
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    /* Category Filter Tab Buttons - Pill Capsule */
+    .pill-filter-container {
+      display: inline-flex;
+      background: #FFFFFF;
+      padding: 5px;
+      border-radius: 9999px;
+      border: 1px solid #DCE7F2;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      gap: 4px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .reg-filter-tab {
+      padding: 7px 18px;
+      border-radius: 9999px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #475569;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .reg-filter-tab:hover {
+      background: #F1F5F9;
+      color: #0056B8;
+    }
+
+    .reg-filter-tab.active {
+      background: #0056B8 !important;
+      color: #FFFFFF !important;
+      border-color: #0056B8 !important;
+      box-shadow: 0 4px 12px rgba(0, 86, 184, 0.28) !important;
+    }
+
+    .reg-filter-tab.active svg,
+    .reg-filter-tab.active i {
+      color: #FFFFFF !important;
+    }
+
+    /* Regulation Dedicated Card */
+    .reg-archive-card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 22px 24px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .reg-archive-card:hover {
+      border-color: #0056B8;
+      box-shadow: 0 10px 24px rgba(0, 86, 184, 0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Action Buttons */
+    .btn-preview-reg {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      background: #F0F7FF;
+      color: #0056B8;
+      border: 1px solid #BFDBFE;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-preview-reg:hover {
+      background: #0056B8;
+      color: #FFFFFF;
+      border-color: #0056B8;
+      box-shadow: 0 3px 10px rgba(0, 86, 184, 0.25);
+    }
+
+    .btn-download-direct {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      background: #0056B8;
+      color: #FFFFFF;
+      border: 1px solid #0056B8;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0, 86, 184, 0.2);
+    }
+
+    .btn-download-direct:hover {
+      background: #004494;
+      border-color: #004494;
+      box-shadow: 0 4px 12px rgba(0, 86, 184, 0.35);
+      transform: translateY(-1px);
+    }
+
+    /* Date alignment */
+    .doc-date-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      color: #64748B;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .doc-date-meta i,
+    .doc-date-meta svg {
+      color: #64748B;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+
+<body class="bg-[#F6F9FD] text-slate-800 font-['Inter',sans-serif] selection:bg-teal-500 selection:text-white">
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION BAR
+       ========================================================================== -->
+  <header class="main-header sticky top-0 z-50 transition-all duration-300" id="mainHeader">
+    <div class="container header-container">
+      <!-- Brand Logo with Official INKINDO DIY Logo -->
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo_inkindo_diy.png" alt="INKINDO YOGYAKARTA Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Right Navigation Links & Login Action -->
+      <div class="header-nav-group">
+        <nav class="nav-wrapper">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">Beranda</a>
+            </li>
+
+            <!-- DROPDOWN PROFIL -->
+            <li class="nav-item dropdown">
+              <a href="profil.html" class="nav-link dropdown-toggle">
+                <span>Profil</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="profil.html">Profil Organisasi</a></li>
+                <li><a href="prakata.html">Prakata Ketua</a></li>
+                <li><a href="kode-etik.html">Kode Etik</a></li>
+                <li><a href="struktur-organisasi.html">Struktur Organisasi</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN LAYANAN -->
+            <li class="nav-item dropdown">
+              <a href="layanan-konstruksi.html" class="nav-link dropdown-toggle">
+                <span>Layanan</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="layanan-konstruksi.html">Konstruksi</a></li>
+                <li><a href="layanan-non-konstruksi.html">Non Konstruksi</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN KEANGGOTAAN -->
+            <li class="nav-item dropdown">
+              <a href="daftar-anggota.html" class="nav-link dropdown-toggle">
+                <span>Keanggotaan</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="daftar-anggota.html">Direktori Anggota</a></li>
+                <li><a href="pendaftaran-anggota.html">Pendaftaran Anggota</a></li>
+                <li><a href="syarat-anggota.html">Syarat Anggota</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN PUBLIK (ACTIVE) -->
+            <li class="nav-item dropdown">
+              <a href="regulasi.html" class="nav-link dropdown-toggle active">
+                <span>Publik</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="berita.html">Berita</a></li>
+                <li><a href="program-kerja.html">Program Kerja</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="regulasi.html" class="font-bold text-[#0056B8]">Regulasi</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn btn-login-cta desktop-login-btn" onclick="openLoginModal(event)">
+            <i data-lucide="lock" size="15"></i>
+            <span>Login</span>
+          </button>
+          <button class="mobile-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu">
+            <i data-lucide="menu" id="menuIcon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-nav-dropdown" id="mobileNavDropdown">
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" onclick="closeMobileMenu()"><i data-lucide="home" size="16"></i> Beranda</a></li>
+        <li><a href="profil.html" onclick="closeMobileMenu()"><i data-lucide="building-2" size="16"></i> Profil Organisasi</a></li>
+        <li><a href="layanan-konstruksi.html" onclick="closeMobileMenu()"><i data-lucide="layers" size="16"></i> Layanan Asosiasi</a></li>
+        <li><a href="daftar-anggota.html" onclick="closeMobileMenu()"><i data-lucide="users" size="16"></i> Keanggotaan & Direktori</a></li>
+        <li><a href="regulasi.html" class="active font-bold text-[#0056B8]" onclick="closeMobileMenu()"><i data-lucide="scale" size="16"></i> Regulasi</a></li>
+        <li><a href="berita.html" onclick="closeMobileMenu()"><i data-lucide="newspaper" size="16"></i> Berita & Artikel</a></li>
+        <li><a href="galeri.html" onclick="closeMobileMenu()"><i data-lucide="image" size="16"></i> Galeri Kegiatan</a></li>
+        <li class="mobile-login-item">
+          <button class="btn btn-login-cta mobile-login-btn" onclick="openLoginModal(event); closeMobileMenu();">
+            <i data-lucide="lock" size="16"></i> Login KTA Anggota
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ==========================================================================
+       PAGE HERO BANNER: HARMONIZED DARK NAVY THEME (#08162e)
+       ========================================================================== -->
+  <section class="subpage-hero-section relative text-white pt-12 pb-14 md:pt-14 md:pb-16 px-6 overflow-hidden">
+    <div class="container relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
+      
+      <!-- Breadcrumb Pill Capsule: Beranda › Publik › Regulasi -->
+      <nav class="subpage-hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">
+          <i data-lucide="home"></i>
+          <span>Beranda</span>
+        </a>
+        <span class="breadcrumb-separator">›</span>
+        <a href="index.html#publik">Publik</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-active">Regulasi</span>
+      </nav>
+
+      <!-- Main Title: Poppins Bold 40px-48px Centered -->
+      <h1 class="subpage-hero-title">
+        Pusat Arsip Regulasi Jasa Konstruksi &amp; Konsultansi
+      </h1>
+
+      <!-- Deskripsi Pengantar Bersih -->
+      <p class="subpage-hero-desc">
+        Himpunan resmi produk hukum perundang-undangan Republik Indonesia, Keputusan Menteri PUPR, standar remunerasi tenaga ahli (billing rate), dan pedoman organisasi INKINDO yang dapat diakses secara transparan.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       MAIN CONTENT: REGULATION SEARCH, CATEGORY TABS & DOCUMENT GRID
+       ========================================================================== -->
+  <main class="py-12 md:py-16">
+    <div class="container max-w-6xl mx-auto px-4 sm:px-6">
+
+      <!-- Control Card: Search Bar & Stats -->
+      <div class="bg-white border border-[#DCE7F2] rounded-2xl p-5 md:p-6 mb-8 shadow-xs">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#0056B8] flex items-center justify-center flex-shrink-0">
+              <i data-lucide="search" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h2 class="text-base sm:text-lg font-bold text-slate-900 font-['Poppins',sans-serif]">Pencarian Regulasi</h2>
+              <p class="text-xs text-slate-500">Temukan dokumen berdasarkan nomor, judul, atau instansi penerbit</p>
+            </div>
+          </div>
+
+          <!-- Search Input -->
+          <div class="relative w-full md:max-w-md">
+            <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
+            <input type="text" id="regSearchInput" placeholder="Cari nomor regulasi atau kata kunci peraturan..." 
+                   class="w-full pl-10 pr-9 py-2.5 rounded-xl border border-slate-200 bg-slate-50/70 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#0056B8] focus:bg-white focus:ring-2 focus:ring-blue-100 transition"
+                   oninput="filterRegulationsPage()">
+            <button type="button" id="regClearBtn" onclick="clearRegSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+              <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Tab Buttons Row (White Capsule Border #DCE7F2) -->
+        <div class="pt-2 border-t border-slate-100 flex items-center">
+          <div class="pill-filter-container overflow-x-auto no-scrollbar">
+            <button type="button" class="reg-filter-tab active" data-cat="all" onclick="setRegCategoryFilter('all', this)">
+              <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+              <span>Semua Regulasi</span>
+            </button>
+            <button type="button" class="reg-filter-tab" data-cat="uu" onclick="setRegCategoryFilter('uu', this)">
+              <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+              <span>Undang-Undang</span>
+            </button>
+            <button type="button" class="reg-filter-tab" data-cat="permen" onclick="setRegCategoryFilter('permen', this)">
+              <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+              <span>Peraturan Menteri (Permen)</span>
+            </button>
+            <button type="button" class="reg-filter-tab" data-cat="sk" onclick="setRegCategoryFilter('sk', this)">
+              <i data-lucide="award" class="w-3.5 h-3.5"></i>
+              <span>SK DPN INKINDO</span>
+            </button>
+            <button type="button" class="reg-filter-tab" data-cat="se" onclick="setRegCategoryFilter('se', this)">
+              <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+              <span>Surat Edaran</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Counter & Quick Actions -->
+      <div class="flex items-center justify-between gap-4 mb-6 px-1">
+        <div class="text-xs sm:text-sm text-slate-600 font-medium">
+          Menampilkan <span id="regActiveCount" class="font-bold text-[#0056B8]">9</span> dari <span class="font-bold text-slate-800">9</span> dokumen regulasi
+        </div>
+        <div class="flex items-center gap-2 text-xs text-slate-500">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Dokumen Terverifikasi Resmi</span>
+        </div>
+      </div>
+
+      <!-- Regulation Document Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="regDocumentGrid">
+
+        <!-- Doc 1: UU No. 2 Tahun 2017 -->
+        <article class="reg-archive-card" data-cat="uu" data-keywords="uu undang undang nomor 2 tahun 2017 jasa konstruksi pupk legalitas">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="doc-icon-badge uu-badge">
+                <i data-lucide="file-text" size="20"></i>
+                <span>UU</span>
+              </div>
+              <span class="reg-badge-tag">Undang-Undang</span>
+            </div>
+
+            <h3 class="font-bold text-base text-slate-900 font-['Poppins',sans-serif] leading-snug mb-2 hover:text-[#0056B8] transition">
+              UU No. 2 Tahun 2017 tentang Jasa Konstruksi
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Landasan hukum utama penyelenggaraan jasa konstruksi dan jasa konsultansi independen nasional di Indonesia, mencakup tata laksana kontrak kerja, hak perlindungan profesi, serta akreditasi asosiasi.
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
+            <div class="doc-date-meta">
+              <i data-lucide="calendar" size="14"></i>
+              <span>Ditetapkan: 12 Januari 2017</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="btn-preview-reg" onclick="openDownloadModal('UU No. 2 Tahun 2017 tentang Jasa Konstruksi')">
+                <i data-lucide="eye" size="14"></i>
+                <span>Lihat Pratinjau</span>
+              </button>
+              <button type="button" class="btn-download-direct" onclick="simulateDownloadFile('UU No. 2 Tahun 2017 tentang Jasa Konstruksi')">
+                <i data-lucide="download" size="14"></i>
+                <span>Unduh</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doc 2: Permen PUPR No. 8 Tahun 2023 -->
+        <article class="reg-archive-card" data-cat="permen" data-keywords="permen pupr nomor 8 tahun 2023 billing rate remunerasi minimal personil biaya konsultansi kementerian pupr inkindo">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="doc-icon-badge per-badge">
+                <i data-lucide="scale" size="20"></i>
+                <span>PER</span>
+              </div>
+              <span class="reg-badge-tag tag-peraturan">Peraturan Menteri</span>
+            </div>
+
+            <h3 class="font-bold text-base text-slate-900 font-['Poppins',sans-serif] leading-snug mb-2 hover:text-[#0056B8] transition">
+              Permen PUPR No. 8 Tahun 2023 tentang Billing Rate Remunerasi Minimal
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Pedoman standar acuan remunerasi minimal dan biaya langsung personil tenaga ahli untuk jasa konsultansi, disusun bersama kementerian terkait guna menjamin mutu hasil pekerjaan perencana dan pengawas.
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
+            <div class="doc-date-meta">
+              <i data-lucide="calendar" size="14"></i>
+              <span>Ditetapkan: 24 Juli 2023</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="btn-preview-reg" onclick="openDownloadModal('Permen PUPR No. 8 Tahun 2023 (Billing Rate Remunerasi Minimal)')">
+                <i data-lucide="eye" size="14"></i>
+                <span>Lihat Pratinjau</span>
+              </button>
+              <button type="button" class="btn-download-direct" onclick="simulateDownloadFile('Permen PUPR No. 8 Tahun 2023 (Billing Rate Remunerasi Minimal)')">
+                <i data-lucide="download" size="14"></i>
+                <span>Unduh</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doc 3: Permen PUPR No. 6 Tahun 2021 -->
+        <article class="reg-archive-card" data-cat="permen" data-keywords="permen pupr nomor 6 tahun 2021 sbu sertifikat badan usaha standar perizinan berusaha konsultansi kualifikasi">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="doc-icon-badge per-badge">
+                <i data-lucide="shield-check" size="20"></i>
+                <span>PER</span>
+              </div>
+              <span class="reg-badge-tag tag-peraturan">Peraturan Menteri</span>
+            </div>
+
+            <h3 class="font-bold text-base text-slate-900 font-['Poppins',sans-serif] leading-snug mb-2 hover:text-[#0056B8] transition">
+              Permen PUPR No. 6 Tahun 2021 tentang Standar Sertifikasi Badan Usaha (SBU)
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Standar kualifikasi, klasifikasi sub-bidang usaha, serta tata cara perizinan dan persyaratan sertifikasi badan usaha jasa konsultansi melalui Lembaga Sertifikasi Badan Usaha (LSBU).
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
+            <div class="doc-date-meta">
+              <i data-lucide="calendar" size="14"></i>
+              <span>Ditetapkan: 01 April 2021</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="btn-preview-reg" onclick="openDownloadModal('Permen PUPR No. 6 Tahun 2021 tentang Standar SBU')">
+                <i data-lucide="eye" size="14"></i>
+                <span>Lihat Pratinjau</span>
+              </button>
+              <button type="button" class="btn-download-direct" onclick="simulateDownloadFile('Permen PUPR No. 6 Tahun 2021 tentang Standar SBU')">
+                <i data-lucide="download" size="14"></i>
+                <span>Unduh</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doc 4: SK DPN INKINDO No. 12/SK/DPN/2024 -->
+        <article class="reg-archive-card" data-cat="sk" data-keywords="sk surat keputusan dpn inkindo nomor 12 tahun 2024 kode etik kode perilaku tata tertib organisasi pakta integritas">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="doc-icon-badge sk-badge">
+                <i data-lucide="award" size="20"></i>
+                <span>SK</span>
+              </div>
+              <span class="reg-badge-tag tag-sk">Surat Keputusan DPN</span>
+            </div>
+
+            <h3 class="font-bold text-base text-slate-900 font-['Poppins',sans-serif] leading-snug mb-2 hover:text-[#0056B8] transition">
+              SK DPN INKINDO No. 12/SK/DPN/2024 tentang Kode Etik & Kode Perilaku
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Pedoman etik profesionalitas, prinsip independensi, pakta integritas anti-gratifikasi, dan mekanisme penanganan pelanggaran persaingan usaha tidak sehat antar anggota konsultan.
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
+            <div class="doc-date-meta">
+              <i data-lucide="calendar" size="14"></i>
+              <span>Ditetapkan: 15 Maret 2024</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="btn-preview-reg" onclick="openDownloadModal('SK DPN INKINDO No. 12/SK/DPN/2024 Kode Etik')">
+                <i data-lucide="eye" size="14"></i>
+                <span>Lihat Pratinjau</span>
+              </button>
+              <button type="button" class="btn-download-direct" onclick="simulateDownloadFile('SK DPN INKINDO No. 12/SK/DPN/2024 Kode Etik')">
+                <i data-lucide="download" size="14"></i>
+                <span>Unduh</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doc 5: Surat Edaran DPP INKINDO DIY KTA Digital 2026 -->
+        <article class="reg-archive-card" data-cat="se" data-keywords="surat edaran se dpp inkindo diy kta digital 2026 iuran anggota registrasi berkas tahunan simk">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="doc-icon-badge se-badge">
+                <i data-lucide="mail" size="20"></i>
+                <span>SE</span>
+              </div>
+              <span class="reg-badge-tag tag-se">Surat Edaran DPP</span>
+            </div>
+
+            <h3 class="font-bold text-base text-slate-900 font-['Poppins',sans-serif] leading-snug mb-2 hover:text-[#0056B8] transition">
+              Surat Edaran DPP INKINDO DIY tentang Pelaksanaan KTA Digital 2026
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Petunjuk teknis perpanjangan KTA digital tahunan, verifikasi kelengkapan administrasi perusahaan, dan integrasi Sistem Informasi Manajemen Keanggotaan INKINDO DIY.
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
+            <div class="doc-date-meta">
+              <i data-lucide="calendar" size="14"></i>
+              <span>Ditetapkan: 10 Januari 2026</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="btn-preview-reg" onclick="openDownloadModal('Surat Edaran DPP INKINDO DIY tentang KTA Digital 2026')">
+                <i data-lucide="eye" size="14"></i>
+                <span>Lihat Pratinjau</span>
+              </button>
+              <button type="button" class="btn-download-direct" onclick="simulateDownloadFile('Surat Edaran DPP INKINDO DIY tentang KTA Digital 2026')">
+                <i data-lucide="download" size="14"></i>
+                <span>Unduh</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doc 6: UU No. 11 Tahun 2020 Cipta Kerja -->
+        <article class="reg-archive-card" data-cat="uu" data-keywords="uu undang undang nomor 11 tahun 2020 cipta kerja perizinan pbg slf klaster jasa konstruksi oss rba">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="doc-icon-badge uu-badge">
+                <i data-lucide="file-text" size="20"></i>
+                <span>UU</span>
+              </div>
+              <span class="reg-badge-tag">Undang-Undang</span>
+            </div>
+
+            <h3 class="font-bold text-base text-slate-900 font-['Poppins',sans-serif] leading-snug mb-2 hover:text-[#0056B8] transition">
+              UU No. 11 Tahun 2020 tentang Cipta Kerja (Klaster Jasa Konstruksi)
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Penyederhanaan perizinan berusaha berbasis risiko (OSS-RBA), penataan Persetujuan Bangunan Gedung (PBG), dan penerbitan Sertifikat Laik Fungsi (SLF) oleh konsultan pengkaji teknis.
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
+            <div class="doc-date-meta">
+              <i data-lucide="calendar" size="14"></i>
+              <span>Ditetapkan: 02 November 2020</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="btn-preview-reg" onclick="openDownloadModal('UU No. 11 Tahun 2020 tentang Cipta Kerja (Klaster Konstruksi)')">
+                <i data-lucide="eye" size="14"></i>
+                <span>Lihat Pratinjau</span>
+              </button>
+              <button type="button" class="btn-download-direct" onclick="simulateDownloadFile('UU No. 11 Tahun 2020 tentang Cipta Kerja (Klaster Konstruksi)')">
+                <i data-lucide="download" size="14"></i>
+                <span>Unduh</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doc 7: Permen PUPR No. 1 Tahun 2022 -->
+        <article class="reg-archive-card" data-cat="permen" data-keywords="permen pupr nomor 1 tahun 2022 ahsp analisa harga satuan pekerjaan survei perencanaan teknis standar">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="doc-icon-badge per-badge">
+                <i data-lucide="scale" size="20"></i>
+                <span>PER</span>
+              </div>
+              <span class="reg-badge-tag tag-peraturan">Peraturan Menteri</span>
+            </div>
+
+            <h3 class="font-bold text-base text-slate-900 font-['Poppins',sans-serif] leading-snug mb-2 hover:text-[#0056B8] transition">
+              Permen PUPR No. 1 Tahun 2022 tentang Pedoman Teknis Analisis Harga Satuan Pekerjaan (AHSP)
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Pedoman perhitungan harga satuan pekerjaan konstruksi, koefisien tenaga kerja konsultan perencana, serta parameter evaluasi biaya langsung pekerjaan non-fisik.
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
+            <div class="doc-date-meta">
+              <i data-lucide="calendar" size="14"></i>
+              <span>Ditetapkan: 05 Januari 2022</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="btn-preview-reg" onclick="openDownloadModal('Permen PUPR No. 1 Tahun 2022 tentang Pedoman Teknis AHSP')">
+                <i data-lucide="eye" size="14"></i>
+                <span>Lihat Pratinjau</span>
+              </button>
+              <button type="button" class="btn-download-direct" onclick="simulateDownloadFile('Permen PUPR No. 1 Tahun 2022 tentang Pedoman Teknis AHSP')">
+                <i data-lucide="download" size="14"></i>
+                <span>Unduh</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doc 8: SK DPN INKINDO No. 04/SK/DPN/2023 -->
+        <article class="reg-archive-card" data-cat="sk" data-keywords="sk surat keputusan dpn inkindo nomor 4 tahun 2023 iuran anggota pengembangan kompetensi sertifikasi tenaga ahli">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="doc-icon-badge sk-badge">
+                <i data-lucide="award" size="20"></i>
+                <span>SK</span>
+              </div>
+              <span class="reg-badge-tag tag-sk">Surat Keputusan DPN</span>
+            </div>
+
+            <h3 class="font-bold text-base text-slate-900 font-['Poppins',sans-serif] leading-snug mb-2 hover:text-[#0056B8] transition">
+              SK DPN INKINDO No. 04/SK/DPN/2023 tentang Besaran Iuran & Fasilitasi Sertifikasi
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Ketentuan administrasi iuran wajib tahunan anggota, pembagian dana advokasi daerah, serta program subsidi pelatihan uji kompetensi SKK Konstruksi tenaga ahli konsultan.
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
+            <div class="doc-date-meta">
+              <i data-lucide="calendar" size="14"></i>
+              <span>Ditetapkan: 20 Juni 2023</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="btn-preview-reg" onclick="openDownloadModal('SK DPN INKINDO No. 04/SK/DPN/2023 Iuran & Sertifikasi')">
+                <i data-lucide="eye" size="14"></i>
+                <span>Lihat Pratinjau</span>
+              </button>
+              <button type="button" class="btn-download-direct" onclick="simulateDownloadFile('SK DPN INKINDO No. 04/SK/DPN/2023 Iuran & Sertifikasi')">
+                <i data-lucide="download" size="14"></i>
+                <span>Unduh</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doc 9: Surat Edaran LPJK No. 02/SE/LPJK/2024 -->
+        <article class="reg-archive-card" data-cat="se" data-keywords="surat edaran se lpjk nomor 2 tahun 2024 sijkt sistem informasi jasa konstruksi terintegrasi validasi data badan usaha">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="doc-icon-badge se-badge">
+                <i data-lucide="mail" size="20"></i>
+                <span>SE</span>
+              </div>
+              <span class="reg-badge-tag tag-se">Surat Edaran LPJK</span>
+            </div>
+
+            <h3 class="font-bold text-base text-slate-900 font-['Poppins',sans-serif] leading-snug mb-2 hover:text-[#0056B8] transition">
+              Surat Edaran LPJK No. 02/SE/LPJK/2024 tentang Pemutakhiran Data SIJKT
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+              Ketentuan tata cara rekonsiliasi dan verifikasi kepemilikan SBU dan SKK pada portal Sistem Informasi Jasa Konstruksi Terintegrasi (SIJKT) Kementerian PUPR.
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between flex-wrap gap-3">
+            <div class="doc-date-meta">
+              <i data-lucide="calendar" size="14"></i>
+              <span>Ditetapkan: 18 Februari 2024</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="btn-preview-reg" onclick="openDownloadModal('Surat Edaran LPJK No. 02/SE/LPJK/2024 Pemutakhiran Data SIJKT')">
+                <i data-lucide="eye" size="14"></i>
+                <span>Lihat Pratinjau</span>
+              </button>
+              <button type="button" class="btn-download-direct" onclick="simulateDownloadFile('Surat Edaran LPJK No. 02/SE/LPJK/2024 Pemutakhiran Data SIJKT')">
+                <i data-lucide="download" size="14"></i>
+                <span>Unduh</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Empty State -->
+      <div id="regEmptyState" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 mt-6 shadow-xs">
+        <div class="w-16 h-16 rounded-2xl bg-blue-50 text-[#0056B8] mx-auto flex items-center justify-center mb-4">
+          <i data-lucide="file-question" class="w-8 h-8"></i>
+        </div>
+        <h3 class="font-bold text-lg text-slate-900 font-['Poppins',sans-serif] mb-2">Dokumen Tidak Ditemukan</h3>
+        <p class="text-sm text-slate-500 max-w-md mx-auto mb-6">
+          Tidak ada dokumen regulasi yang cocok dengan kata kunci atau filter kategori yang Anda pilih. Silakan periksa ejaan atau reset filter pencarian.
+        </p>
+        <button type="button" onclick="resetAllRegFilters()" class="btn btn-primary-blue text-xs sm:text-sm px-5 py-2.5 rounded-xl font-semibold">
+          Reset Filter &amp; Tampilkan Semua
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- ==========================================================================
+       FOOTER & COPYRIGHT BAR (DARK NAVY THEME)
+       ========================================================================== -->
+  <footer class="deep-blue-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Kolom 1 (Kiri): Logo INKINDO Yogyakarta & Deskripsi Singkat Organisasi -->
+        <div class="footer-col-left">
+          <div class="footer-brand">
+            <div class="footer-logo-emblem">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <span class="footer-brand-title">INKINDO YOGYAKARTA</span>
+              <span class="footer-brand-sub">IKATAN NASIONAL KONSULTAN INDONESIA</span>
+            </div>
+          </div>
+
+          <p class="footer-desc">
+            Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta adalah asosiasi perusahaan jasa konsultansi independen yang berdiri sejak 20 Juni 1979. Wadah perjuangan dan pemberdayaan 214 perusahaan konsultan anggota di Daerah Istimewa Yogyakarta.
+          </p>
+        </div>
+
+        <!-- Kolom 2 (Tengah): KONTAK -->
+        <div class="footer-col-center">
+          <h4 class="footer-heading">KONTAK</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <i data-lucide="mail" class="contact-ic"></i>
+              <div>
+                <strong>Email:</strong>
+                <p>inkindo@inkindo.org</p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="phone" class="contact-ic"></i>
+              <div>
+                <strong>Telepon:</strong>
+                <p>081315289207</p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="map-pin" class="contact-ic"></i>
+              <div>
+                <strong>Alamat:</strong>
+                <p>Jl. Godean KM. 5 Nogosaren Baru No. 32, Banyuraden, Gamping, Sleman, Yogyakarta 55293</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3 (Kanan): SOSIAL MEDIA -->
+        <div class="footer-col-right">
+          <h4 class="footer-heading">SOSIAL MEDIA</h4>
+          <p class="footer-social-intro">Ikuti dan terhubung dengan Sekretariat INKINDO D.I. Yogyakarta di saluran resmi media sosial:</p>
+          <div class="footer-social-buttons">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge fb-social" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f social-brand-icon"></i>
+              <span>Facebook</span>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge ig-social" aria-label="Instagram">
+              <i class="fa-brands fa-instagram social-brand-icon"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge tw-social" aria-label="Twitter">
+              <span class="social-brand-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+              <span>Twitter</span>
+            </a>
+            <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" class="social-icon-badge wa-social" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp social-brand-icon"></i>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar: Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 INKINDO YOGYAKARTA – All Right Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==========================================================================
+       GLOBAL MODAL DIALOGS (WITH PDF EMBEDDED PREVIEW)
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeGlobalModal(event)">
+    <div class="modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeGlobalModal()">&times;</button>
+      <div class="modal-content-body" id="modalContentBody">
+        <!-- Rendered dynamically by script.js openDownloadModal() -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ==========================================================================
+       SCRIPTS & FILTER LOGIC
+       ========================================================================== -->
+  <script src="script.js?v=1.7"></script>
+  <script>
+    let activeRegCategory = 'all';
+
+    function setRegCategoryFilter(cat, btn) {
+      activeRegCategory = cat;
+      document.querySelectorAll('.reg-filter-tab').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      filterRegulationsPage();
+    }
+
+    function clearRegSearch() {
+      const input = document.getElementById('regSearchInput');
+      if (input) {
+        input.value = '';
+        filterRegulationsPage();
+      }
+    }
+
+    function resetAllRegFilters() {
+      const input = document.getElementById('regSearchInput');
+      if (input) input.value = '';
+      setRegCategoryFilter('all', document.querySelector('.reg-filter-tab[data-cat="all"]'));
+    }
+
+    function filterRegulationsPage() {
+      const searchInput = document.getElementById('regSearchInput');
+      const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      const clearBtn = document.getElementById('regClearBtn');
+      if (clearBtn) {
+        if (query.length > 0) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+      }
+
+      const cards = document.querySelectorAll('#regDocumentGrid .reg-archive-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-cat') || '';
+        const keywords = (card.getAttribute('data-keywords') || '') + ' ' + card.innerText.toLowerCase();
+
+        const matchCat = (activeRegCategory === 'all' || cat === activeRegCategory);
+        const matchSearch = (!query || keywords.includes(query));
+
+        if (matchCat && matchSearch) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      const countEl = document.getElementById('regActiveCount');
+      if (countEl) countEl.textContent = visibleCount;
+
+      const emptyEl = document.getElementById('regEmptyState');
+      if (emptyEl) {
+        if (visibleCount === 0) emptyEl.classList.remove('hidden');
+        else emptyEl.classList.add('hidden');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Tanya Jawab (FAQ) | INKINDO D.I. Yogyakarta</title>
+  <meta name="description" content="Pertanyaan yang sering ditanyakan mengenai organisasi, pendaftaran keanggotaan, sertifikasi SBU, dan layanan INKINDO D.I. Yogyakarta.">
+
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="styles.css?v=1.6">
+
+  <style>
+    /* Header Styling */
+    .main-header {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+    }
+
+    .nav-link.active {
+      color: #0056B8 !important;
+      font-weight: 600 !important;
+      position: relative;
+    }
+
+    .nav-link.active::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 3px !important;
+      background: linear-gradient(90deg, #0056B8, #00d2d3) !important;
+      border-radius: 9999px !important;
+      box-shadow: 0 0 10px rgba(0, 210, 211, 0.7) !important;
+    }
+
+    .btn-login-cta.desktop-login-btn {
+      border-radius: 9999px !important;
+      background: linear-gradient(135deg, #0056B8 0%, #0284c7 100%) !important;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28) !important;
+      padding: 8px 22px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      font-weight: 600 !important;
+      transition: all 0.25s ease !important;
+    }
+
+    .btn-login-cta.desktop-login-btn:hover {
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    /* FAQ Card Styling */
+    .faq-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+    }
+
+    .faq-card:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.08);
+    }
+
+    .faq-card.open {
+      border-color: #0056B8;
+      box-shadow: 0 8px 24px rgba(0, 86, 184, 0.12);
+    }
+
+    .faq-toggle-btn {
+      width: 100%;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #eff6ff;
+      color: #0056B8;
+      font-weight: 800;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid #bfdbfe;
+      transition: all 0.25s ease;
+    }
+
+    .faq-card.open .faq-num {
+      background: #0056B8;
+      color: #ffffff;
+      border-color: #0056B8;
+    }
+
+    .faq-chevron {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      color: #64748b;
+    }
+
+    .faq-card.open .faq-chevron {
+      transform: rotate(180deg);
+      color: #0056B8;
+    }
+
+    .faq-body {
+      display: none;
+      padding: 0 24px 22px 24px;
+      border-top: 1px dashed #f1f5f9;
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    @media (max-width: 640px) {
+      .faq-toggle-btn {
+        padding: 16px 18px;
+        gap: 12px;
+      }
+      .faq-body {
+        padding: 0 18px 18px 18px;
+      }
+    }
+
+    .faq-card.open .faq-body {
+      display: block;
+    }
+  </style>
+</head>
+
+<body class="bg-[#f8fafc] text-slate-800 font-['Inter',sans-serif] selection:bg-teal-500 selection:text-white">
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION BAR
+       Sesuai Gambar 1 & Gambar 2 (Dropdown Publik Aktif)
+       ========================================================================== -->
+  <header class="main-header sticky top-0 z-50 transition-all duration-300" id="mainHeader">
+    <div class="container header-container">
+      <!-- Brand Logo with Official INKINDO DIY Logo -->
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo_inkindo_diy.png" alt="INKINDO YOGYAKARTA Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Right Navigation Links & Login Action -->
+      <div class="header-nav-group">
+        <nav class="nav-wrapper">
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Beranda</a></li>
+            
+            <!-- DROPDOWN PROFIL -->
+            <li class="nav-item dropdown">
+              <a href="profil.html" class="nav-link dropdown-toggle">
+                <span>Profil</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="prakata.html">Prakata</a></li>
+                <li><a href="kode-etik.html">Kode Etik</a></li>
+                <li><a href="struktur-organisasi.html">Struktur Organisasi</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN LAYANAN -->
+            <li class="nav-item dropdown">
+              <a href="layanan-konstruksi.html" class="nav-link dropdown-toggle">
+                <span>Layanan</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="layanan-konstruksi.html">Konstruksi</a></li>
+                <li><a href="layanan-non-konstruksi.html">Non Konstruksi</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN KEANGGOTAAN -->
+            <li class="nav-item dropdown">
+              <a href="daftar-anggota.html" class="nav-link dropdown-toggle">
+                <span>Keanggotaan</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="direktori-anggota.html">Direktori Anggota</a></li>
+                <li><a href="pendaftaran-anggota.html">Pendaftaran Anggota</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN PUBLIK (ACTIVE WITH GLOWING INDICATOR - SESUAI GAMBAR 1 & 2) -->
+            <li class="nav-item dropdown">
+              <a href="faq.html" class="nav-link dropdown-toggle active">
+                <span>Publik</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="berita.html">Berita</a></li>
+                <li><a href="program-kerja.html">Program Kerja</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="regulasi.html">Regulasi</a></li>
+                <li><a href="faq.html" class="font-bold text-[#0056B8]">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn btn-login-cta desktop-login-btn" onclick="openLoginModal(event)">
+            <i data-lucide="lock" size="15"></i>
+            <span>Login</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ==========================================================================
+       PAGE HERO BANNER: HARMONIZED DARK NAVY THEME (#08162e)
+       ========================================================================== -->
+  <section class="subpage-hero-section relative text-white pt-12 pb-14 md:pt-14 md:pb-16 px-6 overflow-hidden">
+    <div class="container relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
+      
+      <!-- Breadcrumb Pill Capsule -->
+      <nav class="subpage-hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">
+          <i data-lucide="home"></i>
+          <span>Beranda</span>
+        </a>
+        <span class="breadcrumb-separator">›</span>
+        <a href="index.html#publik">Publik</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-active">FAQ</span>
+      </nav>
+
+      <!-- Main Title: Poppins Bold 40px-48px Centered -->
+      <h1 class="subpage-hero-title">
+        Pusat Bantuan & FAQ
+      </h1>
+
+      <!-- Subtitle in Muted Light Blue -->
+      <p class="subpage-hero-desc mb-6">
+        Temukan jawaban cepat seputar layanan, keanggotaan, dan informasi INKINDO D.I. Yogyakarta.
+      </p>
+
+      <!-- Centered Modern Search Input Bar -->
+      <div class="w-full max-w-xl mx-auto relative">
+        <div class="relative flex items-center shadow-xl shadow-black/30 rounded-xl sm:rounded-2xl overflow-hidden">
+          <i data-lucide="search" class="absolute left-4 sm:left-5 w-5 h-5 text-slate-400 pointer-events-none"></i>
+          <input type="text" id="faqSearchInput" 
+                 placeholder="Tuliskan pertanyaanmu disini"
+                 class="w-full bg-white text-slate-800 placeholder-slate-400 pl-12 sm:pl-14 pr-5 py-3.5 sm:py-4 text-sm sm:text-base font-medium focus:outline-none focus:ring-2 focus:ring-teal-400 transition-all border-0">
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       MAIN CONTENT: FAQ ACCORDION LIST
+       Off-white Background, Neat Centered Card Container
+       ========================================================================== -->
+  <main class="py-12 md:py-16 bg-[#f8fafc] min-h-[50vh]">
+    <div class="container max-w-3xl mx-auto px-4 sm:px-6">
+
+      <!-- FAQ Accordion List -->
+      <div class="space-y-4" id="faqContainer">
+
+        <!-- Accordion Item 1: Active / Expanded State -->
+        <div class="faq-card open">
+          <button type="button" class="faq-toggle-btn" onclick="toggleFaq(this)">
+            <span class="faq-title font-bold text-sm sm:text-base text-slate-800 leading-snug">
+              Jam Operasional Inkindo Yogyakarta
+            </span>
+            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="faq-body">
+            <div class="space-y-2">
+              <p class="text-slate-700">
+                Kantor Sekretariat DPP INKINDO D.I. Yogyakarta melayani anggota dan masyarakat umum dengan ketentuan jam kerja operasional berikut:
+              </p>
+              <div class="p-3.5 bg-blue-50/70 rounded-xl border border-blue-100/80 text-xs sm:text-sm text-slate-700 space-y-1">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="clock" class="w-4 h-4 text-[#0056B8] flex-shrink-0"></i>
+                  <span><strong>Senin &ndash; Jumat:</strong> 08.00 &ndash; 16.00 WIB</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-500">
+                  <i data-lucide="calendar-x" class="w-4 h-4 text-slate-400 flex-shrink-0"></i>
+                  <span><strong>Sabtu, Minggu & Hari Libur Nasional:</strong> Tutup</span>
+                </div>
+              </div>
+              <p class="text-xs text-slate-500 mt-1">
+                Seluruh pelayanan administrasi keanggotaan, verifikasi berkas SBU, legalisasi dokumen, dan konsultasi tatap muka dilayani pada jam operasional tersebut.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion Item 2: Collapsed State -->
+        <div class="faq-card">
+          <button type="button" class="faq-toggle-btn" onclick="toggleFaq(this)">
+            <span class="faq-title font-bold text-sm sm:text-base text-slate-800 leading-snug">
+              Dimana Lokasi Inkindo Yogyakarta
+            </span>
+            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="faq-body">
+            <div class="space-y-2">
+              <p class="text-slate-700">
+                Kantor Sekretariat DPP INKINDO D.I. Yogyakarta beralamat di:
+              </p>
+              <div class="p-3.5 bg-slate-50 rounded-xl border border-slate-200/80 text-xs sm:text-sm text-slate-700 flex items-start gap-2.5">
+                <i data-lucide="map-pin" class="w-4 h-4 text-[#0056B8] mt-0.5 flex-shrink-0"></i>
+                <div>
+                  <strong>Jl. Godean KM. 5 Nogosaren Baru No. 32</strong><br>
+                  Banyuraden, Gamping, Sleman, Daerah Istimewa Yogyakarta 55293
+                </div>
+              </div>
+              <p class="text-xs text-slate-500">
+                Lokasi kantor sangat strategis dan dapat dengan mudah dijangkau dari pusat kota Yogyakarta maupun Jalur Ring Road Barat.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion Item 3: Collapsed State -->
+        <div class="faq-card">
+          <button type="button" class="faq-toggle-btn" onclick="toggleFaq(this)">
+            <span class="faq-title font-bold text-sm sm:text-base text-slate-800 leading-snug">
+              Bagaimana Cara Menjadi Anggota INKINDO?
+            </span>
+            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="faq-body">
+            <div class="space-y-2.5">
+              <p class="text-slate-700">
+                Badan usaha jasa konsultansi yang berbadan hukum (PT, CV, atau Koperasi) dapat mendaftar menjadi anggota resmi INKINDO D.I. Yogyakarta dengan tahapan:
+              </p>
+              <ul class="list-disc pl-5 space-y-1.5 text-xs sm:text-sm text-slate-600">
+                <li>Mengisi Formulir Permohonan Keanggotaan resmi INKINDO.</li>
+                <li>Melampirkan Akta Pendirian Perusahaan beserta SK Pengesahan Kemenkumham.</li>
+                <li>Melampirkan Nomor Induk Berusaha (NIB) berbasis risiko KBLI Jasa Konsultansi.</li>
+                <li>Melampirkan NPWP Badan Usaha dan bukti domisili kantor operasional di wilayah DIY.</li>
+                <li>Melampirkan data kualifikasi Penanggung Jawab Teknis Badan Usaha (PJBU/PJT).</li>
+              </ul>
+              <p class="text-xs text-[#0056B8] font-semibold pt-1">
+                Panduan persyaratan lengkap dan formulir pendaftaran dapat dilihat pada halaman <a href="syarat-anggota.html" class="underline hover:text-[#004494]">Syarat Anggota</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion Item 4: Collapsed State -->
+        <div class="faq-card">
+          <button type="button" class="faq-toggle-btn" onclick="toggleFaq(this)">
+            <span class="faq-title font-bold text-sm sm:text-base text-slate-800 leading-snug">
+              Apa Saja Layanan yang Disediakan oleh INKINDO DIY?
+            </span>
+            <i data-lucide="chevron-down" class="faq-chevron w-5 h-5 flex-shrink-0"></i>
+          </button>
+          <div class="faq-body">
+            <div class="space-y-2.5">
+              <p class="text-slate-700">
+                DPP INKINDO D.I. Yogyakarta menyediakan berbagai layanan strategis bagi anggota dan pemangku kepentingan:
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-xs">
+                  <strong class="text-[#0056B8] block mb-1">1. Layanan SBU & KTA</strong>
+                  <span class="text-slate-600">Fasilitasi rekomendasi Sertifikat Badan Usaha (Konstruksi & Non-Konstruksi) dan penerbitan KTA digital.</span>
+                </div>
+                <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-xs">
+                  <strong class="text-teal-700 block mb-1">2. Advokasi Regulasi & Tarif</strong>
+                  <span class="text-slate-600">Perlindungan hukum serta pengawalan standar minimal billing rate remunerasi konsultan nasional.</span>
+                </div>
+                <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-xs">
+                  <strong class="text-indigo-700 block mb-1">3. Pelatihan & Sertifikasi</strong>
+                  <span class="text-slate-600">Bimtek keahlian profesional berkala (BIM, GIS, K3 Konstruksi, dan Green Building).</span>
+                </div>
+                <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-xs">
+                  <strong class="text-emerald-700 block mb-1">4. Jaringan & Kemitraan</strong>
+                  <span class="text-slate-600">Akses informasi tender LPSE/PBJ dan kolaborasi usaha antar 214 konsultan anggota di DIY.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- No Results State (Hidden by default) -->
+      <div id="faqNoResults" class="hidden text-center py-12 bg-white rounded-2xl border border-slate-200 shadow-xs mt-4">
+        <i data-lucide="help-circle" class="w-12 h-12 text-slate-300 mx-auto mb-3"></i>
+        <h3 class="text-base font-bold text-slate-700 mb-1">Tidak ada pertanyaan yang sesuai</h3>
+        <p class="text-xs sm:text-sm text-slate-500 max-w-md mx-auto">
+          Coba gunakan kata kunci lain atau hubungi Sekretariat INKINDO DIY secara langsung melalui tombol WhatsApp di bawah.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- ==========================================================================
+       FOOTER & COPYRIGHT BAR (DARK NAVY THEME - GLOBAL SHARED COMPONENT)
+       ========================================================================== -->
+  <footer class="deep-blue-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Kolom 1 (Kiri): Logo INKINDO Yogyakarta & Deskripsi Singkat Organisasi -->
+        <div class="footer-col-left">
+          <div class="footer-brand">
+            <div class="footer-logo-emblem">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <span class="footer-brand-title">INKINDO YOGYAKARTA</span>
+              <span class="footer-brand-sub">IKATAN NASIONAL KONSULTAN INDONESIA</span>
+            </div>
+          </div>
+
+          <p class="footer-desc">
+            Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta adalah asosiasi perusahaan jasa konsultansi independen yang berdiri sejak 20 Juni 1979. Wadah perjuangan dan pemberdayaan 214 perusahaan konsultan anggota di Daerah Istimewa Yogyakarta.
+          </p>
+        </div>
+
+        <!-- Kolom 2 (Tengah): KONTAK -->
+        <div class="footer-col-center">
+          <h4 class="footer-heading">KONTAK</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <i data-lucide="mail" class="contact-ic"></i>
+              <div>
+                <strong>Email:</strong>
+                <p>inkindo@inkindo.org</p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="phone" class="contact-ic"></i>
+              <div>
+                <strong>Telepon:</strong>
+                <p>081315289207</p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="map-pin" class="contact-ic"></i>
+              <div>
+                <strong>Alamat:</strong>
+                <p>Jl. Godean KM. 5 Nogosaren Baru No. 32, Banyuraden, Gamping, Sleman, Yogyakarta 55293</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3 (Kanan): SOSIAL MEDIA (COMPACT STYLING) -->
+        <div class="footer-col-right">
+          <h4 class="footer-heading">SOSIAL MEDIA</h4>
+          <p class="footer-social-intro">Ikuti dan terhubung dengan Sekretariat INKINDO D.I. Yogyakarta di saluran resmi media sosial:</p>
+          <div class="footer-social-buttons">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge fb-social" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f social-brand-icon"></i>
+              <span>Facebook</span>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge ig-social" aria-label="Instagram">
+              <i class="fa-brands fa-instagram social-brand-icon"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge tw-social" aria-label="Twitter">
+              <span class="social-brand-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+              <span>Twitter</span>
+            </a>
+            <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" class="social-icon-badge wa-social" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp social-brand-icon"></i>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar: Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 INKINDO YOGYAKARTA – All Right Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==========================================================================
+       FLOATING WHATSAPP CTA BUTTON ("Hubungi Kami")
+       ========================================================================== -->
+  <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" 
+     class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#0066b2] hover:bg-[#005596] text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 text-sm font-semibold tracking-wide"
+     style="box-shadow: 0 4px 14px rgba(0, 102, 178, 0.4);">
+      <i class="fa-brands fa-whatsapp text-lg"></i>
+      <span>Hubungi Kami</span>
+  </a>
+
+
+  <!-- ==========================================================================
+       GLOBAL MODAL DIALOGS
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeGlobalModal(event)">
+    <div class="modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeGlobalModal()">&times;</button>
+      <div class="modal-content-body" id="modalContentBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    function toggleFaq(button) {
+      const card = button.closest('.faq-card');
+      if (card) {
+        card.classList.toggle('open');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      // Live FAQ Search Filter
+      const searchInput = document.getElementById('faqSearchInput');
+      const faqCards = document.querySelectorAll('.faq-card');
+      const noResultsMsg = document.getElementById('faqNoResults');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+          const query = e.target.value.toLowerCase().trim();
+          let visibleCount = 0;
+
+          faqCards.forEach(card => {
+            const title = card.querySelector('.faq-title')?.innerText.toLowerCase() || '';
+            const body = card.querySelector('.faq-body')?.innerText.toLowerCase() || '';
+
+            if (query === '' || title.includes(query) || body.includes(query)) {
+              card.style.display = 'block';
+              visibleCount++;
+              if (query !== '') {
+                card.classList.add('open');
+              }
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          if (noResultsMsg) {
+            noResultsMsg.classList.toggle('hidden', visibleCount > 0);
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bidang dan Layanan Sertifikasi Konstruksi | INKINDO Yogyakarta</title>
+    
+    <!-- Google Fonts: Inter & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Header Styling */
+        .main-header {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+        }
+
+        .nav-link.active {
+            color: #0056B8 !important;
+            font-weight: 600 !important;
+            position: relative;
+        }
+
+        .nav-link.active::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            height: 3px !important;
+            background: linear-gradient(90deg, #0056B8, #00d2d3) !important;
+            border-radius: 9999px !important;
+            box-shadow: 0 0 10px rgba(0, 210, 211, 0.7) !important;
+        }
+
+        .btn-login-cta.desktop-login-btn {
+            border-radius: 9999px !important;
+            background: linear-gradient(135deg, #0056B8 0%, #0284c7 100%) !important;
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28) !important;
+            padding: 8px 22px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            font-weight: 600 !important;
+            transition: all 0.25s ease !important;
+        }
+
+        .btn-login-cta.desktop-login-btn:hover {
+            box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        /* Category Tab Buttons */
+        .category-tab-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: left;
+            border: 1.5px solid #e2e8f0;
+            background: #ffffff;
+            color: #334155;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        .category-tab-btn:hover {
+            border-color: #0056B8;
+            color: #0056B8;
+            background: #f8fafc;
+            transform: translateX(3px);
+            box-shadow: 0 4px 12px rgba(0, 86, 184, 0.08);
+        }
+
+        .category-tab-btn.active {
+            background: #0056B8 !important;
+            color: #ffffff !important;
+            border-color: #0056B8 !important;
+            box-shadow: 0 6px 18px rgba(0, 86, 184, 0.25) !important;
+            transform: translateX(4px);
+        }
+
+        .category-tab-btn i,
+        .category-tab-btn svg {
+            display: inline-flex !important;
+            flex-shrink: 0;
+            transition: color 0.2s ease, stroke 0.2s ease;
+        }
+
+        .category-tab-btn.active svg,
+        .category-tab-btn.active i,
+        .category-tab-btn.active [class*="text-"],
+        .category-tab-btn.active [data-lucide] {
+            color: #ffffff !important;
+            stroke: #ffffff !important;
+            display: inline-flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .category-tab-btn.active svg * {
+            stroke: #ffffff !important;
+        }
+
+        .category-tab-btn.active [data-lucide="chevron-right"],
+        .category-tab-btn.active .lucide-chevron-right {
+            opacity: 0.9 !important;
+        }
+
+        /* Modern Accordion */
+        .service-accordion-card {
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.22s ease;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+        }
+
+        .service-accordion-card:hover {
+            border-color: #93c5fd;
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.08);
+        }
+
+        .service-accordion-card.open {
+            border-color: #0056B8;
+            box-shadow: 0 6px 20px rgba(0, 86, 184, 0.12);
+        }
+
+        .service-accordion-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+            transition: background 0.2s ease;
+        }
+
+        .service-accordion-header:hover {
+            background: #f8fafc;
+        }
+
+        .service-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0, 1, 0, 1);
+            background: #fafcff;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .service-accordion-card.open .service-accordion-content {
+            max-height: 500px;
+            transition: max-height 0.4s ease-in-out;
+        }
+
+        .service-accordion-card.open .chevron-icon {
+            transform: rotate(180deg);
+            color: #0056B8;
+        }
+    </style>
+</head>
+
+<body class="bg-[#f8fafc] text-slate-800 font-['Inter',sans-serif] selection:bg-teal-500 selection:text-white">
+
+    <!-- ==========================================================================
+         TOP NAVIGATION BAR
+         ========================================================================== -->
+    <header class="main-header sticky top-0 z-50 transition-all duration-300" id="mainHeader">
+        <div class="container header-container">
+            <!-- Brand Logo with Official INKINDO DIY Logo -->
+            <a href="index.html" class="brand-logo">
+                <img src="assets/images/logo_inkindo_diy.png" alt="INKINDO YOGYAKARTA Logo" class="brand-logo-img">
+            </a>
+
+            <!-- Right Navigation Links & Login Action -->
+            <div class="header-nav-group">
+                <nav class="nav-wrapper">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Beranda</a></li>
+                        
+                        <!-- DROPDOWN PROFIL -->
+                        <li class="nav-item dropdown">
+                            <a href="profil.html" class="nav-link dropdown-toggle">
+                                <span>Profil</span>
+                                <i data-lucide="chevron-down" class="nav-chevron"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="profil.html">Profil</a></li>
+                                <li><a href="prakata.html">Prakata</a></li>
+                                <li><a href="kode-etik.html">Kode Etik</a></li>
+                                <li><a href="struktur-organisasi.html">Struktur Organisasi</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- DROPDOWN LAYANAN (ACTIVE WITH GLOWING INDICATOR) -->
+                        <li class="nav-item dropdown">
+                            <a href="layanan-konstruksi.html" class="nav-link dropdown-toggle active">
+                                <span>Layanan</span>
+                                <i data-lucide="chevron-down" class="nav-chevron"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="layanan-konstruksi.html" class="font-bold text-[#0056B8]">Konstruksi</a></li>
+                                <li><a href="layanan-non-konstruksi.html">Non Konstruksi</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- DROPDOWN KEANGGOTAAN -->
+                        <li class="nav-item dropdown">
+                            <a href="index.html#keanggotaan" class="nav-link dropdown-toggle">
+                                <span>Keanggotaan</span>
+                                <i data-lucide="chevron-down" class="nav-chevron"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="direktori-anggota.html">Direktori Anggota</a></li>
+                                <li><a href="pendaftaran-anggota.html">Pendaftaran Anggota</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- DROPDOWN PUBLIK -->
+                        <li class="nav-item dropdown">
+                            <a href="index.html#publik" class="nav-link dropdown-toggle">
+                                <span>Publik</span>
+                                <i data-lucide="chevron-down" class="nav-chevron"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="berita.html">Berita</a></li>
+                                <li><a href="program-kerja.html">Program Kerja</a></li>
+                                <li><a href="galeri.html">Galeri</a></li>
+                                <li><a href="regulasi.html">Regulasi</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- Login Button with Modal Trigger -->
+                <button type="button" class="btn btn-login-cta desktop-login-btn" onclick="openLoginModal(event)">
+                    <i data-lucide="lock" class="btn-login-icon"></i>
+                    <span>Login</span>
+                </button>
+
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ==========================================================================
+         HERO BANNER: HARMONIZED DARK NAVY THEME WITH INTEGRATED SEARCH
+         ========================================================================== -->
+    <section class="subpage-hero-section relative text-white pt-12 pb-14 md:pt-14 md:pb-16 px-6 overflow-hidden">
+        <div class="container relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
+            
+            <!-- Breadcrumb Pill Capsule -->
+            <nav class="subpage-hero-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">
+                    <i data-lucide="home"></i>
+                    <span>Beranda</span>
+                </a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="index.html#layanan">Layanan</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-active">Layanan Konstruksi</span>
+            </nav>
+
+            <!-- Main Title: Poppins Bold 40px-48px Centered -->
+            <h1 class="subpage-hero-title">
+                Bidang dan Layanan Sertifikasi
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="subpage-hero-desc mb-6">
+                Klasifikasi bidang dan standar kompetensi layanan jasa konsultansi konstruksi anggota INKINDO D.I. Yogyakarta
+            </p>
+
+            <!-- Modern Search Box (Ukuran Ergonomis & Proporsional) -->
+            <div class="w-full max-w-xl mx-auto">
+                <div class="relative flex items-center bg-white rounded-full p-1.5 pl-4 sm:pl-5 pr-2 shadow-lg border border-slate-200/80 transition-all focus-within:ring-2 focus-within:ring-teal-400 focus-within:border-transparent">
+                    <i data-lucide="search" class="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 flex-shrink-0 mr-3"></i>
+                    <input type="text" 
+                           id="serviceSearchInput" 
+                           placeholder="Cari sertifikasi yang Anda inginkan..." 
+                           class="w-full text-xs sm:text-sm text-slate-800 placeholder-slate-400 bg-transparent outline-none font-medium"
+                           onkeyup="filterServices()">
+                    <button type="button" 
+                            onclick="filterServices()" 
+                            class="flex-shrink-0 hero-search-btn bg-[#0056B8] hover:bg-[#003D8F] text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-xs">
+                        <span>Cari</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         MAIN CONTENT: KLASIFIKASI BIDANG (2-KOLOM INTERAKTIF)
+         ========================================================================== -->
+    <main class="py-12 md:py-16 bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-[#f8fafc]">
+        <div class="container max-w-6xl mx-auto px-4 sm:px-6">
+            
+            <!-- Section Header -->
+            <div class="mb-8">
+                <div class="flex items-center gap-2.5 mb-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#0056B8]"></span>
+                    <span class="text-xs uppercase tracking-wider font-bold text-[#0056B8]">Standar Klasifikasi LPJK & INKINDO</span>
+                </div>
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-[#08162e] tracking-tight font-['Poppins',sans-serif]">
+                    Klasifikasi Bidang
+                </h2>
+                <div class="w-16 h-1 bg-[#0056B8] rounded-full mt-2.5"></div>
+            </div>
+
+            <!-- Two-Column Interactive Layout: Sidebar Kiri & Konten Accordion Kanan -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- SIDEBAR KIRI: TAB KATEGORI BIDANG (4 Kolom pada Desktop) -->
+                <div class="lg:col-span-4 flex flex-col gap-2.5">
+                    
+                    <button type="button" class="category-tab-btn active" id="tab-arsitektur" onclick="switchCategory('arsitektur')">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="compass" class="w-4 h-4 text-[#0056B8]"></i>
+                            <span>Perancangan Arsitektur</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 opacity-75"></i>
+                    </button>
+
+                    <button type="button" class="category-tab-btn" id="tab-rekayasa" onclick="switchCategory('rekayasa')">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="cpu" class="w-4 h-4 text-[#0056B8]"></i>
+                            <span>Perancangan Rekayasa</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 opacity-75"></i>
+                    </button>
+
+                    <button type="button" class="category-tab-btn" id="tab-tataruang" onclick="switchCategory('tataruang')">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="map" class="w-4 h-4 text-[#0056B8]"></i>
+                            <span>Perencanaan Penataan Ruang</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 opacity-75"></i>
+                    </button>
+
+                    <button type="button" class="category-tab-btn" id="tab-pengawasan-arsitektur" onclick="switchCategory('pengawasan-arsitektur')">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="eye" class="w-4 h-4 text-[#0056B8]"></i>
+                            <span>Pengawasan Arsitektur</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 opacity-75"></i>
+                    </button>
+
+                    <button type="button" class="category-tab-btn" id="tab-pengawasan-rekayasa" onclick="switchCategory('pengawasan-rekayasa')">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="settings" class="w-4 h-4 text-[#0056B8]"></i>
+                            <span>Pengawasan Rekayasa</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 opacity-75"></i>
+                    </button>
+
+                    <button type="button" class="category-tab-btn" id="tab-pengawasan-ruang" onclick="switchCategory('pengawasan-ruang')">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="clipboard-check" class="w-4 h-4 text-[#0056B8]"></i>
+                            <span>Pengawasan Penataan Ruang</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 opacity-75"></i>
+                    </button>
+
+                    <button type="button" class="category-tab-btn" id="tab-spesialis" onclick="switchCategory('spesialis')">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="award" class="w-4 h-4 text-[#0056B8]"></i>
+                            <span>Konsultasi Spesialis</span>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-4 h-4 opacity-75"></i>
+                    </button>
+
+                    <!-- Info Box Bantuan Sertifikasi -->
+                    <div class="mt-4 p-5 rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-100 text-slate-700">
+                        <div class="flex items-center gap-2 mb-2 font-bold text-sm text-[#0056B8]">
+                            <i data-lucide="help-circle" class="w-4 h-4"></i>
+                            <span>Butuh Bantuan Sertifikasi?</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-3 leading-relaxed">
+                            Badan Sertifikasi Anggota Provinsi (BSAP) INKINDO DIY siap memandu proses permohonan dan perpanjangan SBU Anda.
+                        </p>
+                        <a href="https://wa.me/6281315289207?text=Halo%20Admin%20INKINDO%20DIY,%20saya%20ingin%20konsultasi%20mengenai%20Layanan%20Sertifikasi%20Konstruksi" 
+                           target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0056B8] hover:text-[#0284c7] transition">
+                            <span>Hubungi BSAP INKINDO</span>
+                            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+
+                <!-- KONTEN KANAN: ACCORDION LIST DAFTAR SUB-LAYANAN (8 Kolom pada Desktop) -->
+                <div class="lg:col-span-8">
+                    
+                    <!-- Search Results Info Bar (Hidden by default, only shown on actual query) -->
+                    <div id="search-alert-bar" class="mb-4 p-3 bg-teal-50 border border-teal-200 rounded-lg text-xs font-medium text-teal-800 items-center justify-between" style="display: none;">
+                        <span id="search-result-count">Menampilkan hasil pencarian...</span>
+                        <button type="button" onclick="clearSearch()" class="text-teal-700 hover:text-teal-900 underline font-semibold">Reset Pencarian</button>
+                    </div>
+
+                    <!-- PANE 1: Perancangan Arsitektur (Default Active) -->
+                    <div id="pane-arsitektur" class="category-pane flex flex-col gap-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-[#08162e] font-['Poppins',sans-serif]">Sub-Klasifikasi: Perancangan Arsitektur</h3>
+                            <span class="text-xs bg-blue-100 text-[#0056B8] px-2.5 py-0.5 rounded-full font-semibold">5 Layanan</span>
+                        </div>
+
+                        <!-- Item 1 -->
+                        <div class="service-accordion-card open" data-title="Jasa Nasehat dan Pra Desain Arsitektural AR101">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">AR101</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Jasa Nasehat dan Pra Desain Arsitektural</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">
+                                        Mencakup layanan konsultansi, advis, dan pra-desain arsitektur gedung mencakup studi kelayakan arsitektur, penyusunan konsep rancangan, program ruang, dan evaluasi tapak.
+                                    </p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Arsitek Madya / SKA Utama</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Kecil, Menengah, Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="service-accordion-card" data-title="Jasa Desain Arsitektural AR102">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">AR102</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Jasa Desain Arsitektural</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">
+                                        Penyusunan gambar detail arsitektur (Detail Engineering Design - DED), spesifikasi teknis, rencana anggaran biaya (RAB), dan dokumen tender konstruksi bangunan gedung.
+                                    </p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Arsitek Madya / Utama Berlisensi STRA</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Kecil, Menengah, Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="service-accordion-card" data-title="Jasa Penilai Perawatan dan Kelayakan Bangunan Gedung AR103 SLF">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">AR103</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Jasa Penilai Perawatan dan Kelayakan Bangunan Gedung</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">
+                                        Pemeriksaan berkala, uji kelaikan fungsi bangunan (SLF), penilaian umur ekonomis gedung, dan perencanaan pemeliharaan serta rehabilitasi struktur arsitektur.
+                                    </p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Ahli Pengkaji Teknis Bangunan Gedung</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Menengah & Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="service-accordion-card" data-title="Jasa Desain Interior AR104">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">AR104</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Jasa Desain Interior</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">
+                                        Perancangan tata letak interior, estetika ruang, pemilihan material pencahayaan akustik, furnitur terpasang (built-in), dan perencanaan tata ruang fungsional dalam bangunan.
+                                    </p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Ahli Desain Interior Madya</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Kecil & Menengah</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="service-accordion-card" data-title="Jasa Arsitektur Lainnya AR105 Lansekap Heritage">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">AR105</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Jasa Arsitektur Lainnya</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">
+                                        Meliputi konservasi cagar budaya, pemugaran bangunan bersejarah di wilayah D.I. Yogyakarta, arsitektur lansekap taman kota, serta konsultansi arsitektur spesifik lainnya.
+                                    </p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Arsitek Madya / Ahli Pelestarian Bangunan</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Kecil, Menengah, Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- PANE 2: Perancangan Rekayasa -->
+                    <div id="pane-rekayasa" class="category-pane hidden flex flex-col gap-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-[#08162e] font-['Poppins',sans-serif]">Sub-Klasifikasi: Perancangan Rekayasa</h3>
+                            <span class="text-xs bg-blue-100 text-[#0056B8] px-2.5 py-0.5 rounded-full font-semibold">5 Layanan</span>
+                        </div>
+
+                        <div class="service-accordion-card open" data-title="Jasa Desain Rekayasa Struktur Gedung RE101">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">RE101</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Jasa Desain Rekayasa Struktur Bangunan Gedung</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">Perancangan struktur beton bertulang, struktur baja, pondasi dalam, serta perhitungan seismik ketahanan gempa berstandar SNI.</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Ahli Teknik Bangunan Gedung Madya / Utama</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Kecil, Menengah, Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="service-accordion-card" data-title="Jasa Desain Rekayasa Keairan SDA Bendungan Irigasi RE102">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">RE102</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Jasa Desain Rekayasa Pekerjaan Teknik Sipil Keairan</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">Perencanaan saluran drainase perkotaan, jaringan irigasi, bendung, embung, dan sistem pengendalian banjir Daerah Aliran Sungai.</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Ahli Sumber Daya Air Madya</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Menengah & Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="service-accordion-card" data-title="Jasa Desain Rekayasa Transportasi Jalan Jembatan RE103">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">RE103</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Jasa Desain Rekayasa Pekerjaan Teknik Sipil Transportasi</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">Perencanaan geometri jalan, perkerasan lentur dan kaku, desain jembatan layang (flyover), jembatan bentang panjang, dan fasilitas transportasi.</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Ahli Jalan & Jembatan Madya / Utama</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Kecil, Menengah, Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- PANE 3: Perencanaan Penataan Ruang -->
+                    <div id="pane-tataruang" class="category-pane hidden flex flex-col gap-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-[#08162e] font-['Poppins',sans-serif]">Sub-Klasifikasi: Perencanaan Penataan Ruang</h3>
+                            <span class="text-xs bg-blue-100 text-[#0056B8] px-2.5 py-0.5 rounded-full font-semibold">3 Layanan</span>
+                        </div>
+
+                        <div class="service-accordion-card open" data-title="Jasa Perencanaan Tata Ruang Wilayah RTRW RDTR PR101">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">PR101</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Perencanaan Tata Ruang Wilayah & Kota</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">Penyusunan Rencana Tata Ruang Wilayah (RTRW) Provinsi/Kabupaten, Rencana Detail Tata Ruang (RDTR), dan Peraturan Zonasi.</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Ahli Perencanaan Wilayah & Kota (PWK)</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Menengah & Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="service-accordion-card" data-title="Jasa Perencanaan Kawasan Khusus Pariwisata Industri PR102">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">PR102</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Perencanaan Kawasan Khusus & Pariwisata</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">Master plan kawasan pariwisata terpadu, kawasan industri, sentra ekonomi kreatif, dan revitalisasi kawasan cagar budaya DIY.</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Ahli Perencana Kawasan Madya</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Kecil, Menengah, Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- PANE 4: Pengawasan Arsitektur -->
+                    <div id="pane-pengawasan-arsitektur" class="category-pane hidden flex flex-col gap-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-[#08162e] font-['Poppins',sans-serif]">Sub-Klasifikasi: Pengawasan Arsitektur</h3>
+                            <span class="text-xs bg-blue-100 text-[#0056B8] px-2.5 py-0.5 rounded-full font-semibold">2 Layanan</span>
+                        </div>
+
+                        <div class="service-accordion-card open" data-title="Jasa Pengawasan Pelaksanaan Pekerjaan Bangunan Gedung AA101">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">AA101</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Jasa Pengawasan Konstruksi Bangunan Gedung</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">Supervisi dan pengawasan teknis pelaksanaan konstruksi arsitektur bangunan untuk memastikan kesesuaian gambar DED dan spesifikasi mutu bahan.</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Ahli Pengawas Lapangan Arsitektur</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Kecil, Menengah, Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- PANE 5: Pengawasan Rekayasa -->
+                    <div id="pane-pengawasan-rekayasa" class="category-pane hidden flex flex-col gap-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-[#08162e] font-['Poppins',sans-serif]">Sub-Klasifikasi: Pengawasan Rekayasa</h3>
+                            <span class="text-xs bg-blue-100 text-[#0056B8] px-2.5 py-0.5 rounded-full font-semibold">2 Layanan</span>
+                        </div>
+
+                        <div class="service-accordion-card open" data-title="Jasa Pengawasan Rekayasa Struktur dan Sipil RA101">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">RA101</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Jasa Pengawasan Pekerjaan Struktur & Sipil Rekayasa</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">Pengawasan mutu pekerjaan beton bertulang, pondasi tiang pancang/bore pile, pengujian slump, uji kuat tekan beton, dan integritas konstruksi rekayasa.</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Ahli Pengawas Konstruksi Sipil Madya</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Menengah & Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- PANE 6: Pengawasan Penataan Ruang -->
+                    <div id="pane-pengawasan-ruang" class="category-pane hidden flex flex-col gap-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-[#08162e] font-['Poppins',sans-serif]">Sub-Klasifikasi: Pengawasan Penataan Ruang</h3>
+                            <span class="text-xs bg-blue-100 text-[#0056B8] px-2.5 py-0.5 rounded-full font-semibold">1 Layanan</span>
+                        </div>
+
+                        <div class="service-accordion-card open" data-title="Jasa Pengawasan Pelaksanaan Tata Ruang Wilayah PA101">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">PA101</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Monitoring & Pengawasan Pemanfaatan Ruang</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">Pemantauan kepatuhan izin pemanfaatan ruang, analisis indikasi deviasi tata ruang, serta pelaporan evaluasi kesesuaian kegiatan pemanfaatan ruang (KKPR).</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Ahli Wilayah & Kota Madya</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Menengah & Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- PANE 7: Konsultasi Spesialis -->
+                    <div id="pane-spesialis" class="category-pane hidden flex flex-col gap-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="font-bold text-base text-[#08162e] font-['Poppins',sans-serif]">Sub-Klasifikasi: Konsultasi Spesialis</h3>
+                            <span class="text-xs bg-blue-100 text-[#0056B8] px-2.5 py-0.5 rounded-full font-semibold">2 Layanan</span>
+                        </div>
+
+                        <div class="service-accordion-card open" data-title="Jasa Manajemen Proyek dan Studi Kelayakan Konstruksi SP101 Feasibility Study">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">SP101</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Jasa Manajemen Proyek & Studi Kelayakan Konstruksi</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">Manajemen konstruksi (Project Management), evaluasi finansial dan teknis investasi konstruksi, value engineering, serta audit kuantitas dan biaya proyek.</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Ahli Manajemen Proyek / Manajemen Konstruksi</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="service-accordion-card" data-title="Jasa Analisis Dampak Lingkungan AMDAL UKL UPL SP102">
+                            <div class="service-accordion-header" onclick="toggleAccordion(this)">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-[#0056B8]">SP102</span>
+                                    <span class="font-semibold text-sm sm:text-[15px] text-slate-800">Jasa Analisis Mengenai Dampak Lingkungan (AMDAL)</span>
+                                </div>
+                                <i data-lucide="chevron-down" class="w-4 h-4 chevron-icon text-slate-400 transition-transform"></i>
+                            </div>
+                            <div class="service-accordion-content">
+                                <div class="p-5 text-xs sm:text-sm text-slate-600 space-y-3">
+                                    <p class="leading-relaxed">Penyusunan dokumen AMDAL, UKL-UPL, audit lingkungan hidup, dan kajian keselamatan lalu lintas (Amdallalin) untuk proyek infrastruktur.</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs border-t border-slate-100">
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Persyaratan Tenaga Ahli:</span>
+                                            <strong class="text-slate-800">Ahli Lingkungan / Ketua Tim Penyusun AMDAL (KTPA)</strong>
+                                        </div>
+                                        <div class="bg-white p-2.5 rounded-lg border border-slate-100">
+                                            <span class="text-slate-400 block mb-0.5">Kualifikasi Usaha:</span>
+                                            <strong class="text-slate-800">Menengah & Besar</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+
+    <!-- ==========================================================================
+         FOOTER & COPYRIGHT BAR (DARK NAVY THEME - GLOBAL SHARED COMPONENT)
+         ========================================================================== -->
+    <footer class="deep-blue-footer">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <!-- Kolom 1 (Kiri): Logo INKINDO Yogyakarta & Deskripsi Singkat Organisasi -->
+                <div class="footer-col-left">
+                    <div class="footer-brand">
+                        <div class="footer-logo-emblem">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="footer-brand-title">INKINDO YOGYAKARTA</span>
+                            <span class="footer-brand-sub">IKATAN NASIONAL KONSULTAN INDONESIA</span>
+                        </div>
+                    </div>
+
+                    <p class="footer-desc">
+                        Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta adalah asosiasi perusahaan jasa konsultansi independen yang berdiri sejak 20 Juni 1979. Wadah perjuangan dan pemberdayaan 214 perusahaan konsultan anggota di Daerah Istimewa Yogyakarta.
+                    </p>
+                </div>
+
+                <!-- Kolom 2 (Tengah): KONTAK -->
+                <div class="footer-col-center">
+                    <h4 class="footer-heading">KONTAK</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i data-lucide="mail" class="contact-ic"></i>
+                            <div>
+                                <strong>Email:</strong>
+                                <p>inkindo@inkindo.org</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="phone" class="contact-ic"></i>
+                            <div>
+                                <strong>Telepon:</strong>
+                                <p>081315289207</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="map-pin" class="contact-ic"></i>
+                            <div>
+                                <strong>Alamat:</strong>
+                                <p>Jl. Godean KM. 5 Nogosaren Baru No. 32, Banyuraden, Gamping, Sleman, Yogyakarta 55293</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3 (Kanan): SOSIAL MEDIA (COMPACT STYLING) -->
+                <div class="footer-col-right">
+                    <h4 class="footer-heading">SOSIAL MEDIA</h4>
+                    <p class="footer-social-intro">Ikuti dan terhubung dengan Sekretariat INKINDO D.I. Yogyakarta di saluran resmi media sosial:</p>
+                    <div class="footer-social-buttons">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge fb-social" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f social-brand-icon"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge ig-social" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram social-brand-icon"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge tw-social" aria-label="Twitter">
+                            <span class="social-brand-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+                            <span>Twitter</span>
+                        </a>
+                        <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" class="social-icon-badge wa-social" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp social-brand-icon"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Bar: Copyright Bar -->
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 INKINDO YOGYAKARTA – All Right Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ==========================================================================
+         FLOATING WHATSAPP CTA BUTTON ("Hubungi Kami")
+         ========================================================================== -->
+    <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#0066b2] hover:bg-[#005596] text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 text-sm font-semibold tracking-wide"
+       style="box-shadow: 0 4px 14px rgba(0, 102, 178, 0.4);">
+        <i class="fa-brands fa-whatsapp text-lg"></i>
+        <span>Hubungi Kami</span>
+    </a>
+
+
+    <!-- SCRIPTS -->
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        });
+
+        // Tab category switching
+        function switchCategory(catId) {
+            // Update buttons
+            document.querySelectorAll('.category-tab-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`tab-${catId}`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            // Update panes: hide all and show only selected active category
+            document.querySelectorAll('.category-pane').forEach(pane => {
+                pane.classList.add('hidden');
+                pane.classList.remove('is-stacked');
+                pane.style.display = 'none';
+            });
+            const activePane = document.getElementById(`pane-${catId}`);
+            if (activePane) {
+                activePane.classList.remove('hidden');
+                activePane.style.display = 'flex';
+            }
+
+            // Reset search input if user clicks tab
+            const searchInput = document.getElementById('serviceSearchInput');
+            if (searchInput && searchInput.value.trim() !== '') {
+                searchInput.value = '';
+                const alertBar = document.getElementById('search-alert-bar');
+                if (alertBar) alertBar.style.display = 'none';
+                document.querySelectorAll('.service-accordion-card').forEach(card => card.classList.remove('hidden'));
+            }
+        }
+
+        // Accordion toggle
+        function toggleAccordion(headerEl) {
+            const card = headerEl.closest('.service-accordion-card');
+            if (!card) return;
+            card.classList.toggle('open');
+        }
+
+        // Live search filter across all services (Only triggers when user searches)
+        function filterServices() {
+            const searchInput = document.getElementById('serviceSearchInput');
+            const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const alertBar = document.getElementById('search-alert-bar');
+            const alertCount = document.getElementById('search-result-count');
+            const allCards = document.querySelectorAll('.service-accordion-card');
+            const allPanes = document.querySelectorAll('.category-pane');
+
+            if (!query) {
+                if (alertBar) alertBar.style.display = 'none';
+                allCards.forEach(card => card.classList.remove('hidden'));
+                allPanes.forEach(pane => {
+                    pane.classList.remove('is-stacked');
+                    pane.style.display = '';
+                });
+                const activeBtn = document.querySelector('.category-tab-btn.active');
+                if (activeBtn) {
+                    const activeId = activeBtn.id.replace('tab-', '');
+                    switchCategory(activeId);
+                } else {
+                    switchCategory('arsitektur');
+                }
+                return;
+            }
+
+            // Active search: iterate each category pane and hide empty ones
+            let totalMatchCount = 0;
+            document.querySelectorAll('.category-tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            allPanes.forEach(pane => {
+                const paneCards = pane.querySelectorAll('.service-accordion-card');
+                let paneMatches = 0;
+
+                paneCards.forEach(card => {
+                    const title = card.getAttribute('data-title') || '';
+                    const cardText = card.innerText || '';
+                    if (title.toLowerCase().includes(query) || cardText.toLowerCase().includes(query)) {
+                        card.classList.remove('hidden');
+                        card.classList.add('open');
+                        paneMatches++;
+                        totalMatchCount++;
+                    } else {
+                        card.classList.add('hidden');
+                        card.classList.remove('open');
+                    }
+                });
+
+                // Display only sub-classifications that have matching items; hide 0-match categories entirely
+                if (paneMatches > 0) {
+                    pane.classList.remove('hidden');
+                    pane.classList.add('is-stacked');
+                    pane.style.display = 'flex';
+                } else {
+                    pane.classList.add('hidden');
+                    pane.classList.remove('is-stacked');
+                    pane.style.display = 'none';
+                }
+            });
+
+            if (alertBar) alertBar.style.display = 'flex';
+            if (alertCount) {
+                if (totalMatchCount > 0) {
+                    alertCount.innerHTML = `Ditemukan <strong>${totalMatchCount}</strong> layanan sertifikasi untuk kata kunci "<em>${query}</em>"`;
+                } else {
+                    alertCount.innerHTML = `Tidak ditemukan layanan untuk kata kunci "<em>${query}</em>"`;
+                }
+            }
+        }
+
+        function clearSearch() {
+            const searchInput = document.getElementById('serviceSearchInput');
+            if (searchInput) searchInput.value = '';
+            const alertBar = document.getElementById('search-alert-bar');
+            if (alertBar) alertBar.style.display = 'none';
+            document.querySelectorAll('.service-accordion-card').forEach(card => {
+                card.classList.remove('hidden');
+            });
+            document.querySelectorAll('.category-pane').forEach(pane => {
+                pane.classList.remove('is-stacked');
+                pane.style.display = '';
+            });
+            switchCategory('arsitektur');
+        }
+    </script>
+</body>
+
+</html>

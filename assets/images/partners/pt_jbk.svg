@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 70" width="100%" height="100%">
+  <g transform="translate(10, 8)">
+    <!-- Modern Geometric Construction / Network Icon -->
+    <g transform="translate(0, 4)">
+      <!-- Hexagonal / Isometric beam structure -->
+      <polygon points="22,2 42,13 42,37 22,48 2,37 2,13" fill="none" stroke="#059669" stroke-width="3.5" stroke-linejoin="round"/>
+      <polygon points="22,2 22,25 42,37" fill="#059669" opacity="0.85"/>
+      <polygon points="22,25 2,37 22,48" fill="#10B981" opacity="0.95"/>
+      <polygon points="22,2 2,13 22,25" fill="#047857"/>
+      <!-- Inner node circle -->
+      <circle cx="22" cy="25" r="3.5" fill="#FFFFFF"/>
+    </g>
+    
+    <!-- Typography -->
+    <g transform="translate(56, 0)">
+      <!-- PT. JBK Main Wordmark -->
+      <text x="0" y="28" font-family="'Plus Jakarta Sans', 'Inter', 'Segoe UI', Arial, sans-serif" font-size="28" font-weight="900" fill="#059669" letter-spacing="-0.5">
+        PT. <tspan fill="#0F172A">JBK</tspan>
+      </text>
+      <!-- Subtitle: Jaringan Bina Konstruksi -->
+      <text x="1" y="44" font-family="'Plus Jakarta Sans', 'Inter', 'Segoe UI', Arial, sans-serif" font-size="8.5" font-weight="700" fill="#64748B" letter-spacing="1.2">
+        JARINGAN BINA KONSTRUKSI
+      </text>
+    </g>
+  </g>
+</svg>

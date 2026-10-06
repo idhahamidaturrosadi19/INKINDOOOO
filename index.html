@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>INKINDO YOGYAKARTA | Asosiasi Perusahaan Konsultan D.I. Yogyakarta</title>
+  <meta name="description" content="Portal Resmi Asosiasi Perusahaan Konsultan Ikatan Nasional Konsultan Indonesia (DPP INKINDO) D.I. Yogyakarta. Transformasi Digital, Kolaborasi, dan Kesejahteraan Anggota. Wadah resmi 214+ anggota konsultan di DIY.">
+  
+  <!-- Google Fonts: Poppins (INKINDO DESIGN SYSTEM v1.0) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="styles.css?v=1.4">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION BAR
+       ========================================================================== -->
+  <header class="main-header" id="mainHeader">
+    <div class="container header-container">
+        <!-- Brand Logo with Official INKINDO DIY Logo -->
+        <a href="#beranda" class="brand-logo">
+            <img src="assets/images/logo_inkindo_diy.png" alt="INKINDO YOGYAKARTA Logo" class="brand-logo-img">
+        </a>
+
+        <!-- Right Navigation Links & Login Action -->
+        <div class="header-nav-group flex items-center gap-6">
+            <nav class="nav-wrapper flex items-center">
+                <ul class="nav-list flex items-center gap-6">
+                    <li><a href="#beranda" class="nav-link active">Beranda</a></li>
+                    
+                    <!-- DROPDOWN PROFIL -->
+                    <li class="nav-item dropdown">
+                        <a href="profil.html" class="nav-link dropdown-toggle">
+                            <span>Profil</span>
+                            <i data-lucide="chevron-down" class="nav-chevron"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="profil.html">Profil</a></li>
+                            <li><a href="prakata.html">Prakata</a></li>
+                            <li><a href="kode-etik.html">Kode Etik</a></li>
+                            <li><a href="struktur-organisasi.html">Struktur Organisasi</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- DROPDOWN LAYANAN -->
+                    <li class="nav-item dropdown">
+                        <a href="#layanan" class="nav-link dropdown-toggle">
+                            <span>Layanan</span>
+                            <i data-lucide="chevron-down" class="nav-chevron"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="layanan-konstruksi.html">Konstruksi</a></li>
+                            <li><a href="layanan-non-konstruksi.html">Non Konstruksi</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- DROPDOWN KEANGGOTAAN -->
+                    <li class="nav-item dropdown">
+                        <a href="#keanggotaan" class="nav-link dropdown-toggle">
+                            <span>Keanggotaan</span>
+                            <i data-lucide="chevron-down" class="nav-chevron"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="direktori-anggota.html">Direktori Anggota</a></li>
+                            <li><a href="pendaftaran-anggota.html">Pendaftaran Anggota</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- DROPDOWN PUBLIK -->
+                    <li class="nav-item dropdown">
+                        <a href="#publik" class="nav-link dropdown-toggle">
+                            <span>Publik</span>
+                            <i data-lucide="chevron-down" class="nav-chevron"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="berita.html">Berita</a></li>
+                            <li><a href="program-kerja.html">Program Kerja</a></li>
+                            <li><a href="galeri.html">Galeri</a></li>
+                            <li><a href="regulasi.html">Regulasi</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="btn btn-login-cta desktop-login-btn" onclick="openLoginModal(event)">
+                    <i data-lucide="lock" size="16"></i>
+                    <span>Login</span>
+                </button>
+                <button class="mobile-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu">
+                    <i data-lucide="menu" id="menuIcon" size="20"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-nav-dropdown" id="mobileNavDropdown">
+      <ul class="mobile-nav-list">
+        <li><a href="#beranda" onclick="closeMobileMenu()"><i data-lucide="home" size="16"></i> Beranda</a></li>
+        <li><a href="profil.html" onclick="closeMobileMenu()"><i data-lucide="building-2" size="16"></i> Profil Organisasi</a></li>
+        <li><a href="#layanan" onclick="closeMobileMenu()"><i data-lucide="layers" size="16"></i> Layanan Asosiasi</a></li>
+        <li><a href="daftar-anggota.html" onclick="closeMobileMenu()"><i data-lucide="users" size="16"></i> Keanggotaan & Direktori</a></li>
+        <li><a href="#publik" onclick="closeMobileMenu()"><i data-lucide="file-text" size="16"></i> Publik & Regulasi</a></li>
+        <li class="mobile-login-item">
+          <button class="btn btn-login-cta mobile-login-btn" onclick="openLoginModal(event); closeMobileMenu();">
+            <i data-lucide="lock" size="16"></i> Login KTA Anggota
+          </button>
+        </li>
+      </ul>
+    </div>
+</header>
+
+  <!-- ==========================================================================
+       HERO SECTION (HUT BANNER & CAROUSEL SLIDER)
+       ========================================================================== -->
+  <!-- ==========================================================================
+       HERO SECTION (MODERN, CLEAN, INSTITUTIONAL - INKINDO DESIGN SYSTEM v1.0)
+       ========================================================================== -->
+  <section id="beranda" class="hero-section">
+    <div class="container hero-container">
+      
+      <!-- 2-Column Balanced Grid -->
+      <div class="hero-split-grid">
+        <!-- Left: Text & Action Column -->
+        <div class="hero-text-col">
+          <div class="hero-official-label">PORTAL RESMI DPP INKINDO D.I. YOGYAKARTA</div>
+
+          <div class="hero-heading-box">
+            <h1 class="hero-title">Asosiasi Perusahaan Konsultan D.I. Yogyakarta</h1>
+            <p class="hero-tagline">Transformasi Digital, Kolaborasi, dan Kesejahteraan Anggota</p>
+            <p class="hero-description">
+              Wadah asosiasi resmi yang menaungi 214+ badan usaha jasa konsultansi independen di D.I. Yogyakarta untuk penguatan standar remunerasi billing rate PUPR, sertifikasi legalitas, dan kemitraan strategis.
+            </p>
+            
+            <div class="hero-btn-group">
+              <a href="daftar-anggota.html" class="btn btn-hero-primary">
+                <i data-lucide="users" size="18"></i>
+                <span>Direktori Anggota</span>
+              </a>
+              <a href="#layanan" class="btn btn-hero-secondary">
+                <i data-lucide="layers" size="18"></i>
+                <span>Layanan Asosiasi</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Hero Image Slider / Carousel Interaktif -->
+        <div class="hero-photo-col">
+          <div class="hero-carousel-card" id="heroCarouselCard" aria-label="Slider Dokumentasi INKINDO DIY">
+            
+            <!-- Image Viewport & Slides Track -->
+            <div class="hero-carousel-viewport">
+              <div class="hero-carousel-track" id="heroCarouselTrack">
+                
+                <!-- Slide 1: Foto Resmi Dewan Pengurus -->
+                <div class="hero-carousel-slide active" 
+                     data-title="Dewan Pengurus DPP INKINDO D.I. Yogyakarta" 
+                     data-sub="Masa Bakti 2022–2026"
+                     data-icon="award">
+                  <div class="hero-slide-badge">Dewan Pengurus</div>
+                  <img src="assets/img/pengurus/dpp-inkindo-diy-2022-2026.jpg" 
+                       alt="Dewan Pengurus Provinsi DPP INKINDO D.I. Yogyakarta Masa Bakti 2022–2026" 
+                       class="hero-slide-img">
+                </div>
+
+                <!-- Slide 2: Rakerda / Musda INKINDO DIY -->
+                <div class="hero-carousel-slide" 
+                     data-title="Musyawarah Daerah & Rakerda INKINDO DIY" 
+                     data-sub="Penguatan Daya Saing & Transformasi Jasa Konstruksi"
+                     data-icon="calendar">
+                  <div class="hero-slide-badge">Musda & Rakerda</div>
+                  <img src="assets/images/hero_musprov_inkindo_1789326191573.png" 
+                       alt="Musyawarah Daerah & Rakerda INKINDO DIY" 
+                       class="hero-slide-img" 
+                       loading="lazy">
+                </div>
+
+                <!-- Slide 3: Audiensi / Pelantikan / Forum Anggota -->
+                <div class="hero-carousel-slide" 
+                     data-title="Forum Anggota (FORA) & Audiensi Strategis" 
+                     data-sub="Sinergi Profesional Konsultan se-D.I. Yogyakarta"
+                     data-icon="users">
+                  <div class="hero-slide-badge">Audiensi & Forum</div>
+                  <img src="assets/images/hero_fora_inkindo_1789326178298.png" 
+                       alt="Forum Anggota & Audiensi Strategis INKINDO DIY" 
+                       class="hero-slide-img" 
+                       loading="lazy">
+                </div>
+
+              </div>
+
+              <!-- Navigation Arrow Buttons (Overlay Bundar Kiri & Kanan) -->
+              <button class="hero-carousel-btn hero-carousel-prev" id="heroPrevBtn" aria-label="Slide sebelumnya" onclick="prevHeroSlide()">
+                <i data-lucide="chevron-left" size="20"></i>
+              </button>
+              <button class="hero-carousel-btn hero-carousel-next" id="heroNextBtn" aria-label="Slide berikutnya" onclick="nextHeroSlide()">
+                <i data-lucide="chevron-right" size="20"></i>
+              </button>
+
+              <!-- Indicators: Dots / Bar Navigasi -->
+              <div class="hero-carousel-indicators" id="heroCarouselDots">
+                <button class="hero-indicator-dot active" aria-label="Ke slide 1" onclick="goToHeroSlide(0)"></button>
+                <button class="hero-indicator-dot" aria-label="Ke slide 2" onclick="goToHeroSlide(1)"></button>
+                <button class="hero-indicator-dot" aria-label="Ke slide 3" onclick="goToHeroSlide(2)"></button>
+              </div>
+            </div>
+
+            <!-- Card Caption Dinamis Bawah Foto -->
+            <div class="hero-board-caption" id="heroDynamicCaption">
+              <div class="hero-board-icon" id="heroCaptionIcon">
+                <i data-lucide="award" size="18"></i>
+              </div>
+              <div class="hero-board-text">
+                <strong id="heroCaptionTitle">Dewan Pengurus DPP INKINDO D.I. Yogyakarta</strong>
+                <span id="heroCaptionSub">Masa Bakti 2022–2026</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       METRICS / STATISTIC BAR (WAJIB SESUAI DESIGN SYSTEM)
+       ========================================================================== -->
+  <section class="metrics-bar-section">
+    <div class="container">
+      <div class="metrics-horizontal-grid">
+        
+        <!-- Metric 1: 1979 (Tahun Berdiri) -->
+        <div class="metric-item">
+          <div class="metric-number">1979</div>
+          <div class="metric-label">Tahun Berdiri</div>
+        </div>
+
+        <div class="metric-divider"></div>
+
+        <!-- Metric 2: 214+ (Badan Usaha di DIY) -->
+        <div class="metric-item">
+          <div class="metric-number">214+</div>
+          <div class="metric-label">Badan Usaha di DIY</div>
+        </div>
+
+        <div class="metric-divider"></div>
+
+        <!-- Metric 3: 6.000+ (Anggota Nasional) -->
+        <div class="metric-item">
+          <div class="metric-number">6.000+</div>
+          <div class="metric-label">Anggota Nasional</div>
+        </div>
+
+        <div class="metric-divider"></div>
+
+        <!-- Metric 4: 2 Sektor (Konstruksi & Non-Konstruksi) -->
+        <div class="metric-item">
+          <div class="metric-number">2 Sektor</div>
+          <div class="metric-label">Konstruksi & Non-Konstruksi</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       PROFILE SECTION (PROFIL ORGANISASI)
+       ========================================================================== -->
+  <section id="profil" class="section profile-section">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-tag">PROFIL ASOSIASI</span>
+        <h2 class="section-heading">Ikatan Nasional Konsultan Indonesia D.I. Yogyakarta</h2>
+        <div class="heading-line"></div>
+      </div>
+
+      <div class="profile-grid">
+        <!-- Left: Official Board Photo Grid -->
+        <div class="profile-left-col">
+          <div class="board-photo-card">
+            <div class="board-img-wrap">
+              <img src="assets/img/pengurus/dpp-inkindo-diy-2022-2026.jpg" alt="Dewan Pengurus Provinsi Ikatan Nasional Konsultan Indonesia (DPP INKINDO) D.I. Yogyakarta - Masa Bakti 2022–2026" class="board-official-photo" loading="lazy">
+            </div>
+            <div class="board-official-caption">
+              Dewan Pengurus Provinsi Ikatan Nasional Konsultan Indonesia (DPP INKINDO) D.I. Yogyakarta - Masa Bakti 2022–2026
+            </div>
+          </div>
+
+          <div class="profile-feature-mini-cards">
+            <div class="mini-card">
+              <i data-lucide="shield" class="mini-icon"></i>
+              <div>
+                <h4>Independensi Terjamin</h4>
+                <p>Asosiasi nirlaba independen bebas konflik kepentingan.</p>
+              </div>
+            </div>
+            <div class="mini-card">
+              <i data-lucide="award" class="mini-icon"></i>
+              <div>
+                <h4>Standar Etika & Profesi</h4>
+                <p>Menjaga integritas dan kehormatan profesi konsultan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Profile Text & Association Details -->
+        <div class="profile-right-col">
+          <div class="association-profile-box">
+            <h3 class="profile-subheading">Wadah Perjuangan & Pengembangan Jasa Konsultansi Indonesia</h3>
+
+            <p class="profile-p">
+              <strong>Ikatan Nasional Konsultan Indonesia (INKINDO)</strong> didirikan pada tanggal 20 Juni 1979 di Jakarta, merupakan penggabungan dari Ikatan Konsultan Indonesia (IKINDO) yang didirikan tahun 1970 dan Persatuan Konsultan Indonesia (PKI) yang didirikan tahun 1977.
+            </p>
+
+            <p class="profile-p">
+              Sebagai wadah asosiasi perusahaan jasa konsultansi independen di Indonesia, INKINDO saat ini menaungi lebih dari <strong>6.252 anggota nasional</strong> yang tersebar di <strong>34 provinsi</strong> di seluruh nusantara.
+            </p>
+
+            <p class="profile-p">
+              Di tingkat daerah, <strong>DPP INKINDO D.I. Yogyakarta</strong> secara konsisten memfasilitasi dan memayungi <strong>214 perusahaan konsultan anggota resmi</strong> yang bergerak di berbagai bidang keahlian (Arsitektur, Rekayasa Sipil, Lingkungan, Tata Ruang, Manajemen, dan IT) guna mendukung pembangunan fisik dan non-fisik di Jogja dan sekitarnya.
+            </p>
+
+            <!-- Key Roles List -->
+            <div class="roles-checklist">
+              <div class="role-item">
+                <i data-lucide="check-circle-2" class="check-ic"></i>
+                <span>Mengadvokasi billing rate remunerasi minimal dan perlindungan usaha anggota.</span>
+              </div>
+              <div class="role-item">
+                <i data-lucide="check-circle-2" class="check-ic"></i>
+                <span>Menerbitkan dan memverifikasi rekomendasi Sertifikat Badan Usaha (SBU).</span>
+              </div>
+              <div class="role-item">
+                <i data-lucide="check-circle-2" class="check-ic"></i>
+                <span>Menyelenggarakan pelatihan, workshop teknis, dan sertifikasi keahlian tenaga ahli.</span>
+              </div>
+            </div>
+
+            <div class="profile-cta-row">
+              <a href="profil.html" class="btn btn-primary-blue">
+                <span>Selengkapnya</span>
+                <i data-lucide="arrow-right" size="18"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       SERVICES & MEMBERSHIP HIGHLIGHT (LAYANAN ASOSIASI)
+       ========================================================================== -->
+  <section id="layanan" class="section services-section">
+    <div class="container">
+      <div class="section-title-wrap text-center">
+        <span class="section-tag">LAYANAN ASOSIASI</span>
+        <h2 class="section-heading">Program & Layanan Untuk Perusahaan Anggota</h2>
+        <p class="section-lead">Dukungan komprehensif asosiasi bagi 214+ badan usaha konsultan anggota dalam menjaga legalitas berusaha, standardisasi billing rate PUPR, dan kemitraan strategis.</p>
+        <div class="heading-line center-line"></div>
+      </div>
+
+      <!-- Asymmetrical Services Layout (Prioritas Layanan Asosiasi) -->
+      <div class="services-asymmetric-wrapper">
+        <!-- Baris 1: 2 Kartu Unggulan Utama (Featured Priority Cards) -->
+        <div class="services-featured-grid">
+          <div class="service-featured-card">
+            <div class="service-card-top">
+              <div class="service-inline-header">
+                <div class="service-inline-icon">
+                  <i data-lucide="award" size="24"></i>
+                </div>
+                <div>
+                  <span class="service-kicker">Layanan Prioritas 01</span>
+                  <h3 class="service-title-featured">Layanan SBU & KTA Digital</h3>
+                </div>
+              </div>
+              <p class="service-desc-featured">Kemudahan proses verifikasi dan validasi Sertifikat Badan Usaha (SBU) Jasa Konstruksi serta Kartu Tanda Anggota (KTA) secara transparan, akuntabel, dan terintegrasi sistem perizinan digital nasional.</p>
+            </div>
+            <div class="service-card-bottom">
+              <a href="#keanggotaan" class="service-link-featured">
+                <span>Pelajari Prosedur SBU & KTA</span>
+                <i data-lucide="arrow-right" size="16"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="service-featured-card">
+            <div class="service-card-top">
+              <div class="service-inline-header">
+                <div class="service-inline-icon">
+                  <i data-lucide="scale" size="24"></i>
+                </div>
+                <div>
+                  <span class="service-kicker">Layanan Prioritas 02</span>
+                  <h3 class="service-title-featured">Advokasi Billing Rate PUPR</h3>
+                </div>
+              </div>
+              <p class="service-desc-featured">Pengawalan dan sosialisasi acuan standar Remunerasi Minimal Tenaga Ahli (Billing Rate) sesuai regulasi Kementerian PUPR No. 8 Tahun 2023 demi menjaga kelayakan imbalan jasa dan iklim kompetisi usaha konsultansi yang sehat.</p>
+            </div>
+            <div class="service-card-bottom">
+              <a href="#publik" class="service-link-featured">
+                <span>Lihat Standar Billing Rate</span>
+                <i data-lucide="arrow-right" size="16"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Baris 2: 2 Layanan Pendukung Rapat Berdampingan (Compact List Cards) -->
+        <div class="services-compact-grid">
+          <div class="service-compact-card">
+            <div class="service-compact-left">
+              <div class="service-compact-inline-icon">
+                <i data-lucide="briefcase" size="20"></i>
+              </div>
+              <div class="service-compact-info">
+                <h4 class="service-title-compact">Forum Bisnis & Kemitraan</h4>
+                <p class="service-desc-compact">Fasilitasi temu bisnis antar anggota dengan instansi pemerintah, BUMN, mitra material konstruksi, dan pemangku kepentingan strategis.</p>
+              </div>
+            </div>
+            <div class="service-compact-right">
+              <a href="#mitra" class="service-link-compact">
+                <span>Mitra Rekanan</span>
+                <i data-lucide="chevron-right" size="16"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="service-compact-card">
+            <div class="service-compact-left">
+              <div class="service-compact-inline-icon">
+                <i data-lucide="layers" size="20"></i>
+              </div>
+              <div class="service-compact-info">
+                <h4 class="service-title-compact">Kapasitas & Sertifikasi Tenaga Ahli</h4>
+                <p class="service-desc-compact">Penyelenggaraan Bintek, sertifikasi kompetensi (SKK), pelatihan BIM (Building Information Modelling), dan manajemen proyek terakreditasi.</p>
+              </div>
+            </div>
+            <div class="service-compact-right">
+              <a href="#galeri" class="service-link-compact">
+                <span>Agenda Kegiatan</span>
+                <i data-lucide="chevron-right" size="16"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       GALLERY / ACTIVITY HIGHLIGHTS (GALERI KEGIATAN)
+       ========================================================================== -->
+  <section id="galeri" class="section gallery-section">
+    <div class="container">
+      <div class="section-title-wrap">
+        <div class="flex-title-row">
+          <div class="gallery-title-group">
+            <span class="section-tag">GALERI KEGIATAN</span>
+            <h2 class="section-heading">Dokumentasi & Highlight Kegiatan Organisasi</h2>
+          </div>
+          
+          <!-- Filter Tabs -->
+          <div class="gallery-filter-tabs">
+            <button class="filter-tab active" data-filter="all" onclick="filterGallery('all', event)">Semua</button>
+            <button class="filter-tab" data-filter="konstruksi" onclick="filterGallery('konstruksi', event)">Konstruksi</button>
+            <button class="filter-tab" data-filter="non-konstruksi" onclick="filterGallery('non-konstruksi', event)">Non-Konstruksi</button>
+            <button class="filter-tab" data-filter="forum" onclick="filterGallery('forum', event)">Forum</button>
+          </div>
+        </div>
+        <div class="heading-line"></div>
+      </div>
+
+      <!-- Gallery Carousel Wrapper -->
+      <div class="gallery-carousel-wrapper">
+        <button class="gallery-nav-btn gallery-prev-btn" id="galleryPrevBtn" aria-label="Slide sebelumnya" onclick="slideGallery(-1)">
+          <i data-lucide="chevron-left" size="24"></i>
+        </button>
+
+        <div class="gallery-slider-viewport" id="galleryViewport">
+          <div class="gallery-slider-track" id="galleryGrid">
+
+            <!-- Card 1 -->
+            <div class="gallery-card" data-category="forum non-konstruksi" data-categories='["Forum", "Non-Kontruksi"]' onclick="openGalleryModal('Syawalan & Silaturahmi Keluarga Besar INKINDO DIY', '12 Mei 2026', 'Syawalan dan ajang keakraban antar badan usaha konsultan se-DIY.', 'assets/images/hero_fora_inkindo_1789326178298.png')">
+              <div class="gallery-img-wrap">
+                <img src="assets/images/hero_fora_inkindo_1789326178298.png" alt="Syawalan INKINDO DIY" loading="lazy">
+                <span class="category-badge">Forum & Non-Kontruksi</span>
+                <div class="gallery-hover-overlay"><i data-lucide="search" size="24"></i> Perbesar Gambar</div>
+              </div>
+              <div class="gallery-body">
+                <div class="event-meta"><i data-lucide="calendar" size="14"></i> 12 Mei 2026</div>
+                <h4 class="event-title">Syawalan & Silaturahmi Keluarga Besar INKINDO DIY</h4>
+                <p class="event-desc">Meningkatkan tali silaturahmi dan kebersamaan antar pengurus, anggota, serta pemangku kepentingan jasa konstruksi.</p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="gallery-card" data-category="forum konstruksi" data-categories='["Forum", "Kontruksi"]' onclick="openGalleryModal('Forum Anggota (FORA) Transformasi Jasa Konstruksi', '31 Januari 2026', 'Pertemuan berkala membahas isu strategis pengadaan & perizinan proyek.', 'assets/images/hero_musprov_inkindo_1789326191573.png')">
+              <div class="gallery-img-wrap">
+                <img src="assets/images/hero_musprov_inkindo_1789326191573.png" alt="Forum Anggota FORA" loading="lazy">
+                <span class="category-badge">Forum & Kontruksi</span>
+                <div class="gallery-hover-overlay"><i data-lucide="search" size="24"></i> Perbesar Gambar</div>
+              </div>
+              <div class="gallery-body">
+                <div class="event-meta"><i data-lucide="calendar" size="14"></i> 31 Januari 2026</div>
+                <h4 class="event-title">Forum Anggota (FORA) INKINDO DIY 2026</h4>
+                <p class="event-desc">Diskusi panel penguatan daya saing konsultan lokal dalam menghadapi iklim jasa konstruksi nasional.</p>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="gallery-card" data-category="non-konstruksi" data-categories='["Non-Kontruksi"]' onclick="openGalleryModal('Buka Puasa Bersama & Santunan Anak Yatim', '22 Maret 2026', 'Bakti sosial dan santunan rutin ramadhan DPP INKINDO DIY.', 'assets/images/inkindo_board_photo_1789326204881.png')">
+              <div class="gallery-img-wrap">
+                <img src="assets/images/inkindo_board_photo_1789326204881.png" alt="Buka Puasa Bersama" loading="lazy">
+                <span class="category-badge">Non-Kontruksi</span>
+                <div class="gallery-hover-overlay"><i data-lucide="search" size="24"></i> Perbesar Gambar</div>
+              </div>
+              <div class="gallery-body">
+                <div class="event-meta"><i data-lucide="calendar" size="14"></i> 22 Maret 2026</div>
+                <h4 class="event-title">Buka Puasa Bersama & Bakti Sosial INKINDO</h4>
+                <p class="event-desc">Kegiatan kepedulian sosial dan doa bersama anggota DPP INKINDO DIY untuk keberkahan profesi konsultan.</p>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="gallery-card" data-category="forum" data-categories='["Forum"]' onclick="openGalleryModal('Musyawarah Provinsi (MUSPROV) IX INKINDO DIY', '26 April 2025', 'Musyawarah tertinggi pengambilan keputusan dan pemilihan pengurus.', 'assets/images/media__1789325946088.png')">
+              <div class="gallery-img-wrap">
+                <img src="assets/images/media__1789325946088.png" alt="MUSPROV IX INKINDO DIY" loading="lazy">
+                <span class="category-badge">Forum</span>
+                <div class="gallery-hover-overlay"><i data-lucide="search" size="24"></i> Perbesar Gambar</div>
+              </div>
+              <div class="gallery-body">
+                <div class="event-meta"><i data-lucide="calendar" size="14"></i> 26 April 2025</div>
+                <h4 class="event-title">Musyawarah Provinsi (MUSPROV) IX INKINDO DIY</h4>
+                <p class="event-desc">Sidang pleno pertanggungjawaban kepengurusan dan penetapan garis kebijakan organisasi periode berjalan.</p>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="gallery-card" data-category="konstruksi" data-categories='["Kontruksi"]' onclick="openGalleryModal('Sosialisasi PerMen PUPR No. 8/2023 & Billing Rate', '14 Oktober 2025', 'Workshop edukasi penerapan remunerasi minimal untuk anggota.', 'assets/images/hero_fora_inkindo_1789326178298.png')">
+              <div class="gallery-img-wrap">
+                <img src="assets/images/hero_fora_inkindo_1789326178298.png" alt="Sosialisasi PerMen PUPR" loading="lazy">
+                <span class="category-badge">Kontruksi</span>
+                <div class="gallery-hover-overlay"><i data-lucide="search" size="24"></i> Perbesar Gambar</div>
+              </div>
+              <div class="gallery-body">
+                <div class="event-meta"><i data-lucide="calendar" size="14"></i> 14 Oktober 2025</div>
+                <h4 class="event-title">Sosialisasi Billing Rate & Tata Cara Pengadaan</h4>
+                <p class="event-desc">Bimbingan teknis bagi direktur dan tim keuangaan perusahaan konsultan mengenai acuan standar billing rate.</p>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="gallery-card" data-category="konstruksi" data-categories='["Kontruksi"]' onclick="openGalleryModal('Pelatihan Digitalization Building Information Modeling (BIM)', '05 November 2025', 'Upgrade kapabilitas tenaga ahli konsultan perencanaan.', 'assets/images/hero_musprov_inkindo_1789326191573.png')">
+              <div class="gallery-img-wrap">
+                <img src="assets/images/hero_musprov_inkindo_1789326191573.png" alt="Pelatihan BIM Konsultan" loading="lazy">
+                <span class="category-badge">Kontruksi</span>
+                <div class="gallery-hover-overlay"><i data-lucide="search" size="24"></i> Perbesar Gambar</div>
+              </div>
+              <div class="gallery-body">
+                <div class="event-meta"><i data-lucide="calendar" size="14"></i> 05 November 2025</div>
+                <h4 class="event-title">Workshop Implementasi BIM Untuk Konsultan Perencana</h4>
+                <p class="event-desc">Pelatihan komprehensif alur kerja 3D Building Information Modeling untuk meningkatkan efisiensi desain.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <button class="gallery-nav-btn gallery-next-btn" id="galleryNextBtn" aria-label="Slide berikutnya" onclick="slideGallery(1)">
+          <i data-lucide="chevron-right" size="24"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       NEWS SECTION (BERITA TERKINI)
+       ========================================================================== -->
+  <section id="berita" class="section news-section">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-tag">INFORMASI & WARTA</span>
+        <h2 class="section-heading">Berita Terkini Organisasi</h2>
+        <div class="heading-line"></div>
+      </div>
+
+      <div class="news-layout-grid">
+        <!-- Left: Featured Large News Item -->
+        <div class="news-featured-card" onclick="openNewsModal('Ir. H. Erie Haryadi Terpilih Jadi Ketua DPN INKINDO', event)">
+          <div class="featured-img-wrap">
+            <img src="assets/images/hero_musprov_inkindo_1789326191573.png" alt="Ir. H. Erie Haryadi DPN INKINDO" loading="lazy">
+            <span class="featured-badge"><i data-lucide="star" size="14"></i> Berita Utama</span>
+          </div>
+          <div class="featured-content">
+            <div class="news-date-tag"><i data-lucide="calendar" size="14"></i> 18 November 2025</div>
+            <h3 class="featured-title">Ir. H. Erie Haryadi Terpilih Jadi Ketua DPN INKINDO Periode 2022–2026</h3>
+            <p class="featured-excerpt">
+              Musyawarah Nasional Ikatan Nasional Konsultan Indonesia (INKINDO) secara mufakat menetapkan kepemimpinan baru untuk memimpin transformasi, digitalisasi KTA, dan penguatan daya saing konsultan nasional di tingkat internasional.
+            </p>
+            <div class="read-more-btn">
+              <span>Baca Selengkapnya</span>
+              <i data-lucide="arrow-right" size="16"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: News List Items -->
+        <div class="news-side-list">
+
+          <div class="news-list-item" onclick="openNewsModal('Independensi, Kunci Utama Menuju Indonesia Emas 2045', event)">
+            <div class="news-item-thumb">
+              <img src="assets/images/hero_fora_inkindo_1789326178298.png" alt="Independensi Indonesia Emas" loading="lazy">
+            </div>
+            <div class="news-item-info">
+              <span class="news-item-date"><i data-lucide="calendar" size="14"></i> 16 November 2025</span>
+              <h4 class="news-item-heading">Independensi, Kunci Utama Menuju Indonesia Emas 2045</h4>
+              <p class="news-item-snippet">Ketua DPP INKINDO DIY menegaskan pentingnya konsultan menjaga independensi etika profesi.</p>
+            </div>
+          </div>
+
+          <div class="news-list-item" onclick="openNewsModal('DPP INKINDO Syukuran & Doa Bersama HUT Ke-43', event)">
+            <div class="news-item-thumb">
+              <img src="assets/images/inkindo_board_photo_1789326204881.png" alt="Syukuran HUT INKINDO" loading="lazy">
+            </div>
+            <div class="news-item-info">
+              <span class="news-item-date"><i data-lucide="calendar" size="14"></i> 16 November 2025</span>
+              <h4 class="news-item-heading">DPP INKINDO DIY Gelar Syukuran & Doa Bersama HUT Ke-43</h4>
+              <p class="news-item-snippet">Peringatan hari jadi diisi tumpengan dan pemberian penghargaan apresiasi untuk anggota senior.</p>
+            </div>
+          </div>
+
+          <div class="news-list-item" onclick="openNewsModal('Wakil Ketua Umum DPN INKINDO Hadiri Bakti Sosial DIY', event)">
+            <div class="news-item-thumb">
+              <img src="assets/images/media__1789325946088.png" alt="Bakti Sosial DIY" loading="lazy">
+            </div>
+            <div class="news-item-info">
+              <span class="news-item-date"><i data-lucide="calendar" size="14"></i> 02 Januari 2026</span>
+              <h4 class="news-item-heading">Wakil Ketua Umum DPN INKINDO Hadiri Bakti Sosial DIY</h4>
+              <p class="news-item-snippet">Kunjungan kerja pengurus pusat sekaligus memberikan bantuan sosial rehabilitasi sarana publik.</p>
+            </div>
+          </div>
+
+          <div class="news-list-item" onclick="openNewsModal('Penetapan Standar Remunerasi Minimal Tahun 2026', event)">
+            <div class="news-item-thumb">
+              <img src="assets/images/hero_fora_inkindo_1789326178298.png" alt="Remunerasi Minimal" loading="lazy">
+            </div>
+            <div class="news-item-info">
+              <span class="news-item-date"><i data-lucide="calendar" size="14"></i> 15 Februari 2026</span>
+              <h4 class="news-item-heading">DPP INKINDO DIY Terbitkan Pedoman Billing Rate Local 2026</h4>
+              <p class="news-item-snippet">Panduan acuan batas bawah remunerasi tenaga ahli konsultan perencana dan pengawas.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       PARTNERS SHOWCASE (MITRA ASOSIASI)
+       ========================================================================== -->
+  <section id="mitra-section" class="section showcase-section">
+    <div class="container">
+
+
+      <!-- SUBSECTION 2: MITRA BRAND LOGO CAROUSEL / GRID -->
+      <div id="mitra" class="showcase-block">
+        <div class="section-title-wrap text-center mitra-header-wrap">
+          <span class="section-tag">KOLABORASI & SINERGI</span>
+          <h2 class="section-heading mitra-title">MITRA STRATEGIS ASOSIASI</h2>
+          <p class="section-lead mitra-sub-lead">Perusahaan rekanan dan mitra industri yang bekerjasama dengan INKINDO D.I. Yogyakarta</p>
+          <div class="heading-line center-line"></div>
+        </div>
+
+        <!-- Multi-Row Horizontal Slider (2 Baris) -->
+        <div class="partners-carousel-wrapper">
+          <button class="partners-nav-btn partners-prev-btn" id="partnersPrevBtn" aria-label="Mitra sebelumnya" onclick="slidePartners(-1)">
+            <i data-lucide="chevron-left" size="22"></i>
+          </button>
+
+          <div class="partners-slider-viewport" id="partnersViewport">
+            <div class="partners-slider-track" id="partnersTrack">
+              <!-- Column 1 -->
+              <div class="partner-item-card" title="Alkycoat Paint - Jagonya Cat">
+                <img src="assets/images/partners/alkycoat.png" alt="Alkycoat Paint" class="partner-logo-img" loading="lazy">
+              </div>
+              <div class="partner-item-card" title="Alderon - Innovative Building Materials">
+                <img src="assets/images/partners/alderon.png" alt="Alderon" class="partner-logo-img" loading="lazy">
+              </div>
+
+              <!-- Column 2 -->
+              <div class="partner-item-card" title="MACO - High Quality Aluminium Composite Panel">
+                <img src="assets/images/partners/maco.png" alt="MACO" class="partner-logo-img" loading="lazy">
+              </div>
+              <div class="partner-item-card" title="Dulux - Professional Paints">
+                <img src="assets/images/partners/dulux.png" alt="Dulux" class="partner-logo-img" loading="lazy">
+              </div>
+
+              <!-- Column 3 -->
+              <div class="partner-item-card" title="Alumetalec Evo - Aluminium Composite Panel">
+                <img src="assets/images/partners/alumetalec.png" alt="Alumetalec Evo" class="partner-logo-img" loading="lazy">
+              </div>
+              <div class="partner-item-card" title="Panasonic - Eco Solutions">
+                <img src="assets/images/partners/panasonic.svg" alt="Panasonic" class="partner-logo-img" loading="lazy">
+              </div>
+
+              <!-- Column 4 -->
+              <div class="partner-item-card" title="Carrier / Toshiba Air Conditioning">
+                <img src="assets/images/partners/carrier_toshiba.png" alt="Carrier Toshiba Air Conditioning" class="partner-logo-img" loading="lazy">
+              </div>
+              <div class="partner-item-card" title="TOTO - Sanitaryware">
+                <img src="assets/images/partners/toto.svg" alt="TOTO" class="partner-logo-img" loading="lazy">
+              </div>
+
+              <!-- Column 5 -->
+              <div class="partner-item-card" title="Alcotuff - Simply The Best">
+                <img src="assets/images/partners/alcotuff.png" alt="Alcotuff" class="partner-logo-img" loading="lazy">
+              </div>
+              <div class="partner-item-card" title="PT. JBK - Jaringan Bina Konstruksi">
+                <img src="assets/images/partners/pt_jbk.svg" alt="PT. JBK Jaringan Bina Konstruksi" class="partner-logo-img" loading="lazy">
+              </div>
+
+              <!-- Column 6 (Continuous set for horizontal sliding) -->
+              <div class="partner-item-card" title="Alkycoat Paint - Jagonya Cat">
+                <img src="assets/images/partners/alkycoat.png" alt="Alkycoat Paint" class="partner-logo-img" loading="lazy">
+              </div>
+              <div class="partner-item-card" title="Alderon - Innovative Building Materials">
+                <img src="assets/images/partners/alderon.png" alt="Alderon" class="partner-logo-img" loading="lazy">
+              </div>
+
+              <!-- Column 7 -->
+              <div class="partner-item-card" title="MACO - High Quality Aluminium Composite Panel">
+                <img src="assets/images/partners/maco.png" alt="MACO" class="partner-logo-img" loading="lazy">
+              </div>
+              <div class="partner-item-card" title="Dulux - Professional Paints">
+                <img src="assets/images/partners/dulux.png" alt="Dulux" class="partner-logo-img" loading="lazy">
+              </div>
+
+              <!-- Column 8 -->
+              <div class="partner-item-card" title="Alumetalec Evo - Aluminium Composite Panel">
+                <img src="assets/images/partners/alumetalec.png" alt="Alumetalec Evo" class="partner-logo-img" loading="lazy">
+              </div>
+              <div class="partner-item-card" title="Panasonic - Eco Solutions">
+                <img src="assets/images/partners/panasonic.svg" alt="Panasonic" class="partner-logo-img" loading="lazy">
+              </div>
+
+              <!-- Column 9 -->
+              <div class="partner-item-card" title="Carrier / Toshiba Air Conditioning">
+                <img src="assets/images/partners/carrier_toshiba.png" alt="Carrier Toshiba Air Conditioning" class="partner-logo-img" loading="lazy">
+              </div>
+              <div class="partner-item-card" title="TOTO - Sanitaryware">
+                <img src="assets/images/partners/toto.svg" alt="TOTO" class="partner-logo-img" loading="lazy">
+              </div>
+
+              <!-- Column 10 -->
+              <div class="partner-item-card" title="Alcotuff - Simply The Best">
+                <img src="assets/images/partners/alcotuff.png" alt="Alcotuff" class="partner-logo-img" loading="lazy">
+              </div>
+              <div class="partner-item-card" title="PT. JBK - Jaringan Bina Konstruksi">
+                <img src="assets/images/partners/pt_jbk.svg" alt="PT. JBK Jaringan Bina Konstruksi" class="partner-logo-img" loading="lazy">
+              </div>
+            </div>
+          </div>
+
+          <button class="partners-nav-btn partners-next-btn" id="partnersNextBtn" aria-label="Mitra berikutnya" onclick="slidePartners(1)">
+            <i data-lucide="chevron-right" size="22"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       REGULATION CENTER (PUSAT REGULASI)
+       ========================================================================== -->
+  <section id="publik" class="section regulation-section">
+    <div class="container">
+      
+      <div class="regulation-header-box">
+        <div class="regulation-title-group">
+          <div class="scale-graphic-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0E5AA7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+              <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+              <path d="M7 21h10"></path>
+              <path d="M12 3v18"></path>
+              <path d="M3 7h18"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="section-tag">LAYANAN DOKUMEN & PRODUK HUKUM</span>
+            <h2 class="section-heading" style="margin-bottom: 0;">Pusat Regulasi Jasa Konstruksi & Standar Billing Rate</h2>
+          </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="regulation-search-wrapper">
+          <i data-lucide="search" class="reg-search-ic"></i>
+          <input type="text" id="regSearchInput" class="reg-search-input" placeholder="Ketik kata kunci regulasi..." onkeyup="filterRegulations()">
+        </div>
+      </div>
+
+      <!-- 2-Column Layout: Left Sidebar + Right Document List -->
+      <div class="regulation-main-layout">
+        <!-- Sidebar Navigation Tabs -->
+        <aside class="reg-sidebar-wrapper">
+          <div class="reg-sidebar-card">
+            <span class="reg-sidebar-title">Kategori Regulasi</span>
+            <div class="reg-category-tabs-vertical" id="regCategoryTabs">
+              <button class="reg-tab active" data-cat="all" onclick="filterRegCategory('all', event)">
+                <i data-lucide="layers" size="16"></i>
+                <span>Semua Regulasi</span>
+              </button>
+              <button class="reg-tab" data-cat="uu" onclick="filterRegCategory('uu', event)">
+                <i data-lucide="book-open" size="16"></i>
+                <span>Undang-Undang</span>
+              </button>
+              <button class="reg-tab" data-cat="peraturan" onclick="filterRegCategory('peraturan', event)">
+                <i data-lucide="scale" size="16"></i>
+                <span>Peraturan Menteri</span>
+              </button>
+              <button class="reg-tab" data-cat="sk" onclick="filterRegCategory('sk', event)">
+                <i data-lucide="award" size="16"></i>
+                <span>Surat Keputusan</span>
+              </button>
+              <button class="reg-tab" data-cat="se" onclick="filterRegCategory('se', event)">
+                <i data-lucide="file-text" size="16"></i>
+                <span>Surat Edaran</span>
+              </button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right: Compact Document Cards List with Controlled Height & Pagination -->
+        <div class="regulation-content-col">
+          <!-- Clean Regulation Cards List -->
+          <div class="regulation-list-scrollable" id="regulationList">
+            <!-- Reg Card 1 -->
+            <div class="reg-doc-card" data-cat="uu" data-keywords="uu undang undang nomor 2 tahun 2017 jasa konstruksi">
+              <div class="reg-card-left">
+                <div class="doc-icon-badge uu-badge">
+                  <i data-lucide="file-text" size="22"></i>
+                  <span>UU</span>
+                </div>
+                <div class="doc-meta-info">
+                  <span class="reg-badge-tag tag-uu">Undang-Undang</span>
+                  <h4 class="reg-doc-title">UU No. 2 Tahun 2017 tentang Jasa Konstruksi</h4>
+                  <p class="reg-doc-desc">Landasan hukum utama penyelenggaraan jasa konstruksi dan jasa konsultansi independen nasional di Indonesia.</p>
+                  <div class="doc-sub-meta">
+                    <span><i data-lucide="calendar" size="14"></i> Ditetapkan: 12 Januari 2017</span>
+                  </div>
+                </div>
+              </div>
+              <div class="reg-card-right">
+                <button class="btn btn-primary-blue btn-download-reg" onclick="openDownloadModal('UU No. 2 Tahun 2017 tentang Jasa Konstruksi')">
+                  <i data-lucide="eye" size="16"></i>
+                  <span>Lihat</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Reg Card 2 -->
+            <div class="reg-doc-card" data-cat="peraturan" data-keywords="permen pupr nomor 8 tahun 2023 billing rate remunerasi minimal tenaga ahli konsultan">
+              <div class="reg-card-left">
+                <div class="doc-icon-badge per-badge">
+                  <i data-lucide="scale" size="22"></i>
+                  <span>PER</span>
+                </div>
+                <div class="doc-meta-info">
+                  <span class="reg-badge-tag tag-peraturan">Peraturan Menteri</span>
+                  <h4 class="reg-doc-title">Permen PUPR No. 8 Tahun 2023 tentang Billing Rate Remunerasi Minimal</h4>
+                  <p class="reg-doc-desc">Pedoman standar acuan remunerasi minimal dan biaya langsung personil tenaga ahli untuk jasa konsultansi.</p>
+                  <div class="doc-sub-meta">
+                    <span><i data-lucide="calendar" size="14"></i> Ditetapkan: 24 Juli 2023</span>
+                  </div>
+                </div>
+              </div>
+              <div class="reg-card-right">
+                <button class="btn btn-primary-blue btn-download-reg" onclick="openDownloadModal('Permen PUPR No. 8 Tahun 2023 (Billing Rate Remunerasi Minimal)')">
+                  <i data-lucide="eye" size="16"></i>
+                  <span>Lihat</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Reg Card 3 -->
+            <div class="reg-doc-card" data-cat="peraturan" data-keywords="permen pupr nomor 6 tahun 2021 sbu sertifikat badan usaha standar perizinan">
+              <div class="reg-card-left">
+                <div class="doc-icon-badge per-badge">
+                  <i data-lucide="shield-check" size="22"></i>
+                  <span>PER</span>
+                </div>
+                <div class="doc-meta-info">
+                  <span class="reg-badge-tag tag-peraturan">Peraturan Menteri</span>
+                  <h4 class="reg-doc-title">Permen PUPR No. 6 Tahun 2021 tentang Standar Sertifikasi Badan Usaha (SBU)</h4>
+                  <p class="reg-doc-desc">Standar kualifikasi, klarifikasi bidang usaha, serta tata cara perizinan sertifikasi jasa konsultansi.</p>
+                  <div class="doc-sub-meta">
+                    <span><i data-lucide="calendar" size="14"></i> Ditetapkan: 01 April 2021</span>
+                  </div>
+                </div>
+              </div>
+              <div class="reg-card-right">
+                <button class="btn btn-primary-blue btn-download-reg" onclick="openDownloadModal('Permen PUPR No. 6 Tahun 2021 tentang Standar SBU')">
+                  <i data-lucide="eye" size="16"></i>
+                  <span>Lihat</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Reg Card 4 -->
+            <div class="reg-doc-card" data-cat="sk" data-keywords="sk surat keputusan dpn inkindo kode etik tata tertib organisasi konsultan">
+              <div class="reg-card-left">
+                <div class="doc-icon-badge sk-badge">
+                  <i data-lucide="award" size="22"></i>
+                  <span>SK</span>
+                </div>
+                <div class="doc-meta-info">
+                  <span class="reg-badge-tag tag-sk">Surat Keputusan DPN</span>
+                  <h4 class="reg-doc-title">SK DPN INKINDO No. 12/SK/DPN/2024 tentang Kode Etik & Kode Perilaku</h4>
+                  <p class="reg-doc-desc">Pedoman etik profesionalitas, independensi, dan tata cara penanganan pelanggaran persaingan usaha antar konsultan.</p>
+                  <div class="doc-sub-meta">
+                    <span><i data-lucide="calendar" size="14"></i> Ditetapkan: 15 Maret 2024</span>
+                  </div>
+                </div>
+              </div>
+              <div class="reg-card-right">
+                <button class="btn btn-primary-blue btn-download-reg" onclick="openDownloadModal('SK DPN INKINDO No. 12/SK/DPN/2024 Kode Etik')">
+                  <i data-lucide="eye" size="16"></i>
+                  <span>Lihat</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Reg Card 5 -->
+            <div class="reg-doc-card" data-cat="se" data-keywords="surat edaran se dpp inkindo diy kta digital 2026 iuran anggota">
+              <div class="reg-card-left">
+                <div class="doc-icon-badge se-badge">
+                  <i data-lucide="mail" size="22"></i>
+                  <span>SE</span>
+                </div>
+                <div class="doc-meta-info">
+                  <span class="reg-badge-tag tag-se">Surat Edaran DPP</span>
+                  <h4 class="reg-doc-title">Surat Edaran DPP INKINDO DIY tentang Pelaksanaan KTA Digital 2026</h4>
+                  <p class="reg-doc-desc">Petunjuk teknis perpanjangan KTA digital, verifikasi berkas tahunan, dan integrasi Sistem Informasi INKINDO.</p>
+                  <div class="doc-sub-meta">
+                    <span><i data-lucide="calendar" size="14"></i> Ditetapkan: 10 Januari 2026</span>
+                  </div>
+                </div>
+              </div>
+              <div class="reg-card-right">
+                <button class="btn btn-primary-blue btn-download-reg" onclick="openDownloadModal('Surat Edaran DPP INKINDO DIY tentang KTA Digital 2026')">
+                  <i data-lucide="eye" size="16"></i>
+                  <span>Lihat</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Reg Card 6 -->
+            <div class="reg-doc-card" data-cat="uu" data-keywords="uu undang undang nomor 11 tahun 2020 cipta kerja perizinan gedung bangunan pbg slf">
+              <div class="reg-card-left">
+                <div class="doc-icon-badge uu-badge">
+                  <i data-lucide="file-text" size="22"></i>
+                  <span>UU</span>
+                </div>
+                <div class="doc-meta-info">
+                  <span class="reg-badge-tag tag-uu">Undang-Undang</span>
+                  <h4 class="reg-doc-title">UU No. 11 Tahun 2020 tentang Cipta Kerja (Klaster Jasa Konstruksi)</h4>
+                  <p class="reg-doc-desc">Penyederhanaan perizinan berusaha, Persetujuan Bangunan Gedung (PBG), dan Sertifikat Laik Fungsi (SLF).</p>
+                  <div class="doc-sub-meta">
+                    <span><i data-lucide="calendar" size="14"></i> Ditetapkan: 02 November 2020</span>
+                  </div>
+                </div>
+              </div>
+              <div class="reg-card-right">
+                <button class="btn btn-primary-blue btn-download-reg" onclick="openDownloadModal('UU No. 11 Tahun 2020 tentang Cipta Kerja (Klaster Konstruksi)')">
+                  <i data-lucide="eye" size="16"></i>
+                  <span>Lihat</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Empty State for Regulation Search -->
+            <div id="regEmptyState" class="reg-empty-state" style="display: none;">
+              <i data-lucide="file-question" size="32"></i>
+              <p>Tidak ada dokumen regulasi yang cocok dengan pencarian Anda.</p>
+            </div>
+          </div> <!-- /.regulation-list-scrollable -->
+
+          <!-- Regulation Bottom Controls: Pagination & View All CTA -->
+          <div class="reg-bottom-bar">
+            <!-- Interactive Pagination -->
+            <div class="reg-pagination" id="regPagination">
+              <!-- Dynamically populated via script.js -->
+            </div>
+
+            <!-- View All Archive CTA Button -->
+            <a href="regulasi.html" class="btn-reg-view-all">
+              <span>Lihat Semua Dokumen Regulasi</span>
+              <i data-lucide="arrow-right" size="15"></i>
+            </a>
+          </div>
+        </div> <!-- /.regulation-content-col -->
+      </div> <!-- /.regulation-main-layout -->
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       FOOTER & COPYRIGHT BAR (DARK NAVY THEME)
+       ========================================================================== -->
+  <footer class="deep-blue-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Kolom 1 (Kiri): Logo INKINDO Yogyakarta & Deskripsi Singkat Organisasi -->
+        <div class="footer-col-left">
+          <div class="footer-brand">
+            <div class="footer-logo-emblem">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <span class="footer-brand-title">INKINDO YOGYAKARTA</span>
+              <span class="footer-brand-sub">IKATAN NASIONAL KONSULTAN INDONESIA</span>
+            </div>
+          </div>
+
+          <p class="footer-desc">
+            Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta adalah asosiasi perusahaan jasa konsultansi independen yang berdiri sejak 20 Juni 1979. Wadah perjuangan dan pemberdayaan 214 perusahaan konsultan anggota di Daerah Istimewa Yogyakarta.
+          </p>
+        </div>
+
+        <!-- Kolom 2 (Tengah): KONTAK -->
+        <div class="footer-col-center">
+          <h4 class="footer-heading">KONTAK</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <i data-lucide="mail" class="contact-ic"></i>
+              <div>
+                <strong>Email:</strong>
+                <p>inkindo@inkindo.org</p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="phone" class="contact-ic"></i>
+              <div>
+                <strong>Telepon:</strong>
+                <p>081315289207</p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="map-pin" class="contact-ic"></i>
+              <div>
+                <strong>Alamat:</strong>
+                <p>Jl. Godean KM. 5 Nogosaren Baru No. 32, Banyuraden, Gamping, Sleman, Yogyakarta 55293</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3 (Kanan): SOSIAL MEDIA (COMPACT STYLING) -->
+        <div class="footer-col-right">
+          <h4 class="footer-heading">SOSIAL MEDIA</h4>
+          <p class="footer-social-intro">Ikuti dan terhubung dengan Sekretariat INKINDO D.I. Yogyakarta di saluran resmi media sosial:</p>
+          <div class="footer-social-buttons">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge fb-social" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f social-brand-icon"></i>
+              <span>Facebook</span>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge ig-social" aria-label="Instagram">
+              <i class="fa-brands fa-instagram social-brand-icon"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge tw-social" aria-label="Twitter">
+              <span class="social-brand-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+              <span>Twitter</span>
+            </a>
+            <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" class="social-icon-badge wa-social" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp social-brand-icon"></i>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar: Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 INKINDO YOGYAKARTA – All Right Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       GLOBAL MODAL DIALOGS
+       ========================================================================== -->
+  <!-- General Modal Overlay -->
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeGlobalModal(event)">
+    <div class="modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeGlobalModal()">&times;</button>
+      <div class="modal-content-body" id="modalContentBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js?v=1.4"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>

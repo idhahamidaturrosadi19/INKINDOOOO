@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Daftar Anggota | INKINDO D.I. Yogyakarta</title>
+  <meta name="description" content="Direktori Perusahaan Konsultan Anggota Resmi Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta dengan kualifikasi Besar, Menengah, dan Kecil terverifikasi.">
+  
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="styles.css?v=1.4">
+
+  <style>
+    /* Header Styling */
+    .main-header {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+    }
+
+    .nav-link.active {
+      color: #0056B8 !important;
+      font-weight: 600 !important;
+      position: relative;
+    }
+
+    .nav-link.active::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 3px !important;
+      background: linear-gradient(90deg, #0056B8, #00d2d3) !important;
+      border-radius: 9999px !important;
+      box-shadow: 0 0 10px rgba(0, 210, 211, 0.7) !important;
+    }
+
+    .btn-login-cta.desktop-login-btn {
+      border-radius: 9999px !important;
+      background: linear-gradient(135deg, #0056B8 0%, #0284c7 100%) !important;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.28) !important;
+      padding: 8px 22px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      font-weight: 600 !important;
+      transition: all 0.25s ease !important;
+    }
+
+    .btn-login-cta.desktop-login-btn:hover {
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    /* Filter Tabs Styling */
+    .filter-tab {
+      padding: 8px 20px;
+      border-radius: 9999px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border: 1.5px solid #e2e8f0;
+      background: #ffffff;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    }
+
+    .filter-tab:hover {
+      border-color: #0056B8;
+      color: #0056B8;
+      background: #f8fafc;
+      transform: translateY(-1px);
+    }
+
+    .filter-tab.active {
+      background: #0056B8 !important;
+      color: #ffffff !important;
+      border-color: #0056B8 !important;
+      box-shadow: 0 4px 14px rgba(0, 86, 184, 0.28) !important;
+    }
+
+    /* Member Card Enhanced */
+    .member-card {
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+
+    .member-card:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .member-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+      background: #eff6ff;
+      color: #0056B8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .member-avatar.avatar-green {
+      background: #f0fdf4;
+      color: #166534;
+      border-color: #bbf7d0;
+    }
+
+    .member-avatar.avatar-gold {
+      background: #fefce8;
+      color: #854d0e;
+      border-color: #fde047;
+    }
+
+    .member-avatar.avatar-purple {
+      background: #faf5ff;
+      color: #6b21a8;
+      border-color: #e9d5ff;
+    }
+
+    .member-avatar.avatar-teal {
+      background: #f0fdfa;
+      color: #115e59;
+      border-color: #99f6e4;
+    }
+
+    .member-avatar.avatar-blue {
+      background: #eff6ff;
+      color: #1e40af;
+      border-color: #bfdbfe;
+    }
+
+    /* Pagination Component Matching User Design */
+    .pagination-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 48px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .pagination-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      border: 1.5px solid #0056B8;
+      background: #ffffff;
+      color: #0056B8;
+      font-size: 16px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      user-select: none;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .pagination-btn:hover:not(.active):not(.disabled) {
+      background: #eff6ff;
+      border-color: #004494;
+      color: #004494;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 86, 184, 0.15);
+    }
+
+    .pagination-btn.active {
+      background: #0056B8 !important;
+      color: #ffffff !important;
+      border-color: #0056B8 !important;
+      box-shadow: 0 4px 14px rgba(0, 86, 184, 0.28) !important;
+      cursor: default;
+    }
+
+    .pagination-btn.disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      border-color: #cbd5e1;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+
+<body class="bg-[#f8fafc] text-slate-800 font-['Inter',sans-serif] selection:bg-teal-500 selection:text-white">
+
+  <!-- ==========================================================================
+       HEADER & NAVIGATION BAR
+       ========================================================================== -->
+  <header class="main-header sticky top-0 z-50 transition-all duration-300" id="mainHeader">
+    <div class="container header-container">
+      <!-- Brand Logo with Official INKINDO DIY Logo -->
+      <a href="index.html" class="brand-logo">
+        <img src="assets/images/logo_inkindo_diy.png" alt="INKINDO YOGYAKARTA Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Right Navigation Links & Login Action -->
+      <div class="header-nav-group">
+        <nav class="nav-wrapper">
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Beranda</a></li>
+            
+            <!-- DROPDOWN PROFIL -->
+            <li class="nav-item dropdown">
+              <a href="profil.html" class="nav-link dropdown-toggle">
+                <span>Profil</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="prakata.html">Prakata</a></li>
+                <li><a href="kode-etik.html">Kode Etik</a></li>
+                <li><a href="struktur-organisasi.html">Struktur Organisasi</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN LAYANAN -->
+            <li class="nav-item dropdown">
+              <a href="layanan-konstruksi.html" class="nav-link dropdown-toggle">
+                <span>Layanan</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="layanan-konstruksi.html">Konstruksi</a></li>
+                <li><a href="layanan-non-konstruksi.html">Non Konstruksi</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN KEANGGOTAAN (ACTIVE WITH GLOWING INDICATOR) -->
+            <li class="nav-item dropdown">
+              <a href="daftar-anggota.html" class="nav-link dropdown-toggle active">
+                <span>Keanggotaan</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="direktori-anggota.html" class="font-bold text-[#0056B8]">Direktori Anggota</a></li>
+                <li><a href="pendaftaran-anggota.html">Pendaftaran Anggota</a></li>
+              </ul>
+            </li>
+
+            <!-- DROPDOWN PUBLIK -->
+            <li class="nav-item dropdown">
+              <a href="index.html#publik" class="nav-link dropdown-toggle">
+                <span>Publik</span>
+                <i data-lucide="chevron-down" class="nav-chevron"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="berita.html">Berita</a></li>
+                <li><a href="program-kerja.html">Program Kerja</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
+                <li><a href="regulasi.html">Regulasi</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn btn-login-cta desktop-login-btn" onclick="openLoginModal(event)">
+            <i data-lucide="lock" size="15"></i>
+            <span>Login</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ==========================================================================
+       PAGE HERO BANNER: HARMONIZED DARK NAVY THEME (#08162e)
+       ========================================================================== -->
+  <section class="subpage-hero-section relative text-white pt-12 pb-14 md:pt-14 md:pb-16 px-6 overflow-hidden">
+    <div class="container relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
+      
+      <!-- Breadcrumb Pill Capsule -->
+      <nav class="subpage-hero-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">
+          <i data-lucide="home"></i>
+          <span>Beranda</span>
+        </a>
+        <span class="breadcrumb-separator">›</span>
+        <a href="index.html#keanggotaan">Keanggotaan</a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-active">Daftar Anggota</span>
+      </nav>
+
+      <!-- Main Title: Poppins Bold 40px-48px Centered -->
+      <h1 class="subpage-hero-title">
+        Daftar Anggota Resmi
+      </h1>
+
+      
+
+      <!-- Subtitle -->
+      <p class="subpage-hero-desc mb-6">
+        Daftar 214 perusahaan konsultan terdaftar di DPP INKINDO D.I. Yogyakarta yang memiliki Kartu Tanda Anggota (KTA) aktif dan kualifikasi usaha yang terverifikasi.
+      </p>
+
+      <!-- Modern Search Box (Ukuran Ergonomis & Proporsional) -->
+      <div class="w-full max-w-xl mx-auto">
+        <div class="relative flex items-center bg-white rounded-full p-1.5 pl-4 sm:pl-5 pr-2 shadow-lg border border-slate-200/80 transition-all focus-within:ring-2 focus-within:ring-teal-400 focus-within:border-transparent">
+          <i data-lucide="search" class="w-4 h-4 sm:w-5 sm:h-5 text-teal-600 flex-shrink-0 mr-3"></i>
+          <input 
+            type="text" 
+            id="memberSearchInput" 
+            placeholder="Cari nama perusahaan konsultan atau no KTA..." 
+            onkeyup="filterMemberDirectory()"
+            class="w-full text-xs sm:text-sm text-slate-800 placeholder-slate-400 bg-transparent outline-none font-medium"
+            aria-label="Cari nama perusahaan konsultan atau no KTA"
+          >
+          <button type="button" 
+                  onclick="filterMemberDirectory()" 
+                  class="flex-shrink-0 hero-search-btn bg-[#0056B8] hover:bg-[#003D8F] text-white text-xs sm:text-sm font-semibold px-4 sm:px-5 py-2 sm:py-2.5 rounded-full flex items-center gap-1.5 transition-all shadow-xs">
+            <span>Cari</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       MEMBER DIRECTORY CONTENT SECTION
+       ========================================================================== -->
+  <main class="py-12 md:py-16 bg-gradient-to-b from-[#f8fafc] via-[#f1f5f9] to-[#f8fafc]">
+    <div class="container max-w-6xl mx-auto px-4 sm:px-6">
+
+      <!-- 4-Dropdown Filter Bar (Modern, Ringkas & Responsif) -->
+      <div class="filter-dropdown-bar mb-8">
+        
+        <!-- Filter 1: Kualifikasi -->
+        <div class="filter-select-wrapper">
+          <select id="filterKualifikasi" class="filter-select" onchange="filterMembersByDropdown()" aria-label="Filter Kualifikasi">
+            <option value="all">Semua Kualifikasi</option>
+            <option value="Besar">Besar (B)</option>
+            <option value="Menengah">Menengah (M)</option>
+            <option value="Kecil">Kecil (K)</option>
+          </select>
+          <i data-lucide="chevron-down" class="filter-select-arrow"></i>
+        </div>
+
+        <!-- Filter 2: Wilayah -->
+        <div class="filter-select-wrapper">
+          <select id="filterWilayah" class="filter-select" onchange="filterMembersByDropdown()" aria-label="Filter Wilayah">
+            <option value="all">Semua Wilayah</option>
+            <option value="Kota Yogyakarta">Kota Yogyakarta</option>
+            <option value="Sleman">Sleman</option>
+            <option value="Bantul">Bantul</option>
+            <option value="Kulon Progo">Kulon Progo</option>
+            <option value="Gunungkidul">Gunungkidul</option>
+          </select>
+          <i data-lucide="chevron-down" class="filter-select-arrow"></i>
+        </div>
+
+        <!-- Filter 3: Bidang -->
+        <div class="filter-select-wrapper">
+          <select id="filterBidang" class="filter-select" onchange="filterMembersByDropdown()" aria-label="Filter Bidang">
+            <option value="all">Semua Bidang</option>
+            <option value="Konstruksi">Konstruksi</option>
+            <option value="Non-Konstruksi">Non-Konstruksi</option>
+          </select>
+          <i data-lucide="chevron-down" class="filter-select-arrow"></i>
+        </div>
+
+        <!-- Filter 4: Status -->
+        <div class="filter-select-wrapper">
+          <select id="filterStatus" class="filter-select" onchange="filterMembersByDropdown()" aria-label="Filter Status">
+            <option value="all">Semua Status</option>
+            <option value="Aktif">Aktif</option>
+            <option value="Dalam Proses">Dalam Proses</option>
+          </select>
+          <i data-lucide="chevron-down" class="filter-select-arrow"></i>
+        </div>
+
+        <!-- Reset Button -->
+        <button type="button" id="resetDropdownFiltersBtn" onclick="resetAllDropdownFilters()" class="filter-reset-btn" title="Reset Semua Filter" style="display: none;">
+          <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+          <span>Reset</span>
+        </button>
+
+      </div>
+
+      <!-- Results Counter & Status Info Bar -->
+      <div class="flex items-center justify-between mb-8 pb-3 border-b border-slate-200/80 text-xs sm:text-sm text-slate-500 font-medium">
+        <div class="flex items-center gap-2">
+          <i data-lucide="building-2" class="w-4 h-4 text-[#0056B8]"></i>
+          <span>Menampilkan <strong id="memberCountText" class="text-slate-800 font-bold">9 Perusahaan</strong> Konsultan Anggota</span>
+        </div>
+        <span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full text-xs font-semibold border border-emerald-200 shadow-2xs">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i>
+          <span>Database KTA Terverifikasi</span>
+        </span>
+      </div>
+
+      <!-- Member Grid Container (3-Column Desktop Grid) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="memberDirectoryGrid">
+
+        <!-- Card 1: Architra (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Kota Yogyakarta" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar">AK</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Architra Konsultan Yogyakarta</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>12044/P/0088.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Bidang Arsitektur & Tata Ruang</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=1" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 2: Jogja Bina Karya (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Sleman" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-green">JB</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Jogja Bina Karya Utama</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>12055/P/0102.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Teknik Sipil & Struktur Transportasi</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=2" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 3: Mataram Engineering (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Kota Yogyakarta" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-gold">ME</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Mataram Engineering Consult</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>12011/P/0045.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Manajemen Konstruksi & Pengawasan</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=3" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 4: Gama Tata Lingkungan (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Bantul" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">GT</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Gama Tata Lingkungan</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>12099/P/0176.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>AMDAL & Rekayasa Lingkungan</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Bantul, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=4" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 5: Gamacon Persada (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Sleman" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-purple">GP</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Gamacon Persada Consult</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>12077/P/0134.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Tata Kelola Air & Bendungan</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=5" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 6: Yogya Karya Perdana (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Kota Yogyakarta" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-teal">YK</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Yogya Karya Perdana</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>12008/P/0019.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Studi Kelayakan & Fasilitas Publik</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=6" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 7: CV. Acreon Indonesia (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Kota Yogyakarta" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">AI</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Acreon Indonesia</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>15763/P/0213.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Perencanaan Arsitektur & Interior</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Jl. Kenari No.44, Kota Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=7" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 8: CV. Adhikari Cipta Mandiri (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Bantul" data-bidang="Konstruksi" data-status="Dalam Proses">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">AC</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Adhikari Cipta Mandiri</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>18155/P/0306.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Perencanaan Struktur Bangunan Sipil</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Tamantirto, Kasihan, Kab. Bantul</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i> <span class="text-amber-700 font-medium">Status: SBU Dalam Proses Verifikasi</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=8" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 9: CV. Agita Karya (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Kulon Progo" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">AK</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Agita Karya</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>12625/P/149.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Pengawasan Lapangan & Jasa Survey</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kedundang, Kab. Kulon Progo</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=9" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+        <!-- Card 10: PT. Ciria Jasa Rancang Pratama (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Sleman" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-teal">CJ</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Ciria Jasa Rancang Pratama</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>11023/P/0012.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Rekayasa Sipil Keairan & Bendungan</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=10" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 11: PT. Global Parasindo Engineering (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Kota Yogyakarta" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-green">GP</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Global Parasindo Engineering</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>13045/P/0091.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Transportasi Jalan Raya & Jembatan</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=11" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 12: CV. Parahyangan Cipta Desain (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Bantul" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">PC</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Parahyangan Cipta Desain</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>16012/P/0230.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Perencanaan Arsitektur & Interior</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Bantul, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=12" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 13: PT. Widya Graha Asana (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Kota Yogyakarta" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-gold">WG</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Widya Graha Asana</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>11088/P/0034.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Manajemen Konstruksi & Supervisi</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=13" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 14: PT. Tri Patra Enjiniring (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Sleman" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-purple">TP</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Tri Patra Enjiniring</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>14022/P/0115.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Mekanikal, Elektrikal & Plumbing</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=14" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 15: CV. Nusa Cipta Mandiri (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Kulon Progo" data-bidang="Non-Konstruksi" data-status="Dalam Proses">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">NC</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Nusa Cipta Mandiri</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>17091/P/0278.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Survey Pemetaan Topografi & GIS</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Kulon Progo, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i> <span class="text-amber-700 font-medium">Status: SBU Dalam Proses Verifikasi</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=15" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 16: PT. Prambanan Konsultan Pratama (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Sleman" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-gold">PK</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Prambanan Konsultan Pratama</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>11054/P/0022.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Tata Ruang & Wilayah (RTRW/RDTR)</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=16" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 17: PT. Sindu Cipta Rekayasa (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Kota Yogyakarta" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-green">SC</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Sindu Cipta Rekayasa</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>14067/P/0142.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Struktur Gedung Tahan Gempa</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=17" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 18: CV. Cakra Buana Konsultan (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Bantul" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">CB</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Cakra Buana Konsultan</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>18033/P/0312.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Lanskap Lingkungan & Taman Kota</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Bantul, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=18" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 19: PT. Duta Karya Konsultansi (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Kota Yogyakarta" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-teal">DK</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Duta Karya Konsultansi</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>11076/P/0029.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Studi Kelayakan & Evaluasi Investasi</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=19" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 20: PT. Surya Graha Mandiri (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Gunungkidul" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-purple">SG</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Surya Graha Mandiri</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>14089/P/0156.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Sanitasi Lingkungan & Pengolahan Air</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Gunungkidul, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=20" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 21: CV. Mitra Cipta Dinamika (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Kulon Progo" data-bidang="Konstruksi" data-status="Dalam Proses">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">MD</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Mitra Cipta Dinamika</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>17044/P/0255.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Pengawasan Lapangan & QA/QC Proyek</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Kulon Progo, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i> <span class="text-amber-700 font-medium">Status: SBU Dalam Proses Verifikasi</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=21" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 22: PT. Kencana Bina Konsultan (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Sleman" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-gold">KB</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Kencana Bina Konsultan</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>11099/P/0041.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kawasan Pariwisata & Cagar Budaya</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=22" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 23: PT. Wastu Adi Cipta (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Kota Yogyakarta" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-green">WA</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Wastu Adi Cipta</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>14015/P/0108.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Fasilitas Medis & Rumah Sakit</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=23" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 24: CV. Samudra Cipta Rekatama (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Bantul" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">SR</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Samudra Cipta Rekatama</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>18062/P/0325.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Survey Batimetri & Pantai</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Bantul, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=24" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 25: PT. Wahana Bina Konstruksi (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Sleman" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-teal">WB</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Wahana Bina Konstruksi</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>11032/P/0017.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Infrastruktur Jalan Tol & Jembatan</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=25" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 26: PT. Cipta Laras Semesta (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Kota Yogyakarta" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-purple">CL</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Cipta Laras Semesta</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>13088/P/0099.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Pengendalian Banjir & Sungai</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=26" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 27: CV. Adhi Reksa Consult (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Sleman" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">AR</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Adhi Reksa Consult</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>17088/P/0270.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Penyusunan AMDAL & UKL-UPL</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=27" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 28: PT. Guna Karya Mandiri (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Kota Yogyakarta" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-gold">GM</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Guna Karya Mandiri</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>11019/P/0015.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Rekayasa Industri & Manajemen EPC</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=28" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 29: PT. Graha Persada Teknik (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Sleman" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-green">GP</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Graha Persada Teknik</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>14038/P/0122.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Struktur Beton Pratekan (Prestressed)</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=29" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 30: CV. Pratama Konsulindo (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Bantul" data-bidang="Konstruksi" data-status="Dalam Proses">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">PK</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Pratama Konsulindo</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>18012/P/0299.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Pengawasan Gedung Perkantoran</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Bantul, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i> <span class="text-amber-700 font-medium">Status: SBU Dalam Proses Verifikasi</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=30" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 31: PT. Panca Reksa Cipta (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Kota Yogyakarta" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-teal">PR</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Panca Reksa Cipta</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>11065/P/0027.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Geoteknik, Fondasi & Mekanika Tanah</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=31" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 32: PT. Bima Sakti Engineering (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Sleman" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-purple">BS</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Bima Sakti Engineering</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>14055/P/0138.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Instalasi HVAC, Tata Udara & Akustik</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=32" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 33: CV. Graha Estetika Rancang (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Kulon Progo" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">GE</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Graha Estetika Rancang</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>17066/P/0264.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Desain Fasad Bangunan Komersial</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Kulon Progo, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=33" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 34: PT. Buana Citra Mandiri (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Kota Yogyakarta" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-gold">BC</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Buana Citra Mandiri</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>11048/P/0020.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Perencanaan Dermaga & Fasilitas Pantai</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=34" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 35: PT. Dian Graha Konsultan (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Gunungkidul" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-green">DG</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Dian Graha Konsultan</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>13072/P/0095.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Sistem Informasi Geografis Tata Kota</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Gunungkidul, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=35" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 36: CV. Multi Kreasi Desain (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Sleman" data-bidang="Konstruksi" data-status="Dalam Proses">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">MK</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Multi Kreasi Desain</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>18080/P/0333.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Pemodelan 3D BIM & Render Arsitektur</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i> <span class="text-amber-700 font-medium">Status: SBU Dalam Proses Verifikasi</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=36" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 37: PT. Anugerah Cipta Pratama (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Sleman" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-teal">AC</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Anugerah Cipta Pratama</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>11091/P/0038.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kawasan Industri & Pergudangan</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=37" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 38: PT. Eka Karsa Konsultansi (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Kota Yogyakarta" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-purple">EK</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Eka Karsa Konsultansi</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>14073/P/0149.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Audit Energi & Green Building</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=38" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 39: CV. Karya Mandiri Konsultan (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Bantul" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">KM</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Karya Mandiri Konsultan</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>17022/P/0248.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Survey Kadastral & Pengukuran Lahan</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Bantul, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=39" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 40: PT. Sinar Baru Rekatama (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Kota Yogyakarta" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-gold">SB</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Sinar Baru Rekatama</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>11082/P/0032.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Jaringan Rel Kereta Api & Stasiun</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=40" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 41: PT. Mega Cipta Engineering (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Gunungkidul" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-green">MC</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Mega Cipta Engineering</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>14095/P/0162.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Mitigasi Bencana & Kawasan Gempa</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Gunungkidul, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=41" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 42: CV. Delta Bina Sarana (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Kulon Progo" data-bidang="Konstruksi" data-status="Dalam Proses">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">DB</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Delta Bina Sarana</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>18045/P/0318.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Pengawasan Jalan & Jembatan Desa</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Kulon Progo, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 text-amber-500 flex-shrink-0"></i> <span class="text-amber-700 font-medium">Status: SBU Dalam Proses Verifikasi</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=42" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 43: PT. Cipta Graha Sejahtera (Besar) -->
+        <div class="member-card" data-qual="Besar" data-wilayah="Sleman" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-teal">CG</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Cipta Graha Sejahtera</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>11039/P/0018.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border-amber-200">
+                Kualifikasi Besar (B)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Konsultansi Smart City & TIK</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Sleman, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=43" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 44: PT. Nusantara Konsul Pratama (Menengah) -->
+        <div class="member-card" data-qual="Menengah" data-wilayah="Kota Yogyakarta" data-bidang="Non-Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-purple">NK</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">PT. Nusantara Konsul Pratama</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>13063/P/0093.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border-emerald-200">
+                Kualifikasi Menengah (M)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Konservasi Sumber Daya Air DAS</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kota Yogyakarta, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=44" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Card 45: CV. Tunas Harapan Engineering (Kecil) -->
+        <div class="member-card" data-qual="Kecil" data-wilayah="Bantul" data-bidang="Konstruksi" data-status="Aktif">
+          <div>
+            <div class="flex items-start justify-between gap-3 mb-3">
+              <div class="flex items-center gap-3">
+                <div class="member-avatar avatar-blue">TH</div>
+                <div>
+                  <h3 class="font-bold text-sm text-[#08162e] leading-snug member-name">CV. Tunas Harapan Engineering</h3>
+                  <div class="flex items-center gap-1.5 text-xs text-slate-500 font-medium mt-0.5 member-kta">
+                    <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                    <span>17075/P/0269.DIY</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <span class="inline-flex items-center text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-800 border-sky-200">
+                Kualifikasi Kecil (K)
+              </span>
+            </div>
+            <div class="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3 member-details">
+              <div class="flex items-center gap-2"><i data-lucide="briefcase" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Perencanaan Jembatan Gantung & Pelat</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#0056B8] flex-shrink-0"></i> <span>Kab. Bantul, D.I. Yogyakarta</span></div>
+              <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i> <span>Status: SBU Terverifikasi Aktif</span></div>
+            </div>
+          </div>
+          <a href="profil-anggota.html?id=45" class="w-full mt-2 py-2 px-3 rounded-lg border border-blue-200 hover:border-[#0056B8] hover:bg-[#0056B8] text-[#0056B8] hover:text-white font-semibold text-xs transition flex items-center justify-center gap-1.5" title="Lihat Profil Lengkap Perusahaan">
+            <span>Lihat Profil Lengkap</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Pagination Component Matching User Design [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ > ] -->
+      <div id="memberPagination" class="pagination-container" aria-label="Navigasi Halaman Anggota">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+
+      <!-- Empty Search Fallback -->
+      <div id="memberEmptyState" class="hidden text-center py-12 px-6 bg-white rounded-2xl border border-dashed border-slate-300 mt-8">
+        <div class="w-14 h-14 bg-slate-100 text-slate-500 rounded-full inline-flex items-center justify-center mb-3">
+          <i data-lucide="search-x" class="w-7 h-7"></i>
+        </div>
+        <h4 class="font-bold text-base text-slate-800 mb-1 font-['Poppins',sans-serif]">Data Tidak Ditemukan</h4>
+        <p class="text-slate-500 text-xs sm:text-sm max-w-md mx-auto mb-4">
+          Tidak ada perusahaan konsultan yang cocok dengan kata kunci pencarian Anda. Silakan coba kata kunci lain.
+        </p>
+        <button class="bg-[#0056B8] hover:bg-[#004494] text-white text-xs font-semibold px-4 py-2 rounded-full inline-flex items-center gap-1.5 transition" onclick="resetMemberFilter()">
+          <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          <span>Reset Pencarian</span>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- ==========================================================================
+       FOOTER & COPYRIGHT BAR (DARK NAVY THEME - GLOBAL SHARED COMPONENT)
+       ========================================================================== -->
+  <footer class="deep-blue-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Kolom 1 (Kiri): Logo INKINDO Yogyakarta & Deskripsi Singkat Organisasi -->
+        <div class="footer-col-left">
+          <div class="footer-brand">
+            <div class="footer-logo-emblem">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </div>
+            <div>
+              <span class="footer-brand-title">INKINDO YOGYAKARTA</span>
+              <span class="footer-brand-sub">IKATAN NASIONAL KONSULTAN INDONESIA</span>
+            </div>
+          </div>
+
+          <p class="footer-desc">
+            Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta adalah asosiasi perusahaan jasa konsultansi independen yang berdiri sejak 20 Juni 1979. Wadah perjuangan dan pemberdayaan 214 perusahaan konsultan anggota di Daerah Istimewa Yogyakarta.
+          </p>
+        </div>
+
+        <!-- Kolom 2 (Tengah): KONTAK -->
+        <div class="footer-col-center">
+          <h4 class="footer-heading">KONTAK</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <i data-lucide="mail" class="contact-ic"></i>
+              <div>
+                <strong>Email:</strong>
+                <p>inkindo@inkindo.org</p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="phone" class="contact-ic"></i>
+              <div>
+                <strong>Telepon:</strong>
+                <p>081315289207</p>
+              </div>
+            </li>
+            <li>
+              <i data-lucide="map-pin" class="contact-ic"></i>
+              <div>
+                <strong>Alamat:</strong>
+                <p>Jl. Godean KM. 5 Nogosaren Baru No. 32, Banyuraden, Gamping, Sleman, Yogyakarta 55293</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3 (Kanan): SOSIAL MEDIA (COMPACT STYLING) -->
+        <div class="footer-col-right">
+          <h4 class="footer-heading">SOSIAL MEDIA</h4>
+          <p class="footer-social-intro">Ikuti dan terhubung dengan Sekretariat INKINDO D.I. Yogyakarta di saluran resmi media sosial:</p>
+          <div class="footer-social-buttons">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge fb-social" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f social-brand-icon"></i>
+              <span>Facebook</span>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge ig-social" aria-label="Instagram">
+              <i class="fa-brands fa-instagram social-brand-icon"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge tw-social" aria-label="Twitter">
+              <span class="social-brand-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+              <span>Twitter</span>
+            </a>
+            <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" class="social-icon-badge wa-social" aria-label="WhatsApp">
+              <i class="fa-brands fa-whatsapp social-brand-icon"></i>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar: Copyright Bar -->
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 INKINDO YOGYAKARTA – All Right Reserved</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ==========================================================================
+       FLOATING WHATSAPP CTA BUTTON ("Hubungi Kami")
+       ========================================================================== -->
+  <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" 
+     class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#0066b2] hover:bg-[#005596] text-white px-5 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 text-sm font-semibold tracking-wide"
+     style="box-shadow: 0 4px 14px rgba(0, 102, 178, 0.4);">
+      <i class="fa-brands fa-whatsapp text-lg"></i>
+      <span>Hubungi Kami</span>
+  </a>
+
+
+  <!-- ==========================================================================
+       GLOBAL MODAL DIALOGS
+       ========================================================================== -->
+  <div class="modal-backdrop" id="modalBackdrop" onclick="closeGlobalModal(event)">
+    <div class="modal-window" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeGlobalModal()">&times;</button>
+      <div class="modal-content-body" id="modalContentBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+    <script>
+    let activeQual = 'all';
+    let activeWilayah = 'all';
+    let activeBidang = 'all';
+    let activeStatus = 'all';
+    let currentMemberPage = 1;
+    const itemsPerPage = 9;
+
+    function filterMembersByDropdown() {
+      const qualSelect = document.getElementById('filterKualifikasi');
+      const wilayahSelect = document.getElementById('filterWilayah');
+      const bidangSelect = document.getElementById('filterBidang');
+      const statusSelect = document.getElementById('filterStatus');
+      const resetBtn = document.getElementById('resetDropdownFiltersBtn');
+
+      activeQual = qualSelect ? qualSelect.value : 'all';
+      activeWilayah = wilayahSelect ? wilayahSelect.value : 'all';
+      activeBidang = bidangSelect ? bidangSelect.value : 'all';
+      activeStatus = statusSelect ? statusSelect.value : 'all';
+
+      const isFiltered = (activeQual !== 'all' || activeWilayah !== 'all' || activeBidang !== 'all' || activeStatus !== 'all');
+      if (resetBtn) {
+        resetBtn.style.display = isFiltered ? 'inline-flex' : 'none';
+      }
+
+      currentMemberPage = 1;
+      updateMemberDisplay();
+    }
+
+    function resetAllDropdownFilters() {
+      const qualSelect = document.getElementById('filterKualifikasi');
+      const wilayahSelect = document.getElementById('filterWilayah');
+      const bidangSelect = document.getElementById('filterBidang');
+      const statusSelect = document.getElementById('filterStatus');
+      const searchInput = document.getElementById('memberSearchInput');
+      const resetBtn = document.getElementById('resetDropdownFiltersBtn');
+
+      if (qualSelect) qualSelect.value = 'all';
+      if (wilayahSelect) wilayahSelect.value = 'all';
+      if (bidangSelect) bidangSelect.value = 'all';
+      if (statusSelect) statusSelect.value = 'all';
+      if (searchInput) searchInput.value = '';
+      if (resetBtn) resetBtn.style.display = 'none';
+
+      activeQual = 'all';
+      activeWilayah = 'all';
+      activeBidang = 'all';
+      activeStatus = 'all';
+
+      currentMemberPage = 1;
+      updateMemberDisplay();
+    }
+
+    // Backward-compatible alias for any residual calls
+    function filterByQual(qualKey) {
+      const qualSelect = document.getElementById('filterKualifikasi');
+      if (qualSelect) {
+        qualSelect.value = qualKey;
+      }
+      filterMembersByDropdown();
+    }
+
+    function filterMemberDirectory() {
+      currentMemberPage = 1;
+      updateMemberDisplay();
+    }
+
+    function updateMemberDisplay() {
+      const input = document.getElementById('memberSearchInput');
+      const query = input ? input.value.toLowerCase().trim() : '';
+
+      const cards = Array.from(document.querySelectorAll('.member-card'));
+
+      // Filter matching cards based on all 4 dropdown criteria & search keyword
+      const matchingCards = cards.filter(card => {
+        const name = card.querySelector('.member-name')?.textContent.toLowerCase() || '';
+        const kta = card.querySelector('.member-kta')?.textContent.toLowerCase() || '';
+        const details = card.querySelector('.member-details')?.textContent.toLowerCase() || '';
+        
+        const cardQual = card.getAttribute('data-qual') || '';
+        const cardWilayah = card.getAttribute('data-wilayah') || '';
+        const cardBidang = card.getAttribute('data-bidang') || '';
+        const cardStatus = card.getAttribute('data-status') || '';
+
+        const matchesQual = (activeQual === 'all' || cardQual.toLowerCase() === activeQual.toLowerCase());
+        const matchesWilayah = (activeWilayah === 'all' || cardWilayah.toLowerCase() === activeWilayah.toLowerCase());
+        const matchesBidang = (activeBidang === 'all' || cardBidang.toLowerCase() === activeBidang.toLowerCase());
+        const matchesStatus = (activeStatus === 'all' || cardStatus.toLowerCase() === activeStatus.toLowerCase());
+        const matchesSearch = (!query || name.includes(query) || kta.includes(query));
+
+        return matchesQual && matchesWilayah && matchesBidang && matchesStatus && matchesSearch;
+      });
+
+      const totalMatches = matchingCards.length;
+      const totalPages = Math.ceil(totalMatches / itemsPerPage);
+
+      // Keep currentMemberPage in valid range
+      if (currentMemberPage > totalPages) {
+        currentMemberPage = totalPages || 1;
+      }
+      if (currentMemberPage < 1) {
+        currentMemberPage = 1;
+      }
+
+      // Hide all cards first
+      cards.forEach(card => card.classList.add('hidden'));
+
+      // Show only cards for the current page (max 9 items per page)
+      const startIndex = (currentMemberPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const pageCards = matchingCards.slice(startIndex, endIndex);
+      pageCards.forEach(card => card.classList.remove('hidden'));
+
+      // Update counter text
+      const countEl = document.getElementById('memberCountText');
+      if (countEl) {
+        if (totalMatches === 0) {
+          countEl.textContent = '0 Perusahaan';
+        } else {
+          const shownStart = startIndex + 1;
+          const shownEnd = Math.min(endIndex, totalMatches);
+          countEl.textContent = `${shownStart}-${shownEnd} dari ${totalMatches} Perusahaan (Hal ${currentMemberPage}/${totalPages})`;
+        }
+      }
+
+      // Empty state handling
+      const emptyState = document.getElementById('memberEmptyState');
+      if (emptyState) {
+        if (totalMatches === 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+
+      // Render pagination matching the user's design [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ > ]
+      renderPagination(totalPages);
+
+      // Re-trigger lucide icons
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
+    function renderPagination(totalPages) {
+      const container = document.getElementById('memberPagination');
+      if (!container) return;
+
+      if (totalPages <= 1) {
+        if (totalPages === 1) {
+          container.innerHTML = `
+            <button type="button" class="pagination-btn active" aria-current="page">1</button>
+          `;
+          container.classList.remove('hidden');
+        } else {
+          container.innerHTML = '';
+          container.classList.add('hidden');
+        }
+        return;
+      }
+
+      container.classList.remove('hidden');
+      let html = '';
+
+      // Previous button '<' if page > 1
+      if (currentMemberPage > 1) {
+        html += `<button type="button" class="pagination-btn" onclick="goToMemberPage(${currentMemberPage - 1})" aria-label="Halaman Sebelumnya">&lt;</button>`;
+      }
+
+      // Numeric buttons (1, 2, 3, 4, 5...)
+      for (let i = 1; i <= totalPages; i++) {
+        const isActive = (i === currentMemberPage);
+        html += `<button type="button" class="pagination-btn ${isActive ? 'active' : ''}" onclick="goToMemberPage(${i})" aria-label="Halaman ${i}" ${isActive ? 'aria-current="page"' : ''}>${i}</button>`;
+      }
+
+      // Next button '>' if page < totalPages
+      if (currentMemberPage < totalPages) {
+        html += `<button type="button" class="pagination-btn" onclick="goToMemberPage(${currentMemberPage + 1})" aria-label="Halaman Berikutnya">&gt;</button>`;
+      }
+
+      container.innerHTML = html;
+    }
+
+    function goToMemberPage(pageNum) {
+      currentMemberPage = pageNum;
+      updateMemberDisplay();
+
+      // Smooth scroll to top of member grid
+      const grid = document.getElementById('memberDirectoryGrid');
+      if (grid) {
+        const yOffset = -90;
+        const y = grid.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+
+    function resetMemberFilter() {
+      resetAllDropdownFilters();
+    }
+
+    // Member detail modal handlers
+    function openMemberDetailModal(name, kta, qual, bidang) {
+      const modalBody = document.getElementById('modalContentBody');
+      const backdrop = document.getElementById('modalBackdrop');
+      if (!modalBody || !backdrop) return;
+
+      modalBody.innerHTML = `
+        <div class="p-6">
+          <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+            <div class="w-12 h-12 rounded-xl bg-blue-50 text-[#0056B8] flex items-center justify-center font-bold text-lg">
+              <i data-lucide="building-2" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-base text-[#08162e] font-['Poppins',sans-serif]">${name}</h3>
+              <p class="text-xs text-slate-500 font-medium">Nomor Registrasi KTA: ${kta}</p>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+              <span class="text-slate-400 block mb-0.5 font-medium">Kualifikasi Usaha</span>
+              <strong class="text-slate-800 text-sm">${qual}</strong>
+            </div>
+            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+              <span class="text-slate-400 block mb-0.5 font-medium">Status Keanggotaan</span>
+              <strong class="text-emerald-700 text-sm flex items-center gap-1.5">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                Aktif & Terdaftar
+              </strong>
+            </div>
+          </div>
+
+          <div class="mt-4 bg-slate-50 p-3.5 rounded-lg border border-slate-100 text-xs">
+            <span class="text-slate-400 block mb-1 font-medium">Lingkup Layanan & Keahlian Utama</span>
+            <p class="text-slate-700 leading-relaxed font-medium">${bidang}</p>
+          </div>
+
+          <div class="mt-6 flex justify-end gap-2.5">
+            <button type="button" onclick="closeGlobalModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-800 rounded-lg hover:bg-slate-100 transition">
+              Tutup
+            </button>
+            <a href="https://wa.me/6281315289207?text=Halo%20Admin%20INKINDO%20DIY,%20saya%20ingin%20informasi%20kontak%20resmi%20perusahaan%20${encodeURIComponent(name)}" 
+               target="_blank" rel="noopener noreferrer" 
+               class="px-4 py-2 text-xs font-semibold bg-[#0056B8] hover:bg-[#004494] text-white rounded-lg transition inline-flex items-center gap-1.5 shadow-xs">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+              <span>Hubungi Lewat Sekretariat</span>
+            </a>
+          </div>
+        </div>
+      `;
+
+      backdrop.classList.add('active');
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
+    function closeGlobalModal(event) {
+      if (event && event.target !== event.currentTarget) return;
+      const backdrop = document.getElementById('modalBackdrop');
+      if (backdrop) backdrop.classList.remove('active');
+    }
+
+    // Initialize display on DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', function() {
+      updateMemberDisplay();
+    });
+  </script>
+</body>
+</html>

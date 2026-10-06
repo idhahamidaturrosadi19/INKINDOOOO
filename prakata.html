@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prakata Ketua DPP | INKINDO YOGYAKARTA</title>
+    
+    <!-- Google Fonts: Inter, Poppins & Caveat (Signature) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-white text-slate-800 font-['Inter',sans-serif]">
+    <!-- HEADER NAVBAR (PUTIH BERSIH) -->
+    <header class="main-header bg-white border-b border-slate-200 sticky top-0 z-50" id="mainHeader">
+        <div class="container header-container">
+            <!-- Brand Logo with Official INKINDO DIY Logo -->
+            <a href="index.html" class="brand-logo">
+                <img src="assets/images/logo_inkindo_diy.png" alt="INKINDO YOGYAKARTA Logo" class="brand-logo-img">
+            </a>
+
+            <!-- Right Navigation Links & Login Action -->
+            <div class="header-nav-group">
+                <nav class="nav-wrapper">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Beranda</a></li>
+                        
+                        <!-- DROPDOWN PROFIL (AKTIF) -->
+                        <li class="nav-item dropdown">
+                            <a href="profil.html" class="nav-link dropdown-toggle active">
+                                <span>Profil</span>
+                                <i data-lucide="chevron-down" class="nav-chevron"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="profil.html">Profil</a></li>
+                                <li><a href="prakata.html" class="font-bold text-[#0056B8]">Prakata</a></li>
+                                <li><a href="kode-etik.html">Kode Etik</a></li>
+                                <li><a href="struktur-organisasi.html">Struktur Organisasi</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- DROPDOWN LAYANAN -->
+                        <li class="nav-item dropdown">
+                            <a href="index.html#layanan" class="nav-link dropdown-toggle">
+                                <span>Layanan</span>
+                                <i data-lucide="chevron-down" class="nav-chevron"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="layanan-konstruksi.html">Konstruksi</a></li>
+                                <li><a href="layanan-non-konstruksi.html">Non Konstruksi</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- DROPDOWN KEANGGOTAAN -->
+                        <li class="nav-item dropdown">
+                            <a href="index.html#keanggotaan" class="nav-link dropdown-toggle">
+                                <span>Keanggotaan</span>
+                                <i data-lucide="chevron-down" class="nav-chevron"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="direktori-anggota.html">Direktori Anggota</a></li>
+                                <li><a href="pendaftaran-anggota.html">Pendaftaran Anggota</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- DROPDOWN PUBLIK -->
+                        <li class="nav-item dropdown">
+                            <a href="index.html#publik" class="nav-link dropdown-toggle">
+                                <span>Publik</span>
+                                <i data-lucide="chevron-down" class="nav-chevron"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="berita.html">Berita</a></li>
+                                <li><a href="program-kerja.html">Program Kerja</a></li>
+                                <li><a href="galeri.html">Galeri</a></li>
+                                <li><a href="regulasi.html">Regulasi</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="btn btn-login-cta desktop-login-btn" onclick="openLoginModal(event)">
+                        <i data-lucide="lock" size="15"></i>
+                        <span>Login</span>
+                    </button>
+                    <button class="mobile-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu">
+                        <i data-lucide="menu" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div class="mobile-nav-dropdown" id="mobileNavDropdown">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" onclick="closeMobileMenu()"><i data-lucide="home" size="16"></i> Beranda</a></li>
+                <li><a href="profil.html" onclick="closeMobileMenu()"><i data-lucide="building-2" size="16"></i> Profil Organisasi</a></li>
+                <li><a href="prakata.html" onclick="closeMobileMenu()" class="active"><i data-lucide="award" size="16"></i> Prakata Ketua DPP</a></li>
+                <li><a href="index.html#layanan" onclick="closeMobileMenu()"><i data-lucide="layers" size="16"></i> Layanan Asosiasi</a></li>
+                <li><a href="daftar-anggota.html" onclick="closeMobileMenu()"><i data-lucide="users" size="16"></i> Keanggotaan & Direktori</a></li>
+                <li><a href="index.html#publik" onclick="closeMobileMenu()"><i data-lucide="file-text" size="16"></i> Publik & Regulasi</a></li>
+                <li class="mobile-login-item">
+                    <button class="btn btn-login-cta mobile-login-btn" onclick="openLoginModal(event); closeMobileMenu();">
+                        <i data-lucide="lock" size="16"></i> Login KTA Anggota
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ==========================================================================
+         HERO BANNER GELAP (NAVY BLUE #08162e MEMBENTANG PENUH & BORDER TEAL)
+         ========================================================================== -->
+    <section class="subpage-hero-section relative text-white pt-12 pb-14 md:pt-14 md:pb-16 px-6 w-full">
+        <div class="max-w-5xl mx-auto flex flex-col items-center text-center">
+            
+            <!-- Breadcrumb Pill Capsule -->
+            <nav class="subpage-hero-breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">
+                    <i data-lucide="home"></i>
+                    <span>Beranda</span>
+                </a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="profil.html">Profil Organisasi</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-active">Prakata</span>
+            </nav>
+
+            <!-- Main Title: Poppins Bold 40px-48px Centered -->
+            <h1 class="subpage-hero-title">
+                Prakata Ketua DPP
+            </h1>
+
+            <!-- Deskripsi Pengantar Bersih -->
+            <p class="subpage-hero-desc">
+                Prakata dan pesan resmi Ketua Dewan Pengurus Provinsi INKINDO D.I. Yogyakarta periode 2022–2026.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         KONTEN UTAMA PRAKATA (LATAR BELAKANG PUTIH BERSIH)
+         ========================================================================== -->
+    <main class="py-12 md:py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+                
+                <!-- SISI KIRI: PROFILE CARD VERTIKAL DENGAN LATAR BIRU MUDA -->
+                <div class="lg:col-span-5 flex flex-col items-center">
+                    <div class="w-full bg-gradient-to-b from-[#e8f2fc] to-[#d6e8fa] rounded-3xl p-6 border border-blue-100 shadow-sm flex flex-col items-center text-center">
+                        
+                        <!-- Frame Foto Ketua -->
+                        <div class="relative w-full max-w-[260px] mb-4">
+                            <img src="assets/images/ketua_dpp_inkindo.png" alt="Ir. Dwiaryo Dyatmiko, M.Si - Ketua DPP INKINDO DIY" class="w-full h-auto object-contain rounded-2xl drop-shadow-md">
+                        </div>
+                        
+                        <!-- Jabatan Pimpinan (Tanpa Nama agar Tidak Duplikat) -->
+                        <h2 class="font-bold text-sm md:text-base text-[#0b1c3a] mb-0.5 font-['Poppins',sans-serif]">Ketua Dewan Pengurus Provinsi (DPP)</h2>
+                        <p class="text-xs text-slate-500 mb-3 font-medium">INKINDO D.I. Yogyakarta</p>
+
+                        <div class="inline-flex items-center gap-1.5 bg-amber-50 text-amber-700 border border-amber-200/80 rounded-full px-3.5 py-1 text-xs font-semibold mb-4">
+                            <i data-lucide="calendar" size="13"></i>
+                            <span>Periode 2022 &ndash; 2026</span>
+                        </div>
+
+                        <!-- 3 Poin Info Ringkas -->
+                        <div class="w-full bg-white/90 backdrop-blur-sm rounded-xl p-3.5 border border-blue-100/80 text-left text-xs space-y-2 mb-4 text-slate-700 shadow-xs">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="building-2" size="15" class="text-[#0056B8] flex-shrink-0"></i>
+                                <span><strong>214 Perusahaan</strong> Konsultan Anggota DIY</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="map-pin" size="15" class="text-[#0056B8] flex-shrink-0"></i>
+                                <span>Wilayah Kerja 5 Kab/Kota D.I. Yogyakarta</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="award" size="15" class="text-[#0056B8] flex-shrink-0"></i>
+                                <span>Mandat Musyawarah Provinsi IX INKINDO</span>
+                            </div>
+                        </div>
+
+                        <!-- Tombol Hijau Hubungi WhatsApp -->
+                        <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-emerald-600 text-white text-xs font-semibold py-2.5 px-4 rounded-xl transition shadow-xs">
+                            <i data-lucide="message-square" size="15"></i>
+                            <span>Hubungi Sekretariat DPP</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SISI KANAN: TEKS SAMBUTAN RESMI & PENYEIMBANG KONTEN BAWAH -->
+                <div class="lg:col-span-7 flex flex-col justify-between h-full">
+                    
+                    <div>
+                        <!-- Header Sambutan: Satu-satunya Nama Cetak Pimpinan yang Tertera Jelas -->
+                        <div class="mb-5">
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0b1c3a] font-['Poppins',sans-serif] tracking-tight mb-1.5">
+                                Ir. Dwiaryo Dyatmiko, M.Si
+                            </h2>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-800 font-['Poppins',sans-serif]">
+                                Ketua Dewan Pengurus Inkindo D.I Yogyakarta
+                            </h3>
+                        </div>
+
+                        <!-- Paragraf Sambutan Utama -->
+                        <div class="text-slate-700 text-sm md:text-[15px] leading-relaxed space-y-4">
+                            <p class="leading-loose text-justify text-slate-700 font-normal">
+                                Saya dengan bangga mempersembahkan website ini kepada Anda, anggota kami, dan masyarakat Daerah Jogja. Sebagai Ketua DPP INKINDO di wilayah ini, saya merasa terhormat dapat berada di barisan terdepan dalam mendukung industri konsultansi yang berkembang pesat di Daerah Jogja. Daerah Jogja memiliki potensi luar biasa dengan lima kabupaten yang beragam. Kami, sebagai cabang INKINDO di sini, berkomitmen untuk memfasilitasi kolaborasi, pertukaran pengetahuan, dan dukungan bagi para profesional konsultan di wilayah ini. Melalui website ini, kami ingin memudahkan akses Anda kepada informasi terbaru, berita, dan sumber daya yang relevan. Saya mengundang Anda untuk aktif berpartisipasi dalam kegiatan kami dan bersama-sama membangun masa depan yang lebih cerah untuk industri konsultansi di Daerah Jogja. Terima kasih atas dukungan dan kepercayaan Anda kepada INKINDO Yogyakarta.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- ELEMEN PENYEIMBANG TINGGI DI BAGIAN BAWAH -->
+                    <div class="mt-8 pt-6 border-t border-slate-200/80 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                        
+                        <!-- Kiri Bawah: Highlight Quote Elegan -->
+                        <div class="md:col-span-7 bg-blue-50/60 border-l-4 border-[#0056B8] rounded-r-xl p-4">
+                            <p class="italic text-xs sm:text-sm text-[#0b1c3a] leading-relaxed font-medium">
+                                “Bersama-sama membangun masa depan yang lebih cerah untuk industri jasa konsultansi di Daerah Istimewa Yogyakarta.”
+                            </p>
+                        </div>
+
+                        <!-- Kanan Bawah: Formal Closing & Digital Signature Alami (Tanpa Duplikasi Nama Cetak) -->
+                        <div class="md:col-span-5 flex flex-col items-start md:items-end text-left md:text-right">
+                            <span class="text-xs text-slate-500 font-medium mb-1.5">Salam Hormat,</span>
+                            <!-- Tanda Tangan Digital Hand-written Alami -->
+                            <div class="font-['Caveat',cursive] text-3xl sm:text-4xl text-[#003B73] font-bold leading-none select-none">
+                                Ir. Dwiaryo Dyatmiko
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </main>
+
+    <!-- FOOTER & COPYRIGHT BAR (DARK NAVY THEME - GLOBAL SHARED COMPONENT) -->
+    <footer class="deep-blue-footer">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <!-- Kolom 1 (Kiri): Logo INKINDO Yogyakarta & Deskripsi Singkat Organisasi -->
+                <div class="footer-col-left">
+                    <div class="footer-brand">
+                        <div class="footer-logo-emblem">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                <polyline points="2 17 12 22 22 17"></polyline>
+                                <polyline points="2 12 12 17 22 12"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="footer-brand-title">INKINDO YOGYAKARTA</span>
+                            <span class="footer-brand-sub">IKATAN NASIONAL KONSULTAN INDONESIA</span>
+                        </div>
+                    </div>
+
+                    <p class="footer-desc">
+                        Ikatan Nasional Konsultan Indonesia (INKINDO) D.I. Yogyakarta adalah asosiasi perusahaan jasa konsultansi independen yang berdiri sejak 20 Juni 1979. Wadah perjuangan dan pemberdayaan 214 perusahaan konsultan anggota di Daerah Istimewa Yogyakarta.
+                    </p>
+                </div>
+
+                <!-- Kolom 2 (Tengah): KONTAK -->
+                <div class="footer-col-center">
+                    <h4 class="footer-heading">KONTAK</h4>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <i data-lucide="mail" class="contact-ic"></i>
+                            <div>
+                                <strong>Email:</strong>
+                                <p>inkindo@inkindo.org</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="phone" class="contact-ic"></i>
+                            <div>
+                                <strong>Telepon:</strong>
+                                <p>081315289207</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i data-lucide="map-pin" class="contact-ic"></i>
+                            <div>
+                                <strong>Alamat:</strong>
+                                <p>Jl. Godean KM. 5 Nogosaren Baru No. 32, Banyuraden, Gamping, Sleman, Yogyakarta 55293</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3 (Kanan): SOSIAL MEDIA (COMPACT STYLING) -->
+                <div class="footer-col-right">
+                    <h4 class="footer-heading">SOSIAL MEDIA</h4>
+                    <p class="footer-social-intro">Ikuti dan terhubung dengan Sekretariat INKINDO D.I. Yogyakarta di saluran resmi media sosial:</p>
+                    <div class="footer-social-buttons">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge fb-social" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f social-brand-icon"></i>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge ig-social" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram social-brand-icon"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-badge tw-social" aria-label="Twitter">
+                            <span class="social-brand-icon"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+                            <span>Twitter</span>
+                        </a>
+                        <a href="https://wa.me/6281315289207" target="_blank" rel="noopener noreferrer" class="social-icon-badge wa-social" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp social-brand-icon"></i>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Bar: Copyright Bar -->
+            <div class="footer-bottom-bar">
+                <p>&copy; 2026 INKINDO YOGYAKARTA – All Right Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
